@@ -28,3 +28,17 @@ Xamarin.Forms.Core
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
+netstandard
+Microcharts
+Microcharts.Droid
+Microcharts.Forms
+SkiaSharp
+SkiaSharp.Views.Android
+SkiaSharp.Views.Forms
+System.Collections
+Microsoft.AppCenter.Analytics.Android.Bindings
+Microsoft.AppCenter.Analytics
+Microsoft.AppCenter.Android.Bindings
+Microsoft.AppCenter.Crashes.Android.Bindings
+Microsoft.AppCenter.Crashes
+Microsoft.AppCenter

@@ -1,0 +1,9 @@
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\bin\Debug\netstandard2.0\Sanus.deps.json
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\bin\Debug\netstandard2.0\Sanus.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\bin\Debug\netstandard2.0\Sanus.pdb
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.csprojResolveAssemblyReference.cache
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.csproj.CoreCompileInputs.cache
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.AssemblyInfoInputs.cache
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.AssemblyInfo.cs
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.pdb
