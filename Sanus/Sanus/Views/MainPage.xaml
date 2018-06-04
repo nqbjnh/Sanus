@@ -1,11 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Sanus.Views.MainPage"
-             Title="{Binding Title}">
+            BarBackgroundColor="{StaticResource BarColor}">
+    <!--<TabbedPage.ToolbarItems>
+        <ToolbarItem Icon="ic_launcher.png"></ToolbarItem>
+    </TabbedPage.ToolbarItems>-->
+    
+   
+        <!--Pages can be added as references or inline-->
+        <ContentPage Title="TRANG NHÀ" Icon="icon_tab1.png">
+            <StackLayout>
+                <Label Text="abc"></Label>
+                <Image Source="ic_launcher.png"></Image>
+                <Label Text="bcd"></Label>
+            </StackLayout>
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
 
-</ContentPage>
+        </ContentPage>
+
+        <ContentPage Title="HỒ SƠ" Icon="icon_tab2.png"/>
+        <ContentPage Title="CÁ NHÂN" Icon="icon_tab3.png"/>
+
+    
+ 
+</TabbedPage>

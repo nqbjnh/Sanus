@@ -18,6 +18,15 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\mipmap-xxxhd
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\layout\tabbar.xml
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\layout\toolbar.xml
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\values\styles.xml
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\mipmap-hdpi\logo_nbn.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\mipmap-hdpi\logo.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\mipmap-hdpi\splash_drawable.xml
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\drawable\ic_launcher.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\drawable\logo.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\drawable\logo_nbn.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\drawable\icon_tab3.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\drawable\icon_tab2.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\res\drawable\icon_tab1.png
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\R.cs.flag
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\uploadflags.txt
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\bin\Debug\CommonServiceLocator.pdb
@@ -103,6 +112,9 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\U
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Unity.ServiceLocation.pdb
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\bin\Debug\Microsoft.CSharp.pdb
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\linksrc\Microsoft.CSharp.pdb
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Microsoft.CSharp.pdb
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\bin\Debug\Sanus.Android.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\linksrc\Sanus.Android.dll.mdb
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb

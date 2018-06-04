@@ -1,4 +1,5 @@
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Sanus.Android.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\BottomNavigationBar.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\CommonServiceLocator.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\FormsViewGroup.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Java.Interop.dll
@@ -13,6 +14,7 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\M
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Microsoft.AppCenter.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Mono.Android.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\mscorlib.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Newtonsoft.Json.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Prism.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Prism.Forms.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Prism.Unity.Forms.dll
@@ -80,3 +82,15 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\S
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Reflection.Extensions.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Reflection.Primitives.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.ValueTuple.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.IO.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Threading.Tasks.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Xml.XDocument.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Globalization.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Linq.Expressions.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Dynamic.Runtime.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.ObjectModel.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Text.RegularExpressions.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Xml.ReaderWriter.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Text.Encoding.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\System.Text.Encoding.Extensions.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Microsoft.CSharp.dll

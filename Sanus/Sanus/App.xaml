@@ -5,7 +5,13 @@
              x:Class="Sanus.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+		<ResourceDictionary>
+            <Color x:Key="PrimaryColor">#23b8f9</Color>
+            <Color x:Key="AccentColor">#036abb</Color>
+            <Color x:Key="BarColor">#023e60</Color>
+            
+
+        </ResourceDictionary>
 
 	</Application.Resources>
 </prism:PrismApplication>

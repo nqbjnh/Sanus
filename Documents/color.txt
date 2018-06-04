@@ -1,0 +1,10 @@
+- Xanh (chíủ đạo): #036abb
+- Xanh đậm (chân trang): #023e60
+- xanh nhạt: #23b8f9
+- Xanh (background thời tiết): #1184d3
+- Xanh bo tròn chân trang: #023e60
+- Đỏ: #ed1c24
+- Trắng: #FFFFFF
+- Bo tròn hình: #00518e (Opacity=20%) - Mục "Hồ sơ sức khoẻ"
+- Bo tròn hình: #FFFFFF (Opacity=50%) - Mục "nhân"
+- Chữ xanh chân trang: #23b8f9

@@ -82,3 +82,9 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\Sanu
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\Sanus.iOS.csproj.CopyComplete
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\Sanus.iOS.exe
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\Sanus.iOS.pdb
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\logo_nbn.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\logo.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\ic_launcher.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_tab1.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_tab2.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_tab3.png

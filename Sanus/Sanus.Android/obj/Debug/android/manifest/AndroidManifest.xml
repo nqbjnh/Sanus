@@ -6,7 +6,8 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <application android:label="Sanus.Android" android:icon="@mipmap/ic_launcher" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:configChanges="orientation|screenSize" android:icon="@mipmap/ic_launcher" android:label="Sanus" android:theme="@style/MainTheme" android:name="md51ed9c7ee5597e5f4c2d48229c4bd910e.MainActivity">
+    <activity android:configChanges="orientation|screenSize" android:icon="@mipmap/ic_launcher" android:label="Sanus" android:theme="@style/MainTheme" android:name="md51ed9c7ee5597e5f4c2d48229c4bd910e.MainActivity" />
+    <activity android:configChanges="orientation|screenSize" android:noHistory="true" android:theme="@style/Theme.Splash" android:name="md51ed9c7ee5597e5f4c2d48229c4bd910e.SplashScreen">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

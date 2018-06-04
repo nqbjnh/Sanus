@@ -2,6 +2,29 @@
   "version": 3,
   "targets": {
     "MonoAndroid,Version=v8.1": {
+      "BottomNavigationBar/1.4.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1",
+          "Xamarin.Android.Support.Animated.Vector.Drawable": "24.2.1",
+          "Xamarin.Android.Support.Compat": "24.2.1",
+          "Xamarin.Android.Support.Core.UI": "24.2.1",
+          "Xamarin.Android.Support.Core.Utils": "24.2.1",
+          "Xamarin.Android.Support.Design": "24.2.1",
+          "Xamarin.Android.Support.Fragment": "24.2.1",
+          "Xamarin.Android.Support.Media.Compat": "24.2.1",
+          "Xamarin.Android.Support.Vector.Drawable": "24.2.1",
+          "Xamarin.Android.Support.v4": "24.2.1",
+          "Xamarin.Android.Support.v7.AppCompat": "24.2.1",
+          "Xamarin.Android.Support.v7.RecyclerView": "24.2.1"
+        },
+        "compile": {
+          "lib/MonoAndroid403/BottomNavigationBar.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid403/BottomNavigationBar.dll": {}
+        }
+      },
       "Microcharts/0.7.1": {
         "type": "package",
         "dependencies": {
@@ -81,6 +104,15 @@
             "assetType": "native",
             "rid": "win10-x86"
           }
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "Prism.Core/7.0.0.396": {
@@ -499,6 +531,17 @@
     }
   },
   "libraries": {
+    "BottomNavigationBar/1.4.0.3": {
+      "sha512": "MDlo6XEh1tD4k6F9qCOd1aWDYPWMl2hemngg4h9CysOEeg7CsBSHsijCXvOi6JRGDvZBybhqorUYnv2NH+fvXw==",
+      "type": "package",
+      "path": "bottomnavigationbar/1.4.0.3",
+      "files": [
+        "bottomnavigationbar.1.4.0.3.nupkg.sha512",
+        "bottomnavigationbar.nuspec",
+        "lib/MonoAndroid403/BottomNavigationBar.dll",
+        "lib/MonoAndroid403/BottomNavigationBar.xml"
+      ]
+    },
     "Microcharts/0.7.1": {
       "sha512": "Py79bYXqvsqthZtk1ChdDhy/n4mb7T2CKjzTVU7ldj4dnjgFC2nbOJMGeAJkDk1lZPoQPSPx3obSq7S29Zrt8g==",
       "type": "package",
@@ -586,6 +629,30 @@
         "runtimes/win10-x86/lib/uap10.0/Microsoft.AppCenter.Crashes.dll",
         "runtimes/win10-x86/lib/uap10.0/WatsonRegistrationUtility.winmd",
         "runtimes/win10-x86/native/WatsonRegistrationUtility.dll"
+      ]
+    },
+    "Newtonsoft.Json/9.0.1": {
+      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+      "type": "package",
+      "path": "newtonsoft.json/9.0.1",
+      "files": [
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.9.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "tools/install.ps1"
       ]
     },
     "Prism.Core/7.0.0.396": {
@@ -1185,6 +1252,7 @@
   },
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v8.1": [
+      "BottomNavigationBar >= 1.4.0.3",
       "Microcharts >= 0.7.1",
       "Microcharts.Forms >= 0.7.1",
       "Microsoft.AppCenter.Analytics >= 1.6.1",
@@ -1236,6 +1304,10 @@
     "frameworks": {
       "monoandroid81": {
         "dependencies": {
+          "BottomNavigationBar": {
+            "target": "Package",
+            "version": "[1.4.0.3, )"
+          },
           "Microcharts": {
             "target": "Package",
             "version": "[0.7.1, )"

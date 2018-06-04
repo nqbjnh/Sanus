@@ -107,6 +107,7 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "Sanus.Android.dll" comes first in this list. */
 		"Sanus.Android.dll",
+		"BottomNavigationBar.dll",
 		"CommonServiceLocator.dll",
 		"FormsViewGroup.dll",
 		"Microcharts.dll",
@@ -118,6 +119,7 @@ class MonoPackageManager_Resources {
 		"Microsoft.AppCenter.Crashes.Android.Bindings.dll",
 		"Microsoft.AppCenter.Crashes.dll",
 		"Microsoft.AppCenter.dll",
+		"Newtonsoft.Json.dll",
 		"Prism.dll",
 		"Prism.Forms.dll",
 		"Prism.Unity.Forms.dll",
