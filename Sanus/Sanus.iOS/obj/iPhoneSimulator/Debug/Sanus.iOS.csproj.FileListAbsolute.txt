@@ -88,3 +88,13 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\opti
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_tab1.png
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_tab2.png
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_tab3.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40@3x.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-60@2x.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-60@3x.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-76.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-76@2x.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small@2x.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small@3x.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40@2x.png

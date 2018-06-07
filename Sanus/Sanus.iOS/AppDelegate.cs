@@ -29,6 +29,8 @@ namespace Sanus.iOS
             
             AppCenter.Start("79ce0663-159b-4e87-ada5-561276d41b0c",typeof(Analytics), typeof(Crashes));
 
+
+
             return base.FinishedLaunching(app, options);
         }
     }

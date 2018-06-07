@@ -1,27 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Sanus.Views;assembly=Sanus"
              x:Class="Sanus.Views.MainPage"
-            BarBackgroundColor="{StaticResource BarColor}">
+            BarBackgroundColor="{StaticResource BarColor}"
+            BackgroundColor="{StaticResource AccentColor}">
     <!--<TabbedPage.ToolbarItems>
         <ToolbarItem Icon="ic_launcher.png"></ToolbarItem>
     </TabbedPage.ToolbarItems>-->
-    
-   
-        <!--Pages can be added as references or inline-->
-        <ContentPage Title="TRANG NHÀ" Icon="icon_tab1.png">
-            <StackLayout>
-                <Label Text="abc"></Label>
-                <Image Source="ic_launcher.png"></Image>
-                <Label Text="bcd"></Label>
-            </StackLayout>
 
 
-        </ContentPage>
+    <views:Tab1 Title="TRANG NHÀ" Icon="icon_tab1.png" BackgroundColor="{StaticResource AccentColor}"/>
+    <views:Tab2 Title="HỒ SƠ" Icon="icon_tab2.png"/>
+    <views:Tab3 Title="CÁ NHÂN" Icon="icon_tab3.png"/>
 
-        <ContentPage Title="HỒ SƠ" Icon="icon_tab2.png"/>
-        <ContentPage Title="CÁ NHÂN" Icon="icon_tab3.png"/>
 
-    
- 
+
+
 </TabbedPage>

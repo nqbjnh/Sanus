@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="Sanus.Views.Tab1">
+    <ContentPage.Content>
+        <StackLayout>
+            <forms:ChartView x:Name="chartView" Margin="0,10,0,0" Chart="{Binding Chart}"  PaintSurface="ChartView_OnPaintSurface" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
+            <Grid BackgroundColor="{StaticResource PrimaryColor}" HeightRequest="70" Margin="0,0,0,50" VerticalOptions="End" HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" Padding="0,5,0,0"  Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="StartAndExpand" BackgroundColor="{StaticResource PrimaryColor}" WidthRequest="150" HeightRequest="60">
+                    <Label Text="0.67" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="25" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="km" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" TextColor="White"></Label>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Padding="0,5,0,0"  Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="StartAndExpand" BackgroundColor="{StaticResource PrimaryColor}"  HeightRequest="60">
+                    <forms:ChartView  x:Name="chartView2" Chart="{Binding Chart}" HeightRequest="100" WidthRequest="100" PaintSurface="ChartView_OnPaintSurface2" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="2" Padding="0,5,0,0"  Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="{StaticResource PrimaryColor}" WidthRequest="150" HeightRequest="60">
+                    <Label Text="1.559" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" FontSize="25" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="calo" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"></Label>
+                </StackLayout>
+            </Grid>
+
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>    
