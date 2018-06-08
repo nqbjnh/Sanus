@@ -1,12 +1,129 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Sanus.Views.Tab3">
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="Sanus.Views.Tab3"
+             BackgroundColor="{StaticResource AccentColor}">
+    
+    <ContentPage.Resources>
+        <!--<Style TargetType="Frame">
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="HeightRequest" Value="30" />
+            <Setter Property="Margin" Value="30,5" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="BorderColor" Value="White" />
+            <Setter Property="OutlineColor" Value="White" />
+        </Style>
+        -->
+        <ResourceDictionary>
+            <Style TargetType="abstractions:CircleImage">
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="BorderColor" Value="#ccdce9" />
+                <Setter Property="BorderThickness" Value="10" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0,30,0,0" />
+            </Style>
+            
+            <Style x:Key="ButtonFB" TargetType="Button">
+                <Setter Property="HeightRequest" Value="52" />
+                <Setter Property="Margin" Value="30,20" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+            </Style>
+            
+            <Style x:Key="ButtonIcon" TargetType="Image" >
+                <Setter Property="WidthRequest" Value="32" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="ButtonText" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style x:Key="IconArrow" TargetType="Image">
+                <Setter Property="WidthRequest" Value="24" />
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            
+        </ResourceDictionary>
+        
+        
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <abstractions:CircleImage Source="avatar.png"/>
+            <Frame Padding="10"
+                   HeightRequest="30"
+                   Margin="30,20"
+                   BackgroundColor="White"
+                   CornerRadius="5">
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="icon_fb.png" Style="{StaticResource ButtonIcon}"></Image>
+                    <Label Text="Đăng nhập Facebook" TextColor="{StaticResource AccentColor}" VerticalOptions="Center"></Label>
+                </StackLayout>
+            </Frame>
+
+            <Frame Padding="10"
+                   HeightRequest="30"
+                   Margin="30,5"
+                   BackgroundColor="Transparent"
+                   CornerRadius="5"
+                   BorderColor="White" OutlineColor="White">
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="icon_update.png" Style="{StaticResource ButtonIcon}"></Image>
+                    <Label Text="Nâng cấp" Style="{StaticResource ButtonText}"></Label>
+                    <Image Source="icon_rightarrow.png" Style="{StaticResource IconArrow}"></Image>
+                </StackLayout>
+            </Frame>
+
+            <Frame Padding="10"
+                   HeightRequest="30"
+                   Margin="30,5"
+                   BackgroundColor="Transparent"
+                   CornerRadius="5"
+                   BorderColor="White" OutlineColor="White">
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="icon_chart.png" Style="{StaticResource ButtonIcon}"></Image>
+                    <Label Text="Biểu đồ" Style="{StaticResource ButtonText}"></Label>
+                    <Image Source="icon_rightarrow.png" Style="{StaticResource IconArrow}"></Image>
+                </StackLayout>
+            </Frame>
+
+            <Frame Padding="10"
+                   HeightRequest="30"
+                   Margin="30,5"
+                   BackgroundColor="Transparent"
+                   CornerRadius="5"
+                   BorderColor="White" OutlineColor="White">
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="icon_rating.png" Style="{StaticResource ButtonIcon}"></Image>
+                    <Label Text="Đánh giá" Style="{StaticResource ButtonText}"></Label>
+                    <Image Source="icon_rightarrow.png" Style="{StaticResource IconArrow}"></Image>
+                </StackLayout>
+            </Frame>
+
+            <Frame Padding="10"
+                   HeightRequest="30"
+                   Margin="30,5"
+                   BackgroundColor="Transparent"
+                   CornerRadius="5"
+                   BorderColor="White" OutlineColor="White">
+
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="icon_feedback.png" Style="{StaticResource ButtonIcon}"></Image>
+                    <Label Text="Phản hồi" Style="{StaticResource ButtonText}"></Label>
+                    <Image Source="icon_rightarrow.png" Style="{StaticResource IconArrow}"></Image>
+                </StackLayout>
+            </Frame>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

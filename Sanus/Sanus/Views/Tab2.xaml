@@ -1,13 +1,155 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="Sanus.Views.Tab2" 
-             BackgroundColor="White">
+             BackgroundColor="{StaticResource AccentColor}" >
+
+
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="BorderColor" Value="White" />
+            <Setter Property="OutlineColor" Value="White" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+
+        <Style x:Key="FullName" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+        
+        <Style TargetType="abstractions:CircleImage">
+            <Setter Property="WidthRequest" Value="120" />
+            <Setter Property="BorderColor" Value="#ccdce9" />
+            <Setter Property="BorderThickness" Value="10" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        
+        <Style TargetType="Image">
+            <Setter Property="WidthRequest" Value="32" />
+            <Setter Property="HeightRequest" Value="32" />
+        </Style>
+
+        <Style x:Key="StackLayoutValue" TargetType="StackLayout">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="HeightRequest">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android">36</On>
+                        <On Platform="iOS">30</On>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="HealthValue" TargetType="Label">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="HealthUnit" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VerticalTextAlignment" Value="End" />
+        </Style>
+
+        <Style x:Key="HealthType" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ButtonUpdate" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            <Setter Property="WidthRequest" Value="200" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="TRẦN THANH HƯƠNG" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource AccentColor}" FontAttributes="Bold"/>
-            <Image Source="avatar.png" WidthRequest="150" BackgroundColor="Black"></Image> 
-            
-        </StackLayout>
+        <ScrollView>
+            <Grid BackgroundColor="{StaticResource AccentColor}" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout  Grid.Row="0" HeightRequest="90" BackgroundColor="White" Margin="0,0,0,75" Padding="0,5,0,0">
+                    <Label Text="TRẦN THANH HƯƠNG" Style="{StaticResource FullName}"/>
+                    <abstractions:CircleImage Source="avatar.png"/>
+                </StackLayout>
+                
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--box nhip tim-->
+                    <Frame Grid.Column="0"  Margin="10,10,5,5">
+                        <StackLayout HorizontalOptions="Center">
+                            <Image Source="icon_heartrate.png"></Image>
+                            <StackLayout Style="{StaticResource StackLayoutValue}">
+                                <Label Text="112" Style="{StaticResource HealthValue}"/>
+                                <Label Text="bpm" Style="{StaticResource HealthUnit}"/>
+                            </StackLayout>
+                            <Label Text="Nhịp tim" Style="{StaticResource HealthType}"/>
+                            <Button Text="Cập nhật" Style="{StaticResource ButtonUpdate}" />
+                        </StackLayout>
+                    </Frame>
+                    <!--box thi luc-->
+                    <Frame Grid.Column="1" Margin="5,10,10,5">
+                        <StackLayout HorizontalOptions="Center">
+                            <Image Source="icon_eye.png"></Image>
+                            <StackLayout Style="{StaticResource StackLayoutValue}">
+                                <Label Text="10/10"  Style="{StaticResource HealthValue}"/>
+                            </StackLayout>
+                            <Label Text="Thị lực" Style="{StaticResource HealthType}"/>
+                            <Button Text="Cập nhật" Style="{StaticResource ButtonUpdate}"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--box men gan-->
+                    <Frame Grid.Column="0" Margin="10,5,5,5">
+                        <StackLayout HorizontalOptions="Center">
+                            <Image Source="icon_liver.png"></Image>
+                            <StackLayout Style="{StaticResource StackLayoutValue}">
+                                <Label Text="AST-35"  Style="{StaticResource HealthValue}"/>
+                            </StackLayout>
+                            <Label Text="Men gan" Style="{StaticResource HealthType}"/>
+                            <Button Text="Cập nhật" Style="{StaticResource ButtonUpdate}"/>
+                        </StackLayout>
+                    </Frame>
+                    <!--box duong huyet-->
+                    <Frame Grid.Column="1" Margin="5,5,10,5">
+                        <StackLayout HorizontalOptions="Center">
+                            <Image Source="icon_water.png"></Image>
+                            <StackLayout Style="{StaticResource StackLayoutValue}">
+                                <Label Text="3.9"  Style="{StaticResource HealthValue}"/>
+                                <Label Text="mol/l" Style="{StaticResource HealthUnit}"/>
+                            </StackLayout>
+                            <Label Text="Đường huyết" Style="{StaticResource HealthType}"/>
+                            <Button Text="Cập nhật" Style="{StaticResource ButtonUpdate}"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+
+            </Grid>
+
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

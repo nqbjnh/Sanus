@@ -98,3 +98,15 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\opti
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small@3x.png
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40.png
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\Icon-Small-40@2x.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhoneSimulator\Debug\ImageCircle.Forms.Plugin.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\avatar.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_water.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_eye.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_heartrate.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_liver.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_update.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_chart.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_feedback.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_rating.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_rightarrow.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhoneSimulator\Debug\optimized\icon_fb.png

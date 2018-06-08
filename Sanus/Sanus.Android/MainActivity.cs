@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using ImageCircle.Forms.Plugin.Droid;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -20,6 +21,9 @@ namespace Sanus.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            ImageCircleRenderer.Init();
+
             LoadApplication(new App(new AndroidInitializer()));
 
             AppCenter.Start("1fd76fc8-20db-47b2-b44c-a52903d29335",typeof(Analytics), typeof(Crashes));

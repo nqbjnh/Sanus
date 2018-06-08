@@ -110,6 +110,7 @@ class MonoPackageManager_Resources {
 		"BottomNavigationBar.dll",
 		"CommonServiceLocator.dll",
 		"FormsViewGroup.dll",
+		"ImageCircle.Forms.Plugin.dll",
 		"Microcharts.dll",
 		"Microcharts.Droid.dll",
 		"Microcharts.Forms.dll",

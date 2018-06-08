@@ -2,6 +2,7 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\S
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\BottomNavigationBar.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\CommonServiceLocator.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\FormsViewGroup.dll
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\ImageCircle.Forms.Plugin.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Java.Interop.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Microcharts.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.Android\obj\Debug\android\assets\Microcharts.Droid.dll

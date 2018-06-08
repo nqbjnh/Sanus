@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -25,11 +26,14 @@ namespace Sanus.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            
+
             LoadApplication(new App(new iOSInitializer()));
             
             AppCenter.Start("79ce0663-159b-4e87-ada5-561276d41b0c",typeof(Analytics), typeof(Crashes));
 
-
+            ImageCircleRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

@@ -23,6 +23,7 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhone\Debug\Unity.Contain
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhone\Debug\Unity.Container.pdb
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhone\Debug\Unity.ServiceLocation.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhone\Debug\Unity.ServiceLocation.pdb
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhone\Debug\ImageCircle.Forms.Plugin.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhone\Debug\Xamarin.Forms.Core.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhone\Debug\Xamarin.Forms.Core.pdb
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\bin\iPhone\Debug\Xamarin.Forms.Platform.dll
@@ -92,6 +93,17 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\Ico
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\Icon-Small@3x.png
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\Icon-Small-40.png
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\Icon-Small-40@2x.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\avatar.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_water.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_eye.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_heartrate.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_liver.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_update.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_chart.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_feedback.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_rating.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_rightarrow.png
+G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\icon_fb.png
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\optimized\
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\Sanus.iOS.csprojResolveAssemblyReference.cache
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus.iOS\obj\iPhone\Debug\Sanus.iOS.csproj.CoreCompileInputs.cache
