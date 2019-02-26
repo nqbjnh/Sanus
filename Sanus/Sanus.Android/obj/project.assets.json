@@ -548,10 +548,11 @@
   },
   "libraries": {
     "BottomNavigationBar/1.4.0.3": {
-      "sha512": "MDlo6XEh1tD4k6F9qCOd1aWDYPWMl2hemngg4h9CysOEeg7CsBSHsijCXvOi6JRGDvZBybhqorUYnv2NH+fvXw==",
+      "sha512": "c/O/H944mksJ2yQDCWe7UzHuthkbgUB1sY7pj7F7Yk19QHQqEu1PCt2v2IPOEEgfCRQfYGMGs81gzTiNLKP9bA==",
       "type": "package",
       "path": "bottomnavigationbar/1.4.0.3",
       "files": [
+        ".signature.p7s",
         "bottomnavigationbar.1.4.0.3.nupkg.sha512",
         "bottomnavigationbar.nuspec",
         "lib/MonoAndroid403/BottomNavigationBar.dll",
@@ -559,10 +560,11 @@
       ]
     },
     "Microcharts/0.7.1": {
-      "sha512": "Py79bYXqvsqthZtk1ChdDhy/n4mb7T2CKjzTVU7ldj4dnjgFC2nbOJMGeAJkDk1lZPoQPSPx3obSq7S29Zrt8g==",
+      "sha512": "4MX06Bk3Y34fNFk/LZ5YQGYisl+QtsgGS2imXFL6kZna4PP28aChPGG895b3t3PDhUWXw0mGpeJqvuV2y+vE9A==",
       "type": "package",
       "path": "microcharts/0.7.1",
       "files": [
+        ".signature.p7s",
         "lib/MonoAndroid10/Microcharts.Droid.dll",
         "lib/MonoAndroid10/Microcharts.dll",
         "lib/Xamarin.iOS10/Microcharts.dll",
@@ -577,17 +579,18 @@
       ]
     },
     "Microcharts.Forms/0.7.1": {
-      "sha512": "/oeY4j/x3I8PY6sNV3B6CHKdvZl3cJHxfkxIKSPaX86bc50mq1C0L+LqVnbRMwMa1PpywPtwL1+aqlKGM8bL3w==",
+      "sha512": "gNvdyHM2TlGN/B/vdIwTVLMQc0xsAe2rUoSYxYLFFGpMyhxbSmtYm//459jI2BG70sHKOG/QLfcjSfnsVFfzIw==",
       "type": "package",
       "path": "microcharts.forms/0.7.1",
       "files": [
+        ".signature.p7s",
         "lib/netstandard1.4/Microcharts.Forms.dll",
         "microcharts.forms.0.7.1.nupkg.sha512",
         "microcharts.forms.nuspec"
       ]
     },
     "Microsoft.AppCenter/1.6.1": {
-      "sha512": "Ly1R8HcB5zbp8J2/F3eVXVK1ThnSmVrjsANnGG9hwtvjhI/oO+jvnKsdY91VwKVReSuXi52bLtemGydKhiv8Dg==",
+      "sha512": "+2LuzUoqRo2v83SofKoW93D3BsrecnKJhCy4ZnWBqRoFnR9YCuj4evon6xvHTbzE4onIxSxzf+MhCWKjL7VK7Q==",
       "type": "package",
       "path": "microsoft.appcenter/1.6.1",
       "files": [
@@ -604,7 +607,7 @@
       ]
     },
     "Microsoft.AppCenter.Analytics/1.6.1": {
-      "sha512": "KWwIMJJjpu7gcElpXx+xe0aa+szbtE6DeW82e6qBRZY1BwKh3OMxjP5I0Yh/beeigVOsOW0MBaR6Bnyr2zG7gg==",
+      "sha512": "UNi+d2CRws+WurkJNAeCOrJargzRYKshONkhNiXgJeFGFWq37Hvy/8PVGN0DmvUnCqm2D1+ewrhDG0hH5zIwUw==",
       "type": "package",
       "path": "microsoft.appcenter.analytics/1.6.1",
       "files": [
@@ -621,7 +624,7 @@
       ]
     },
     "Microsoft.AppCenter.Crashes/1.6.1": {
-      "sha512": "2K/ZwzBDRB5xevOPu1bNJ7f0GWGidCk8HSGC2eRhQp0Ry06/HNCbSa/b6KXLVjzTRt5Hn7f9nIEeoQ9i9PzMTg==",
+      "sha512": "UOf7UMIpRaLG7W+6OxWROjDuZgFThFemzU35MxLuZZ0UDpR9SLiet/AYAgrlLNxMclTHI+FGfle3vXR9ocdVvA==",
       "type": "package",
       "path": "microsoft.appcenter.crashes/1.6.1",
       "files": [
@@ -672,10 +675,11 @@
       ]
     },
     "Prism.Core/7.0.0.396": {
-      "sha512": "XxPmXiA+v/D6zUeAUwSz7GgWNIbzyLLgkP32vDr6fGfv/YPg8CRkmkf+MkP+cxXKdUsqezxXgRRwMUcjWRqWMw==",
+      "sha512": "yRwFVU4FaUCncTsUE1/eVFgxx45tHBQ7XmLCoJfLyhCwh241pxHw3HADj/M/ysC0CxIr34wwqk3dij1c7YUeDA==",
       "type": "package",
       "path": "prism.core/7.0.0.396",
       "files": [
+        ".signature.p7s",
         "lib/net45/Prism.dll",
         "lib/net45/Prism.xml",
         "lib/netstandard1.0/Prism.dll",
@@ -690,10 +694,11 @@
       ]
     },
     "Prism.Forms/7.0.0.396": {
-      "sha512": "QWnC4tfyLgIDKl+7wSm+lASOpU14enpl1RV27QbeIoORYXyoBsNA8omF+gfH2JH12VQ9Xpb1q3YLFA98d8+NmA==",
+      "sha512": "jMnmRgFGNSQvdJyJ90ukbfpaMA28iDYH9hcgcpMSp7EjTN8tJrxEHTl2RlEI0XrC7iRW0ZiaGN9FW81MlE1knA==",
       "type": "package",
       "path": "prism.forms/7.0.0.396",
       "files": [
+        ".signature.p7s",
         "lib/netstandard1.0/Prism.Forms.dll",
         "lib/netstandard1.0/Prism.Forms.xml",
         "lib/netstandard2.0/Prism.Forms.dll",
@@ -703,10 +708,11 @@
       ]
     },
     "Prism.Unity.Forms/7.0.0.396": {
-      "sha512": "7NEAhjB6QVRL1JO6HXLo5BpKFMvepEjvbmOSafd6NsLQpLTS3NCu3ptro9iB7nvZxuZnPGbnrkwqcE4lIs4jtg==",
+      "sha512": "3wf0SinM2sO8BpbR7t8g+Xlo4sN5OlCSdJkHUNLkBq2SOPTKD0WcQ7m5VRBNULyNrJkZWBdvaPBUCeTAq+eYiw==",
       "type": "package",
       "path": "prism.unity.forms/7.0.0.396",
       "files": [
+        ".signature.p7s",
         "lib/netstandard1.0/Prism.Unity.Forms.dll",
         "lib/netstandard1.0/Prism.Unity.Forms.xml",
         "lib/netstandard2.0/Prism.Unity.Forms.dll",
@@ -716,10 +722,11 @@
       ]
     },
     "SkiaSharp/1.59.1": {
-      "sha512": "Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
+      "sha512": "Pyq7tiXrysvxIlY2ddD/WSFR1EA0qCwMQIYQpCMVWKdA8Zy0aGqh5zcLALsR6rMlc3W4/0NdZR+B7xDtGuP2rg==",
       "type": "package",
       "path": "skiasharp/1.59.1",
       "files": [
+        ".signature.p7s",
         "build/net45/SkiaSharp.dll.config",
         "build/net45/SkiaSharp.targets",
         "lib/MonoAndroid/SkiaSharp.dll",
@@ -757,10 +764,11 @@
       ]
     },
     "SkiaSharp.Views/1.59.1.1": {
-      "sha512": "1MQmOh3OjdrCD87Ehdn986RoD43WEe8D9zzncCotuAckYHB++JmDv1poOhaiWtoYqCLXU6Vk5IcQR6+EgZ0ofQ==",
+      "sha512": "DHXi8tefhCjip/zQqhVqx475poNmSWORqza84xR0CDpcJHz/DOr2Iy42aQQSi0TW0kB6CJkqc8r476SzHGrqiw==",
       "type": "package",
       "path": "skiasharp.views/1.59.1.1",
       "files": [
+        ".signature.p7s",
         "lib/MonoAndroid/SkiaSharp.Views.Android.dll",
         "lib/XamarinMac/SkiaSharp.Views.Mac.dll",
         "lib/XamariniOS/SkiaSharp.Views.iOS.dll",
@@ -773,10 +781,11 @@
       ]
     },
     "SkiaSharp.Views.Forms/1.59.1.1": {
-      "sha512": "9SvUAas8A7Tj4NuvFX3Z+tCQFbC+XSayRJPI3zxrzfc8g0WTc2S0yCj8+wm/eSTB5fHmFguu9FOoiyYMj53fiw==",
+      "sha512": "KeIn+4JYFQDdxRj/e6vC+ftuPe4ez+KOGV7PFJn/7rivv+YoAb9QzJ1RDofM1pDmZRYOzyw3ve22DtW3isbbRQ==",
       "type": "package",
       "path": "skiasharp.views.forms/1.59.1.1",
       "files": [
+        ".signature.p7s",
         "lib/MonoAndroid/SkiaSharp.Views.Forms.dll",
         "lib/XamarinMac/SkiaSharp.Views.Forms.dll",
         "lib/XamariniOS/SkiaSharp.Views.Forms.dll",
@@ -788,10 +797,11 @@
       ]
     },
     "System.ValueTuple/4.4.0": {
-      "sha512": "BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
+      "sha512": "hBl0/yPqtMnwrsqCYSxYr4Abvo9hSVYmf+55EniEMyCEPJRM1VGr8o+kHeHJdEqgr6wrQMhZ7HowYmejruXStg==",
       "type": "package",
       "path": "system.valuetuple/4.4.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -831,10 +841,11 @@
       ]
     },
     "Unity/5.5.5": {
-      "sha512": "kg101Re8N7rzTro2G5n6k9j15MpuRQQ+4MjmDY36RL/ewCa93f2ZOp8Mayl6Ou0d/AGf9YVEK4r7uCpNV6fczQ==",
+      "sha512": "ix32zn9VNhp2DNOEt1N5onBQ2LMMh2/4bMxk3Cfp+JdN9uQAKBm4GguLuw/mharMF73Irjke2j7uFbtSXSoQGA==",
       "type": "package",
       "path": "unity/5.5.5",
       "files": [
+        ".signature.p7s",
         "lib/net40/CommonServiceLocator.dll",
         "lib/net40/CommonServiceLocator.pdb",
         "lib/net40/Unity.Abstractions.dll",
@@ -918,10 +929,11 @@
       ]
     },
     "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
-      "sha512": "59HyuAaUzuloQmu/PVCDCJQMRuuhqmIpCQ+d5hH5Qp8AZsa/vDi5ulrXDKRMZSZt/xbXsyZV+aZ/W/SZaYt2Mg==",
+      "sha512": "in+ZqtkN2MC7oF/bQWqr84M/n6drISzFEL5QFB6fKLwF2yshTZRnmLvyhXtFGOCfy9ZpIfY1sDjSc6r2mbEwTw==",
       "type": "package",
       "path": "xam.plugins.forms.imagecircle/3.0.0.5",
       "files": [
+        ".signature.p7s",
         "lib/monoandroid71/ImageCircle.Forms.Plugin.dll",
         "lib/monoandroid71/ImageCircle.Forms.Plugin.xml",
         "lib/netstandard1.0/ImageCircle.Forms.Plugin.dll",
@@ -938,10 +950,11 @@
       ]
     },
     "Xamarin.Android.Support.Animated.Vector.Drawable/25.4.0.2": {
-      "sha512": "SaSUvYnc6ntGD/Rvo8O+Ks1yS5hgMFUPfPIEsBC337weZzyIeInKQJHt2myxCEER/5UutmBPlptlbn9Yki21RA==",
+      "sha512": "b7BJQ9Qy34yy0R39H6rujYvQH/w2TFvS22FiVNovPgBC8eS15UXAjNdSSixYvLTnDFj2bpT+b9gk/PjdOpH/MQ==",
       "type": "package",
       "path": "xamarin.android.support.animated.vector.drawable/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Animated.Vector.Drawable.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.Animated.Vector.Drawable.dll",
@@ -951,10 +964,11 @@
       ]
     },
     "Xamarin.Android.Support.Annotations/25.4.0.2": {
-      "sha512": "4Gkj6OCOJO7jn4drGZxeCCaEVHOjUu0RzsEzZaAZJzrLNqEHqoYrKwIlbsecfEpjbAcyT77Sb8wkZnZNFPdlaA==",
+      "sha512": "eqfj/Rol9f9aDKeCbIURasYBd4FmQbTECTU2fj03zKKnKsDMObvvM4NNVH0BZGwIYAoock1n+qrOZLFgcmNYxw==",
       "type": "package",
       "path": "xamarin.android.support.annotations/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "lib/MonoAndroid70/Xamarin.Android.Support.Annotations.dll",
         "xamarin.android.support.annotations.25.4.0.2.nupkg.sha512",
@@ -962,10 +976,11 @@
       ]
     },
     "Xamarin.Android.Support.Compat/25.4.0.2": {
-      "sha512": "k+bZ2ArXV7x1U5xomEiCVRoWHAWr6VKhF6Ziqd1DdK4ZZ4W+J0Dsi5oR2QcQHhIodb7j7cfuDcBAEs0KYvOmuQ==",
+      "sha512": "h5yKamHQGvNujZHBPL7m41797Fxw/THZ3udfBwfLb2Nk1MLaNDLWyaBUB53Z9/QOKQPlg2+taczaaAFbrs8alw==",
       "type": "package",
       "path": "xamarin.android.support.compat/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Compat.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.Compat.dll",
@@ -974,10 +989,11 @@
       ]
     },
     "Xamarin.Android.Support.Core.UI/25.4.0.2": {
-      "sha512": "RKU0D2joAnk9bawGoS1/AGg+2CurKd4uK+ToYyueNN0iJTs3K/ZvnUGck8FGl6Iy8Hfy6NySv51ubMlFSXATuA==",
+      "sha512": "JoMfChBpF3fuFyDHaRVsi5ybdeA35bwKNvniUPw0A24jBi7VRrdrW8bPVFYIjHJnbIHKDx6gSuknEsj+2wKr2g==",
       "type": "package",
       "path": "xamarin.android.support.core.ui/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Core.UI.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.Core.UI.dll",
@@ -987,10 +1003,11 @@
       ]
     },
     "Xamarin.Android.Support.Core.Utils/25.4.0.2": {
-      "sha512": "ZF+yk8b1WVRfgmf3MNeUOVdd9Bq3EoIYsXjCW2sAouwbNsnPKyjwL91mYyVcoT5f8Sf0SL866GnBtRi14wQesQ==",
+      "sha512": "u7B09hZWUHbAM8iqgDvzN+xdzdF2A0asdJ+IhDzUcrQQaY1GvaS1/v/m3RC8wFpjfrDaQdHhufx+gH2SPOjelg==",
       "type": "package",
       "path": "xamarin.android.support.core.utils/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Core.Utils.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.Core.Utils.dll",
@@ -999,10 +1016,11 @@
       ]
     },
     "Xamarin.Android.Support.Design/25.4.0.2": {
-      "sha512": "V7eOsG2XYLFDcH69ZJxywa2PrgFLi2tVpmft3iJ1vHrzeagI33dAVxDuh41r+TW6NVqPwBRQ5DRkAPZjwSAkeA==",
+      "sha512": "DVnPueHkzB3xp8FVTz7H1BHoOMQnBXt0rzN6Upu2+mT05+TVA9Jn3/OVGMBwYBiA+zCTnE3+CuwseCuNWBneWA==",
       "type": "package",
       "path": "xamarin.android.support.design/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Design.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.Design.dll",
@@ -1012,10 +1030,11 @@
       ]
     },
     "Xamarin.Android.Support.Fragment/25.4.0.2": {
-      "sha512": "XBllQS9m18CvYj8Uzqr78p/9x2rUNOBMh/2PALayzXwhArCvXdE+pybzSi/+4jtcZc8w/06kWhqdXq/phrhBCw==",
+      "sha512": "TpaqHpjQSB4u/q4kskA91Q69gRWuy3DlkTpoBs+/5lhdDAd306hRgh11hv+WMEY8SV7tg8a2Ne4E1dC1W1PRZg==",
       "type": "package",
       "path": "xamarin.android.support.fragment/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Fragment.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.Fragment.dll",
@@ -1024,10 +1043,11 @@
       ]
     },
     "Xamarin.Android.Support.Media.Compat/25.4.0.2": {
-      "sha512": "cnjIL1GoLUifD1TA3QigOn9R3yKoidzahlS5GQHVYhO3AoZ5mknqWiZ7IbU9lVFVlMbVvI65ecSiG5j4T2ufCg==",
+      "sha512": "TyS6TQoUVFOi8OvfajR5miAXRxE8hZ2W12campn97VsRgzQnWQEnbETo/Xs584L5uFpHeyYAn6N8i3BvwLkOag==",
       "type": "package",
       "path": "xamarin.android.support.media.compat/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Media.Compat.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.Media.Compat.dll",
@@ -1036,10 +1056,11 @@
       ]
     },
     "Xamarin.Android.Support.Transition/25.4.0.2": {
-      "sha512": "sZJTv1NRfGwjzVFW8hn4SmJsrK7EXRAvEKu8aR9HKyg8Cw4QfbYLEN4hartq7AmwKJW492ksXzWnIjp0BnKjUQ==",
+      "sha512": "5We3J0MXt9hAsh0TuPM38Wp6hMKtKQBeZ8GIF2KJUZ6KAIwy8fe16VRPp/Su38yeWwbBc+MeU45I4KrCet1hHQ==",
       "type": "package",
       "path": "xamarin.android.support.transition/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Transition.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.Transition.dll",
@@ -1048,10 +1069,11 @@
       ]
     },
     "Xamarin.Android.Support.v4/25.4.0.2": {
-      "sha512": "Ui29//+zltXe4Z+OmzdwjLWRGdcmCAm4sklF/As/dEwALxur8vff7/C4rIm/khJNo1ZbeKYnVseaaia/TsZeTA==",
+      "sha512": "ntMpILUudFpNnMrkht5U/VTNcM6i1Fmhqp1gjIvDRIfLiEZkY86+Zhsy3t4wwSZz14xSNXC/Hi7SALL3H/vz6g==",
       "type": "package",
       "path": "xamarin.android.support.v4/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.v4.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.v4.dll",
@@ -1060,10 +1082,11 @@
       ]
     },
     "Xamarin.Android.Support.v7.AppCompat/25.4.0.2": {
-      "sha512": "A3P9Hpw8FAGuZISw3hYZE6OjJwjDRbvoEJvsey0ZXmBFI/j4w8YBlwN+SsQse1oEx1yzYAXQwnU/KIYEuHMkQw==",
+      "sha512": "ZN7SYVZkFQXSNAYdGzm56takZ8Tq7xXEKyA8hjW60V9W9pDyDchhbav97h1mHBKLNmmdrnHlpBmkuhY54rFw9g==",
       "type": "package",
       "path": "xamarin.android.support.v7.appcompat/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.v7.AppCompat.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.v7.AppCompat.dll",
@@ -1072,10 +1095,11 @@
       ]
     },
     "Xamarin.Android.Support.v7.CardView/25.4.0.2": {
-      "sha512": "qVTkEeV+2vMpVOzvC+Ear4ZoYOPP2IWXaRDa7Lrg6ebVgg654nE8ARJfhaRqVczg2CwlgZm++uc9gDgASMV7iA==",
+      "sha512": "yRX2KbClrB0/Jat3BGuYHzA+x4AlMw08QQTEBei43Bmxp5UzkEYQjWWepnJ4GX6a9vCYoNIVF1xeu121kf9j3A==",
       "type": "package",
       "path": "xamarin.android.support.v7.cardview/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.v7.CardView.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.v7.CardView.dll",
@@ -1084,10 +1108,11 @@
       ]
     },
     "Xamarin.Android.Support.v7.MediaRouter/25.4.0.2": {
-      "sha512": "HhNwWkbgUXE7g8wRt87AgUeBlurdczIzjeIcK8WMnXdn7iUcjF1uIh+IYjNXiY7DFVuyzew73UHRM0d8RjnM1A==",
+      "sha512": "9bOkbTF2JzOzKOKpU4kVclPRBvdaD+AQb2jVfVB0XI/McPXVRnzVGBQkJQNGa9UPUZN351go0m8oMPQyvQMmlQ==",
       "type": "package",
       "path": "xamarin.android.support.v7.mediarouter/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.v7.MediaRouter.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.v7.MediaRouter.dll",
@@ -1096,10 +1121,11 @@
       ]
     },
     "Xamarin.Android.Support.v7.Palette/25.4.0.2": {
-      "sha512": "cMvjdILPDccRbAHAeKzqdCtkRHAt/lfDprc/D7oF7fFwgrzxEsv+k1oK9ix3TsQrTStnGmmbBd/Zx8xMoH9qeQ==",
+      "sha512": "7AOo+5Id9D+oHeKEVdxK/Dr4Dkmzd+1M/SqIfdyzJkdeqc0dJ8T0CGkeDQ6E7wbprwEpP1nXKyjSiUiLx693lg==",
       "type": "package",
       "path": "xamarin.android.support.v7.palette/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.v7.Palette.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.v7.Palette.dll",
@@ -1108,10 +1134,11 @@
       ]
     },
     "Xamarin.Android.Support.v7.RecyclerView/25.4.0.2": {
-      "sha512": "rBEs2Lk4P967ejGGWf+Wbk4OBuMmvv8XLbpJ2QZ+8YyXecMexzQTFaBj7DeUfqjJTSbAEhQJYltY0g7m6XYA+A==",
+      "sha512": "8Ap8d21NciM8zu1NVdQhLaPRCdfZV+M84ARCbSCwv3evES3NYnDMUn7TitoiCIHpQbWDcelReULLjNSRHaD+Tg==",
       "type": "package",
       "path": "xamarin.android.support.v7.recyclerview/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.v7.RecyclerView.targets",
         "lib/MonoAndroid70/Xamarin.Android.Support.v7.RecyclerView.dll",
@@ -1121,10 +1148,11 @@
       ]
     },
     "Xamarin.Android.Support.Vector.Drawable/25.4.0.2": {
-      "sha512": "2zAGVOqmuhp/QCvDFmXkqvx+cJ5sMHFsZuwvoPEkx6mDRDo5sfPJaQzfiODquCL6EIs/vwoW+vHOcdFRbl+TLg==",
+      "sha512": "Zi7z5eIdHlSTzjkuJ2WF0w6J09wDD7FZ+hT2/eoFNyTzLXubGJLRWnWYJ6gFIE+zu0oMDvRMAJZcMrwuJSpP6Q==",
       "type": "package",
       "path": "xamarin.android.support.vector.drawable/25.4.0.2",
       "files": [
+        ".signature.p7s",
         "THIRD-PARTY-NOTICES.txt",
         "build/MonoAndroid70/Xamarin.Android.Support.Tasks.VectorDrawable.dll",
         "build/MonoAndroid70/Xamarin.Android.Support.Vector.Drawable.targets",
@@ -1134,10 +1162,11 @@
       ]
     },
     "Xamarin.Forms/3.0.0.482510": {
-      "sha512": "kq209d8qVvulrY3o+nGirENZ3kaZpEN7VWRErWcW1M+ahtDgm4BUXQJ5s9hnp1SAGxQMTMhDAVI3uk5g9NV7hA==",
+      "sha512": "JVMTkR2/I6ujURllaBmXQAE8Cxg0Q1xHopuDVKohG1Hn3afsZx4Y4fMElVOXVBziewKVW3i8QBes5Pl5p48Tmw==",
       "type": "package",
       "path": "xamarin.forms/3.0.0.482510",
       "files": [
+        ".signature.p7s",
         "build/netstandard1.0/Mono.Cecil.Mdb.dll",
         "build/netstandard1.0/Mono.Cecil.Pdb.dll",
         "build/netstandard1.0/Mono.Cecil.Rocks.dll",

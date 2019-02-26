@@ -1,0 +1,11 @@
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\bin\Debug\netstandard2.0\StepCounter.deps.json
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\bin\Debug\netstandard2.0\StepCounter.dll
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\bin\Debug\netstandard2.0\StepCounter.pdb
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.csproj.CoreCompileInputs.cache
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.App.xaml.g.cs
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.MainPage.xaml.g.cs
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.AssemblyInfoInputs.cache
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.AssemblyInfo.cs
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.dll
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.pdb
+G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.csprojResolveAssemblyReference.cache

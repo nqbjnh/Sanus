@@ -1292,10 +1292,11 @@
   },
   "libraries": {
     "Microcharts/0.7.1": {
-      "sha512": "Py79bYXqvsqthZtk1ChdDhy/n4mb7T2CKjzTVU7ldj4dnjgFC2nbOJMGeAJkDk1lZPoQPSPx3obSq7S29Zrt8g==",
+      "sha512": "4MX06Bk3Y34fNFk/LZ5YQGYisl+QtsgGS2imXFL6kZna4PP28aChPGG895b3t3PDhUWXw0mGpeJqvuV2y+vE9A==",
       "type": "package",
       "path": "microcharts/0.7.1",
       "files": [
+        ".signature.p7s",
         "lib/MonoAndroid10/Microcharts.Droid.dll",
         "lib/MonoAndroid10/Microcharts.dll",
         "lib/Xamarin.iOS10/Microcharts.dll",
@@ -1310,17 +1311,18 @@
       ]
     },
     "Microcharts.Forms/0.7.1": {
-      "sha512": "/oeY4j/x3I8PY6sNV3B6CHKdvZl3cJHxfkxIKSPaX86bc50mq1C0L+LqVnbRMwMa1PpywPtwL1+aqlKGM8bL3w==",
+      "sha512": "gNvdyHM2TlGN/B/vdIwTVLMQc0xsAe2rUoSYxYLFFGpMyhxbSmtYm//459jI2BG70sHKOG/QLfcjSfnsVFfzIw==",
       "type": "package",
       "path": "microcharts.forms/0.7.1",
       "files": [
+        ".signature.p7s",
         "lib/netstandard1.4/Microcharts.Forms.dll",
         "microcharts.forms.0.7.1.nupkg.sha512",
         "microcharts.forms.nuspec"
       ]
     },
     "Microsoft.AppCenter/1.6.1": {
-      "sha512": "Ly1R8HcB5zbp8J2/F3eVXVK1ThnSmVrjsANnGG9hwtvjhI/oO+jvnKsdY91VwKVReSuXi52bLtemGydKhiv8Dg==",
+      "sha512": "+2LuzUoqRo2v83SofKoW93D3BsrecnKJhCy4ZnWBqRoFnR9YCuj4evon6xvHTbzE4onIxSxzf+MhCWKjL7VK7Q==",
       "type": "package",
       "path": "microsoft.appcenter/1.6.1",
       "files": [
@@ -1337,7 +1339,7 @@
       ]
     },
     "Microsoft.AppCenter.Analytics/1.6.1": {
-      "sha512": "KWwIMJJjpu7gcElpXx+xe0aa+szbtE6DeW82e6qBRZY1BwKh3OMxjP5I0Yh/beeigVOsOW0MBaR6Bnyr2zG7gg==",
+      "sha512": "UNi+d2CRws+WurkJNAeCOrJargzRYKshONkhNiXgJeFGFWq37Hvy/8PVGN0DmvUnCqm2D1+ewrhDG0hH5zIwUw==",
       "type": "package",
       "path": "microsoft.appcenter.analytics/1.6.1",
       "files": [
@@ -1354,7 +1356,7 @@
       ]
     },
     "Microsoft.AppCenter.Crashes/1.6.1": {
-      "sha512": "2K/ZwzBDRB5xevOPu1bNJ7f0GWGidCk8HSGC2eRhQp0Ry06/HNCbSa/b6KXLVjzTRt5Hn7f9nIEeoQ9i9PzMTg==",
+      "sha512": "UOf7UMIpRaLG7W+6OxWROjDuZgFThFemzU35MxLuZZ0UDpR9SLiet/AYAgrlLNxMclTHI+FGfle3vXR9ocdVvA==",
       "type": "package",
       "path": "microsoft.appcenter.crashes/1.6.1",
       "files": [
@@ -1381,10 +1383,11 @@
       ]
     },
     "Prism.Core/7.0.0.396": {
-      "sha512": "XxPmXiA+v/D6zUeAUwSz7GgWNIbzyLLgkP32vDr6fGfv/YPg8CRkmkf+MkP+cxXKdUsqezxXgRRwMUcjWRqWMw==",
+      "sha512": "yRwFVU4FaUCncTsUE1/eVFgxx45tHBQ7XmLCoJfLyhCwh241pxHw3HADj/M/ysC0CxIr34wwqk3dij1c7YUeDA==",
       "type": "package",
       "path": "prism.core/7.0.0.396",
       "files": [
+        ".signature.p7s",
         "lib/net45/Prism.dll",
         "lib/net45/Prism.xml",
         "lib/netstandard1.0/Prism.dll",
@@ -1399,10 +1402,11 @@
       ]
     },
     "Prism.Forms/7.0.0.396": {
-      "sha512": "QWnC4tfyLgIDKl+7wSm+lASOpU14enpl1RV27QbeIoORYXyoBsNA8omF+gfH2JH12VQ9Xpb1q3YLFA98d8+NmA==",
+      "sha512": "jMnmRgFGNSQvdJyJ90ukbfpaMA28iDYH9hcgcpMSp7EjTN8tJrxEHTl2RlEI0XrC7iRW0ZiaGN9FW81MlE1knA==",
       "type": "package",
       "path": "prism.forms/7.0.0.396",
       "files": [
+        ".signature.p7s",
         "lib/netstandard1.0/Prism.Forms.dll",
         "lib/netstandard1.0/Prism.Forms.xml",
         "lib/netstandard2.0/Prism.Forms.dll",
@@ -1412,10 +1416,11 @@
       ]
     },
     "Prism.Unity.Forms/7.0.0.396": {
-      "sha512": "7NEAhjB6QVRL1JO6HXLo5BpKFMvepEjvbmOSafd6NsLQpLTS3NCu3ptro9iB7nvZxuZnPGbnrkwqcE4lIs4jtg==",
+      "sha512": "3wf0SinM2sO8BpbR7t8g+Xlo4sN5OlCSdJkHUNLkBq2SOPTKD0WcQ7m5VRBNULyNrJkZWBdvaPBUCeTAq+eYiw==",
       "type": "package",
       "path": "prism.unity.forms/7.0.0.396",
       "files": [
+        ".signature.p7s",
         "lib/netstandard1.0/Prism.Unity.Forms.dll",
         "lib/netstandard1.0/Prism.Unity.Forms.xml",
         "lib/netstandard2.0/Prism.Unity.Forms.dll",
@@ -1425,10 +1430,11 @@
       ]
     },
     "SkiaSharp/1.59.1": {
-      "sha512": "Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
+      "sha512": "Pyq7tiXrysvxIlY2ddD/WSFR1EA0qCwMQIYQpCMVWKdA8Zy0aGqh5zcLALsR6rMlc3W4/0NdZR+B7xDtGuP2rg==",
       "type": "package",
       "path": "skiasharp/1.59.1",
       "files": [
+        ".signature.p7s",
         "build/net45/SkiaSharp.dll.config",
         "build/net45/SkiaSharp.targets",
         "lib/MonoAndroid/SkiaSharp.dll",
@@ -1466,10 +1472,11 @@
       ]
     },
     "SkiaSharp.Views/1.59.1.1": {
-      "sha512": "1MQmOh3OjdrCD87Ehdn986RoD43WEe8D9zzncCotuAckYHB++JmDv1poOhaiWtoYqCLXU6Vk5IcQR6+EgZ0ofQ==",
+      "sha512": "DHXi8tefhCjip/zQqhVqx475poNmSWORqza84xR0CDpcJHz/DOr2Iy42aQQSi0TW0kB6CJkqc8r476SzHGrqiw==",
       "type": "package",
       "path": "skiasharp.views/1.59.1.1",
       "files": [
+        ".signature.p7s",
         "lib/MonoAndroid/SkiaSharp.Views.Android.dll",
         "lib/XamarinMac/SkiaSharp.Views.Mac.dll",
         "lib/XamariniOS/SkiaSharp.Views.iOS.dll",
@@ -1482,10 +1489,11 @@
       ]
     },
     "SkiaSharp.Views.Forms/1.59.1.1": {
-      "sha512": "9SvUAas8A7Tj4NuvFX3Z+tCQFbC+XSayRJPI3zxrzfc8g0WTc2S0yCj8+wm/eSTB5fHmFguu9FOoiyYMj53fiw==",
+      "sha512": "KeIn+4JYFQDdxRj/e6vC+ftuPe4ez+KOGV7PFJn/7rivv+YoAb9QzJ1RDofM1pDmZRYOzyw3ve22DtW3isbbRQ==",
       "type": "package",
       "path": "skiasharp.views.forms/1.59.1.1",
       "files": [
+        ".signature.p7s",
         "lib/MonoAndroid/SkiaSharp.Views.Forms.dll",
         "lib/XamarinMac/SkiaSharp.Views.Forms.dll",
         "lib/XamariniOS/SkiaSharp.Views.Forms.dll",
@@ -1497,10 +1505,11 @@
       ]
     },
     "System.ValueTuple/4.4.0": {
-      "sha512": "BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
+      "sha512": "hBl0/yPqtMnwrsqCYSxYr4Abvo9hSVYmf+55EniEMyCEPJRM1VGr8o+kHeHJdEqgr6wrQMhZ7HowYmejruXStg==",
       "type": "package",
       "path": "system.valuetuple/4.4.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -1540,10 +1549,11 @@
       ]
     },
     "Unity/5.5.5": {
-      "sha512": "kg101Re8N7rzTro2G5n6k9j15MpuRQQ+4MjmDY36RL/ewCa93f2ZOp8Mayl6Ou0d/AGf9YVEK4r7uCpNV6fczQ==",
+      "sha512": "ix32zn9VNhp2DNOEt1N5onBQ2LMMh2/4bMxk3Cfp+JdN9uQAKBm4GguLuw/mharMF73Irjke2j7uFbtSXSoQGA==",
       "type": "package",
       "path": "unity/5.5.5",
       "files": [
+        ".signature.p7s",
         "lib/net40/CommonServiceLocator.dll",
         "lib/net40/CommonServiceLocator.pdb",
         "lib/net40/Unity.Abstractions.dll",
@@ -1627,10 +1637,11 @@
       ]
     },
     "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
-      "sha512": "59HyuAaUzuloQmu/PVCDCJQMRuuhqmIpCQ+d5hH5Qp8AZsa/vDi5ulrXDKRMZSZt/xbXsyZV+aZ/W/SZaYt2Mg==",
+      "sha512": "in+ZqtkN2MC7oF/bQWqr84M/n6drISzFEL5QFB6fKLwF2yshTZRnmLvyhXtFGOCfy9ZpIfY1sDjSc6r2mbEwTw==",
       "type": "package",
       "path": "xam.plugins.forms.imagecircle/3.0.0.5",
       "files": [
+        ".signature.p7s",
         "lib/monoandroid71/ImageCircle.Forms.Plugin.dll",
         "lib/monoandroid71/ImageCircle.Forms.Plugin.xml",
         "lib/netstandard1.0/ImageCircle.Forms.Plugin.dll",
@@ -1647,10 +1658,11 @@
       ]
     },
     "Xamarin.Forms/3.0.0.482510": {
-      "sha512": "kq209d8qVvulrY3o+nGirENZ3kaZpEN7VWRErWcW1M+ahtDgm4BUXQJ5s9hnp1SAGxQMTMhDAVI3uk5g9NV7hA==",
+      "sha512": "JVMTkR2/I6ujURllaBmXQAE8Cxg0Q1xHopuDVKohG1Hn3afsZx4Y4fMElVOXVBziewKVW3i8QBes5Pl5p48Tmw==",
       "type": "package",
       "path": "xamarin.forms/3.0.0.482510",
       "files": [
+        ".signature.p7s",
         "build/netstandard1.0/Mono.Cecil.Mdb.dll",
         "build/netstandard1.0/Mono.Cecil.Pdb.dll",
         "build/netstandard1.0/Mono.Cecil.Rocks.dll",

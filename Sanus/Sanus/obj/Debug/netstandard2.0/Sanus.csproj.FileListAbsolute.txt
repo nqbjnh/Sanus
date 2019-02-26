@@ -6,4 +6,3 @@ G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.Ass
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.AssemblyInfo.cs
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.dll
 G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.pdb
-G:\Projects\XamarinProjects\Sanus\Sanus\Sanus\obj\Debug\netstandard2.0\Sanus.csprojResolveAssemblyReference.cache

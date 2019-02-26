@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:StepCounter"
+             x:Class="StepCounter.MainPage">
+
+    <ContentView Padding="20">
+
+       <!-- <StackLayout>-->
+           <!-- <Button Text="Start" Clicked="OnButtonClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Button>-->
+         <!--   <Button Text="Start" Clicked="OnButtonStartClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Button>
+            <Button Text="Start" Clicked="OnButtonStopClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Button>
+        </StackLayout>-->
+
+
+        
+        
+        <StackLayout x:Name="myStack" />
+
+        
+    </ContentView>
+</ContentPage>

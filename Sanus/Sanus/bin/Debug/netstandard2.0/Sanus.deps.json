@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "c214233929ea04b95c9dcc2f17b7da73d13378f6"
+    "signature": "cd74561b40f29b538617ab3e56efe9119c644947"
   },
   "compilationOptions": {},
   "targets": {
@@ -11,7 +11,7 @@
         "dependencies": {
           "Microcharts": "0.7.1",
           "Microcharts.Forms": "0.7.1",
-          "NETStandard.Library": "2.0.1",
+          "NETStandard.Library": "2.0.3",
           "Prism.Unity.Forms": "7.0.0.396",
           "Xam.Plugins.Forms.ImageCircle": "3.0.0.5",
           "Xamarin.Forms": "3.0.0.482510"
@@ -26,7 +26,10 @@
           "System.ValueTuple": "4.4.0"
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.dll": {}
+          "lib/netstandard1.4/Microcharts.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Microcharts.Forms/0.7.1": {
@@ -36,18 +39,24 @@
           "Xamarin.Forms": "3.0.0.482510"
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.4/Microcharts.Forms.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
-      "NETStandard.Library/2.0.1": {
+      "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
       "Prism.Core/7.0.0.396": {
         "runtime": {
-          "lib/netstandard2.0/Prism.dll": {}
+          "lib/netstandard2.0/Prism.dll": {
+            "assemblyVersion": "7.0.0.396",
+            "fileVersion": "7.0.0.396"
+          }
         }
       },
       "Prism.Forms/7.0.0.396": {
@@ -56,7 +65,10 @@
           "Xamarin.Forms": "3.0.0.482510"
         },
         "runtime": {
-          "lib/netstandard2.0/Prism.Forms.dll": {}
+          "lib/netstandard2.0/Prism.Forms.dll": {
+            "assemblyVersion": "7.0.0.396",
+            "fileVersion": "7.0.0.396"
+          }
         }
       },
       "Prism.Unity.Forms/7.0.0.396": {
@@ -65,12 +77,18 @@
           "Unity": "5.5.5"
         },
         "runtime": {
-          "lib/netstandard2.0/Prism.Unity.Forms.dll": {}
+          "lib/netstandard2.0/Prism.Unity.Forms.dll": {
+            "assemblyVersion": "7.0.0.396",
+            "fileVersion": "7.0.0.396"
+          }
         }
       },
       "SkiaSharp/1.59.1": {
         "runtime": {
-          "lib/netstandard1.3/SkiaSharp.dll": {}
+          "lib/netstandard1.3/SkiaSharp.dll": {
+            "assemblyVersion": "1.59.0.0",
+            "fileVersion": "1.59.1.0"
+          }
         }
       },
       "SkiaSharp.Views.Forms/1.59.1.1": {
@@ -79,16 +97,31 @@
           "Xamarin.Forms": "3.0.0.482510"
         },
         "runtime": {
-          "lib/netstandard1.3/SkiaSharp.Views.Forms.dll": {}
+          "lib/netstandard1.3/SkiaSharp.Views.Forms.dll": {
+            "assemblyVersion": "1.59.0.0",
+            "fileVersion": "1.59.1.0"
+          }
         }
       },
       "System.ValueTuple/4.4.0": {},
       "Unity/5.5.5": {
         "runtime": {
-          "lib/netstandard2.0/CommonServiceLocator.dll": {},
-          "lib/netstandard2.0/Unity.Abstractions.dll": {},
-          "lib/netstandard2.0/Unity.Container.dll": {},
-          "lib/netstandard2.0/Unity.ServiceLocation.dll": {}
+          "lib/netstandard2.0/CommonServiceLocator.dll": {
+            "assemblyVersion": "2.0.2.0",
+            "fileVersion": "2.0.2.0"
+          },
+          "lib/netstandard2.0/Unity.Abstractions.dll": {
+            "assemblyVersion": "3.1.2.0",
+            "fileVersion": "3.1.2.0"
+          },
+          "lib/netstandard2.0/Unity.Container.dll": {
+            "assemblyVersion": "5.5.5.0",
+            "fileVersion": "5.5.5.0"
+          },
+          "lib/netstandard2.0/Unity.ServiceLocation.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
         }
       },
       "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
@@ -96,14 +129,26 @@
           "Xamarin.Forms": "3.0.0.482510"
         },
         "runtime": {
-          "lib/netstandard2.0/ImageCircle.Forms.Plugin.dll": {}
+          "lib/netstandard2.0/ImageCircle.Forms.Plugin.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Xamarin.Forms/3.0.0.482510": {
         "runtime": {
-          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {},
-          "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {},
-          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {}
+          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          },
+          "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
         }
       }
     }
@@ -117,14 +162,14 @@
     "Microcharts/0.7.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Py79bYXqvsqthZtk1ChdDhy/n4mb7T2CKjzTVU7ldj4dnjgFC2nbOJMGeAJkDk1lZPoQPSPx3obSq7S29Zrt8g==",
+      "sha512": "sha512-4MX06Bk3Y34fNFk/LZ5YQGYisl+QtsgGS2imXFL6kZna4PP28aChPGG895b3t3PDhUWXw0mGpeJqvuV2y+vE9A==",
       "path": "microcharts/0.7.1",
       "hashPath": "microcharts.0.7.1.nupkg.sha512"
     },
     "Microcharts.Forms/0.7.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/oeY4j/x3I8PY6sNV3B6CHKdvZl3cJHxfkxIKSPaX86bc50mq1C0L+LqVnbRMwMa1PpywPtwL1+aqlKGM8bL3w==",
+      "sha512": "sha512-gNvdyHM2TlGN/B/vdIwTVLMQc0xsAe2rUoSYxYLFFGpMyhxbSmtYm//459jI2BG70sHKOG/QLfcjSfnsVFfzIw==",
       "path": "microcharts.forms/0.7.1",
       "hashPath": "microcharts.forms.0.7.1.nupkg.sha512"
     },
@@ -135,73 +180,73 @@
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
-    "NETStandard.Library/2.0.1": {
+    "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
-      "path": "netstandard.library/2.0.1",
-      "hashPath": "netstandard.library.2.0.1.nupkg.sha512"
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
     "Prism.Core/7.0.0.396": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-XxPmXiA+v/D6zUeAUwSz7GgWNIbzyLLgkP32vDr6fGfv/YPg8CRkmkf+MkP+cxXKdUsqezxXgRRwMUcjWRqWMw==",
+      "sha512": "sha512-yRwFVU4FaUCncTsUE1/eVFgxx45tHBQ7XmLCoJfLyhCwh241pxHw3HADj/M/ysC0CxIr34wwqk3dij1c7YUeDA==",
       "path": "prism.core/7.0.0.396",
       "hashPath": "prism.core.7.0.0.396.nupkg.sha512"
     },
     "Prism.Forms/7.0.0.396": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QWnC4tfyLgIDKl+7wSm+lASOpU14enpl1RV27QbeIoORYXyoBsNA8omF+gfH2JH12VQ9Xpb1q3YLFA98d8+NmA==",
+      "sha512": "sha512-jMnmRgFGNSQvdJyJ90ukbfpaMA28iDYH9hcgcpMSp7EjTN8tJrxEHTl2RlEI0XrC7iRW0ZiaGN9FW81MlE1knA==",
       "path": "prism.forms/7.0.0.396",
       "hashPath": "prism.forms.7.0.0.396.nupkg.sha512"
     },
     "Prism.Unity.Forms/7.0.0.396": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7NEAhjB6QVRL1JO6HXLo5BpKFMvepEjvbmOSafd6NsLQpLTS3NCu3ptro9iB7nvZxuZnPGbnrkwqcE4lIs4jtg==",
+      "sha512": "sha512-3wf0SinM2sO8BpbR7t8g+Xlo4sN5OlCSdJkHUNLkBq2SOPTKD0WcQ7m5VRBNULyNrJkZWBdvaPBUCeTAq+eYiw==",
       "path": "prism.unity.forms/7.0.0.396",
       "hashPath": "prism.unity.forms.7.0.0.396.nupkg.sha512"
     },
     "SkiaSharp/1.59.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
+      "sha512": "sha512-Pyq7tiXrysvxIlY2ddD/WSFR1EA0qCwMQIYQpCMVWKdA8Zy0aGqh5zcLALsR6rMlc3W4/0NdZR+B7xDtGuP2rg==",
       "path": "skiasharp/1.59.1",
       "hashPath": "skiasharp.1.59.1.nupkg.sha512"
     },
     "SkiaSharp.Views.Forms/1.59.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9SvUAas8A7Tj4NuvFX3Z+tCQFbC+XSayRJPI3zxrzfc8g0WTc2S0yCj8+wm/eSTB5fHmFguu9FOoiyYMj53fiw==",
+      "sha512": "sha512-KeIn+4JYFQDdxRj/e6vC+ftuPe4ez+KOGV7PFJn/7rivv+YoAb9QzJ1RDofM1pDmZRYOzyw3ve22DtW3isbbRQ==",
       "path": "skiasharp.views.forms/1.59.1.1",
       "hashPath": "skiasharp.views.forms.1.59.1.1.nupkg.sha512"
     },
     "System.ValueTuple/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
+      "sha512": "sha512-hBl0/yPqtMnwrsqCYSxYr4Abvo9hSVYmf+55EniEMyCEPJRM1VGr8o+kHeHJdEqgr6wrQMhZ7HowYmejruXStg==",
       "path": "system.valuetuple/4.4.0",
       "hashPath": "system.valuetuple.4.4.0.nupkg.sha512"
     },
     "Unity/5.5.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kg101Re8N7rzTro2G5n6k9j15MpuRQQ+4MjmDY36RL/ewCa93f2ZOp8Mayl6Ou0d/AGf9YVEK4r7uCpNV6fczQ==",
+      "sha512": "sha512-ix32zn9VNhp2DNOEt1N5onBQ2LMMh2/4bMxk3Cfp+JdN9uQAKBm4GguLuw/mharMF73Irjke2j7uFbtSXSoQGA==",
       "path": "unity/5.5.5",
       "hashPath": "unity.5.5.5.nupkg.sha512"
     },
     "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-59HyuAaUzuloQmu/PVCDCJQMRuuhqmIpCQ+d5hH5Qp8AZsa/vDi5ulrXDKRMZSZt/xbXsyZV+aZ/W/SZaYt2Mg==",
+      "sha512": "sha512-in+ZqtkN2MC7oF/bQWqr84M/n6drISzFEL5QFB6fKLwF2yshTZRnmLvyhXtFGOCfy9ZpIfY1sDjSc6r2mbEwTw==",
       "path": "xam.plugins.forms.imagecircle/3.0.0.5",
       "hashPath": "xam.plugins.forms.imagecircle.3.0.0.5.nupkg.sha512"
     },
     "Xamarin.Forms/3.0.0.482510": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kq209d8qVvulrY3o+nGirENZ3kaZpEN7VWRErWcW1M+ahtDgm4BUXQJ5s9hnp1SAGxQMTMhDAVI3uk5g9NV7hA==",
+      "sha512": "sha512-JVMTkR2/I6ujURllaBmXQAE8Cxg0Q1xHopuDVKohG1Hn3afsZx4Y4fMElVOXVBziewKVW3i8QBes5Pl5p48Tmw==",
       "path": "xamarin.forms/3.0.0.482510",
       "hashPath": "xamarin.forms.3.0.0.482510.nupkg.sha512"
     }
