@@ -18,24 +18,19 @@ namespace Sanus.ViewModels
         private double _goal = 8000;
         //
         private string _distances;
-        public string Distances { get => _distances; set => SetProperty(ref _distances, value); }
-
         private string _percent;
-        public string Percent { get => _percent; set => SetProperty(ref _percent, value); }
-
         private string _calories;
-        public string Calories { get => _calories; set => SetProperty(ref _calories, value); }
-
         private string _steps;
-        public string Steps { get => _steps; set => SetProperty(ref _steps, value); }
-
         private string _timeActive;
-        public string TimeActive { get => _timeActive; set => SetProperty(ref _timeActive, value); }
-
         private Chart _stepsChart;
-        public Chart StepsChart { get { return _stepsChart; } set => SetProperty(ref _stepsChart, value); }
-
         private Chart _percentChart;
+        //
+        public string Distances { get => _distances; set => SetProperty(ref _distances, value); }
+        public string Percent { get => _percent; set => SetProperty(ref _percent, value); }
+        public string Calories { get => _calories; set => SetProperty(ref _calories, value); }
+        public string Steps { get => _steps; set => SetProperty(ref _steps, value); }
+        public string TimeActive { get => _timeActive; set => SetProperty(ref _timeActive, value); }
+        public Chart StepsChart { get { return _stepsChart; } set => SetProperty(ref _stepsChart, value); }
         public Chart PercentChart { get { return _percentChart; } set => SetProperty(ref _percentChart, value); }
         //
         public HomeViewModel(INavigationService navigationService, IChartService chartService) : base(navigationService)
@@ -65,6 +60,7 @@ namespace Sanus.ViewModels
 
         public bool GetData()
         {
+            var platform = Xamarin.Forms.Device.RuntimePlatform;
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
             {
                 Steps = Math.Floor(totalSteps).ToString();
@@ -77,8 +73,15 @@ namespace Sanus.ViewModels
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchMetersWalked((metersWalked) =>
             {
-                double tempD = metersWalked / 10000000;
-                Distances = String.Format("{0:0.##}", tempD);
+                if (platform == Xamarin.Forms.Device.Android)
+                {
+                    double tempD = metersWalked / 100000000;
+                    Distances = String.Format("{0:0.##}", tempD);
+                }
+                else
+                {
+                    Distances = String.Format("{0:0.##}", metersWalked);
+                }
             });
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveMinutes((activeMinutes) =>
@@ -88,8 +91,15 @@ namespace Sanus.ViewModels
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveEnergyBurned((caloriesBurned) =>
             {
-                double tempC = caloriesBurned / 100000;
-                Calories = String.Format("{0:0.##}", tempC);
+                if (platform == Xamarin.Forms.Device.Android)
+                {
+                    double tempC = caloriesBurned / 10000;
+                    Calories = String.Format("{0:0.##}", tempC);
+                }
+                else
+                {
+                    Calories = String.Format("{0:0.##}", caloriesBurned);
+                }
             });
             //
             return true;
