@@ -11,7 +11,8 @@
 namespace StepCounter {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("G:\\Projects\\XamarinProjects\\StepCounter\\StepCounter\\StepCounter\\App.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("E:\\OneDrive - st.hcmuaf.edu.vn\\Work\\[2602192]\\StepCounter\\StepCounter\\StepCounter" +
+        "\\App.xaml")]
     public partial class App : global::Xamarin.Forms.Application {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

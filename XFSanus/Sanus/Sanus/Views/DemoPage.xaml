@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sanus.Views.DemoPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding GardenDataCollection}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding ToString}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<Label HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Text="{Binding ClickButton}" />
+            <StackLayout HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding Result}" />
+                <Label Text="{Binding Result1}" />
+                <Label Text="{Binding Result2}" />
+                <Label Text="{Binding Result3}" />
+                <Label Text="{Binding Result4}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Button Text="Refresh"
+                        BackgroundColor="#3f51b5"
+                        Command="{Binding RefreshCommand}" />
+                <Button Text="Start"
+                        BackgroundColor="#4caf50"
+                        Command="{Binding StartCommand}" />
+                <Button Text="Stop"
+                        BackgroundColor="#f44336"
+                        Command="{Binding StopCommand}" />
+            </StackLayout>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

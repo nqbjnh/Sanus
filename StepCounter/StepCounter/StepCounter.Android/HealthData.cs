@@ -460,6 +460,6 @@ namespace StepCounter.Droid
 		}
 
 
-
+        
 	}
 }

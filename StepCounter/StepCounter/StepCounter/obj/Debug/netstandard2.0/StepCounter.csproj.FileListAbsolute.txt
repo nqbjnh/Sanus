@@ -9,3 +9,14 @@ G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netsta
 G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.dll
 G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.pdb
 G:\Projects\XamarinProjects\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.csprojResolveAssemblyReference.cache
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\bin\Debug\netstandard2.0\StepCounter.deps.json
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\bin\Debug\netstandard2.0\StepCounter.dll
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\bin\Debug\netstandard2.0\StepCounter.pdb
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.csprojAssemblyReference.cache
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.csproj.CoreCompileInputs.cache
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.App.xaml.g.cs
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.MainPage.xaml.g.cs
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.AssemblyInfoInputs.cache
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.AssemblyInfo.cs
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.dll
+E:\OneDrive - st.hcmuaf.edu.vn\Work\[2602192]\StepCounter\StepCounter\StepCounter\obj\Debug\netstandard2.0\StepCounter.pdb

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="Sanus.Views.HomeView"
+             BackgroundColor="{StaticResource AccentColor}">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     Spacing="10">
+            <Label Text="HomeView"
+                   FontSize="18"
+                   TextColor="White"
+                   Opacity="3"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid RowSpacing="0"
+                      ColumnSpacing="0"
+                      HeightRequest="300">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
+
+                    <forms:ChartView x:Name="chartView"
+                                     Grid.Row="0"
+                                     Margin="0"
+                                     VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand"
+                                     Chart="{Binding StepsChart}" />
+                    <StackLayout Grid.Row="0"
+                                 VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding Steps}"
+                               FontSize="35"
+                               TextColor="White"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontAttributes="Bold" />
+                        <Label Text="Bước"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="White"
+                               FontSize="25"
+                               FontAttributes="Bold" />
+                    </StackLayout>
+                </Grid>
+
+                <Grid BackgroundColor="{StaticResource PrimaryColor}"
+                      HorizontalOptions="CenterAndExpand"
+                      RowSpacing="0"
+                      ColumnSpacing="0"
+                      HeightRequest="150">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="5*" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Column="0"
+                                 Grid.RowSpan="2"
+                                 Padding="0,5,0,0"
+                                 Orientation="Vertical"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="CenterAndExpand"
+                                 BackgroundColor="{StaticResource PrimaryColor}">
+                        <Label Text="{Binding Distances}"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="30"
+                               TextColor="White"
+                               FontAttributes="Bold" />
+                        <Label Text="km"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="White" />
+                    </StackLayout>
+
+                    <Grid RowSpacing="0"
+                          ColumnSpacing="0"
+                          Grid.RowSpan="2"
+                          Grid.Column="1"
+                          BackgroundColor="Transparent"
+                          HorizontalOptions="CenterAndExpand"
+                          VerticalOptions="CenterAndExpand">
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*" />
+                        </Grid.RowDefinitions>
+
+                        <forms:ChartView x:Name="chartView2"
+                                         Grid.Row="0"
+                                         HeightRequest="150"
+                                         WidthRequest="150"
+                                         Margin="0"
+                                         VerticalOptions="FillAndExpand"
+                                         Chart="{Binding PercentChart}"
+                                         HorizontalOptions="FillAndExpand" />
+                        <StackLayout Grid.Row="0"
+                                     VerticalOptions="CenterAndExpand"
+                                     HorizontalOptions="CenterAndExpand"
+                                     BackgroundColor="Transparent">
+                            <Label Text="{Binding Percent}"
+                                   FontSize="20"
+                                   TextColor="White"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   FontAttributes="Bold" />
+                            <Label Text="%"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="White" />
+                        </StackLayout>
+                    </Grid>
+
+                    <StackLayout Grid.Column="2"
+                                 Grid.RowSpan="2"
+                                 Padding="0,5,0,0"
+                                 Orientation="Vertical"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="CenterAndExpand"
+                                 BackgroundColor="{StaticResource PrimaryColor}">
+                        <Label Text="{Binding Calories}"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="30"
+                               TextColor="White"
+                               FontAttributes="Bold" />
+                        <Label Text="calo"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="White" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

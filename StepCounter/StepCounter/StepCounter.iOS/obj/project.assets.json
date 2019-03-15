@@ -755,20 +755,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\binhnq\\.nuget\\packages\\": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Projects\\XamarinProjects\\StepCounter\\StepCounter\\StepCounter.iOS\\StepCounter.iOS.csproj",
+      "projectUniqueName": "E:\\OneDrive - st.hcmuaf.edu.vn\\Work\\[2602192]\\StepCounter\\StepCounter\\StepCounter.iOS\\StepCounter.iOS.csproj",
       "projectName": "StepCounter.iOS",
-      "projectPath": "G:\\Projects\\XamarinProjects\\StepCounter\\StepCounter\\StepCounter.iOS\\StepCounter.iOS.csproj",
-      "packagesPath": "C:\\Users\\binhnq\\.nuget\\packages\\",
-      "outputPath": "G:\\Projects\\XamarinProjects\\StepCounter\\StepCounter\\StepCounter.iOS\\obj\\",
+      "projectPath": "E:\\OneDrive - st.hcmuaf.edu.vn\\Work\\[2602192]\\StepCounter\\StepCounter\\StepCounter.iOS\\StepCounter.iOS.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "E:\\OneDrive - st.hcmuaf.edu.vn\\Work\\[2602192]\\StepCounter\\StepCounter\\StepCounter.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\binhnq\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -781,8 +781,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "G:\\Projects\\XamarinProjects\\StepCounter\\StepCounter\\StepCounter\\StepCounter.csproj": {
-              "projectPath": "G:\\Projects\\XamarinProjects\\StepCounter\\StepCounter\\StepCounter\\StepCounter.csproj"
+            "E:\\OneDrive - st.hcmuaf.edu.vn\\Work\\[2602192]\\StepCounter\\StepCounter\\StepCounter\\StepCounter.csproj": {
+              "projectPath": "E:\\OneDrive - st.hcmuaf.edu.vn\\Work\\[2602192]\\StepCounter\\StepCounter\\StepCounter\\StepCounter.csproj"
             }
           }
         }

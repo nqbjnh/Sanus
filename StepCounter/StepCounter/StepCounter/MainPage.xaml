@@ -5,18 +5,21 @@
              x:Class="StepCounter.MainPage">
 
     <ContentView Padding="20">
+        <StackLayout>
+            <StackLayout>
+                <Label Text="aaaaa" />
+            </StackLayout>
+            <!-- <stacklayout>-->
+            <!-- <button text="start" clicked="onbuttonclicked" horizontaloptions="center" verticaloptions="centerandexpand"></button>-->
+            <!--   <button text="start" clicked="onbuttonstartclicked" horizontaloptions="center" verticaloptions="centerandexpand"></button>
+            <button text="start" clicked="onbuttonstopclicked" horizontaloptions="center" verticaloptions="centerandexpand"></button>
+        </stacklayout>-->
 
-       <!-- <StackLayout>-->
-           <!-- <Button Text="Start" Clicked="OnButtonClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Button>-->
-         <!--   <Button Text="Start" Clicked="OnButtonStartClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Button>
-            <Button Text="Start" Clicked="OnButtonStopClicked" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Button>
-        </StackLayout>-->
 
 
-        
-        
-        <StackLayout x:Name="myStack" />
 
-        
+            <StackLayout x:Name="myStack" />
+        </StackLayout>
+
     </ContentView>
 </ContentPage>

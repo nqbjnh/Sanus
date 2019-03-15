@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Autofac;assembly=Prism.Autofac.Forms"
+             x:Class="Sanus.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#23b8f9</Color>
+            <Color x:Key="AccentColor">#036abb</Color>
+            <Color x:Key="BarColor">#023e60</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

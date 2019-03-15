@@ -7,12 +7,14 @@ using Xamarin.Forms;
 
 namespace StepCounter
 {
-	public partial class MainPage : ContentPage
-	{
-		public MainPage()
-		{
-			InitializeComponent();
-		}
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            var myStack = new StackLayout();
+            Content = myStack;
+            InitializeComponent();
+        }
 
         protected override void OnAppearing()
         {
@@ -26,40 +28,42 @@ namespace StepCounter
         void OnButtonClicked(object sender, EventArgs e)
         {
             //StackLayout retainer = new StackLayout();
+
             this.myStack.Children.Clear();
             FetchHealthData();
         }
 
-	    void OnButtonStartClicked(object sender, EventArgs e)
-	    {
-	        DependencyService.Get<IHealthData>().StartSubscription((isStart) =>
-	        {
-	            Device.BeginInvokeOnMainThread(() =>
-	            {
-	                Label label = new Label
-	                {
-	                    Text = "Subscription: " + isStart,
-	                };
-	                this.myStack.Children.Add(label);
-	            });
-	        });
-
-	    }
+        void OnButtonStartClicked(object sender, EventArgs e)
+        {
+            DependencyService.Get<IHealthData>().StartSubscription((isStart) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Label label = new Label
+                    {
+                        Text = "Subscription: " + isStart,
+                    };
+                    this.myStack.Children.Add(label);
+                });
+            });
+            Content = myStack;
+        }
 
         void OnButtonStopClicked(object sender, EventArgs e)
-	    {
-	        DependencyService.Get<IHealthData>().CancelSubscription((isStop) =>
-	        {
-	            Device.BeginInvokeOnMainThread(() =>
-	            {
-	                Label label = new Label
-	                {
-	                    Text = "Cancel Subscription: " + isStop,
-	                };
-	                this.myStack.Children.Add(label);
-	            });
-	        });
+        {
+            DependencyService.Get<IHealthData>().CancelSubscription((isStop) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Label label = new Label
+                    {
+                        Text = "Cancel Subscription: " + isStop,
+                    };
+                    this.myStack.Children.Add(label);
+                });
+            });
 
+            Content = myStack;
         }
 
         void FetchHealthData()
@@ -172,6 +176,7 @@ namespace StepCounter
 
                 //this.Label1.Text = "Total steps today: " + Math.Floor(steps).ToString() + " Meters Walked " + Math.Floor(meters).ToString() + " Active minutes " + Math.Floor(minutes).ToString();
             });
+            Content = myStack;
             return true;
         }
     }
