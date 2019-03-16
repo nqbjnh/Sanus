@@ -1,6 +1,7 @@
 ﻿using Prism;
 using Prism.Ioc;
 using Sanus.Services.Charts;
+using Sanus.Services.Dialog;
 using Sanus.Services.Health;
 using Sanus.ViewModels;
 using Sanus.Views;
@@ -37,12 +38,14 @@ namespace Sanus
             containerRegistry.RegisterForNavigation<ExtendSplashPage, ExtendSplashViewModel>();
             containerRegistry.RegisterForNavigation<HealthRecordsPage, HealthRecordsViewModel>();
             containerRegistry.RegisterForNavigation<ProfilePage, ProfileViewModel>();
+            containerRegistry.RegisterForNavigation<UserFilesPage, UserFilesViewModel>();
             containerRegistry.RegisterForNavigation<DemoPage, DemoPageViewModel>();
             //
             //var googleFit = DependencyService.Get<IHealthServices>();
             //containerRegistry.RegisterInstance<IHealthServices>(googleFit);
             //
             containerRegistry.Register<IChartService, ShowChartService>();
+            containerRegistry.Register<IDialogService, DialogService>();
         }
     }
 }

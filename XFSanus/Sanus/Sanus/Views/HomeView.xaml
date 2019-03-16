@@ -60,7 +60,7 @@
                       RowSpacing="0"
                       ColumnSpacing="0"
                       HeightRequest="150">
-                    
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="4*" />
@@ -98,7 +98,7 @@
                           BackgroundColor="Transparent"
                           HorizontalOptions="CenterAndExpand"
                           VerticalOptions="CenterAndExpand">
-                        
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*" />
                         </Grid.RowDefinitions>
@@ -146,6 +146,39 @@
                                VerticalTextAlignment="Center"
                                TextColor="White" />
                     </StackLayout>
+                </Grid>
+
+                <StackLayout Margin="10"
+                             HeightRequest="350">
+                </StackLayout>
+
+                <Grid HeightRequest="350"
+                      BackgroundColor="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
+
+                    <Frame IsClippedToBounds="True"
+                           Margin="10,50,10,10"
+                           Padding="0"
+                           HasShadow="True"
+                           CornerRadius="10"
+                           BorderColor="White"
+                           BackgroundColor="Transparent">
+                        <StackLayout HeightRequest="290"
+                                     Margin="5,50,5,5">
+                            <Label Text="Account" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame  VerticalOptions="StartAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="100"
+                            WidthRequest="100"
+                            Margin="0"
+                            Padding="0">
+                        <Image  Source="avatar.png" />
+                    </Frame>
                 </Grid>
             </StackLayout>
         </ScrollView>

@@ -63,6 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.0.4</Version>
+    </PackageReference>
     <PackageReference Include="Microcharts">
       <Version>0.7.1</Version>
     </PackageReference>
@@ -99,6 +102,9 @@
     <PackageReference Include="Prism.Autofac.Forms" Version="7.1.0.431" />
     <PackageReference Include="Xamarin.GooglePlayServices.Fitness">
       <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.HotReload">
+      <Version>1.2.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

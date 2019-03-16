@@ -6,6 +6,7 @@ using Microcharts;
 using Prism.Navigation;
 using Sanus.Model;
 using Sanus.Services.Charts;
+using Sanus.Services.Dialog;
 using Sanus.Services.Health;
 
 namespace Sanus.ViewModels
@@ -14,6 +15,7 @@ namespace Sanus.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IChartService _chartService;
+        private readonly IDialogService _dialogService;
         private readonly string color = "#036abb";
         private double _goal = 8000;
         //
@@ -33,12 +35,13 @@ namespace Sanus.ViewModels
         public Chart StepsChart { get { return _stepsChart; } set => SetProperty(ref _stepsChart, value); }
         public Chart PercentChart { get { return _percentChart; } set => SetProperty(ref _percentChart, value); }
         //
-        public HomeViewModel(INavigationService navigationService, IChartService chartService) : base(navigationService)
+        public HomeViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService) : base(navigationService)
         {
             _navigationService = navigationService;
             _chartService = chartService;
+            _dialogService = dialogService;
             //
-            FetchHealthData();
+            //FetchHealthData();
         }
 
         public void FetchHealthData()
@@ -50,10 +53,11 @@ namespace Sanus.ViewModels
                 if (result)
                 {
                     GetData();
+                    _dialogService.ShowConfirmAsync("Load data", "Done", "Ok", "Cancel");
                 }
                 else
                 {
-
+                    _dialogService.ShowConfirmAsync("Load data fail", "Fail", "Ok", "Cancel");
                 }
             });
         }
@@ -93,12 +97,21 @@ namespace Sanus.ViewModels
             {
                 if (platform == Xamarin.Forms.Device.Android)
                 {
-                    double tempC = caloriesBurned / 10000;
-                    Calories = String.Format("{0:0.##}", tempC);
+                    double tempC = 0;
+                    //int a = Convert.ToString(caloriesBurned).Length;
+                    if (Convert.ToString(caloriesBurned).Length == 7)
+                    {
+                        tempC = caloriesBurned / 10000;
+                    }
+                    else if (Convert.ToString(caloriesBurned).Length > 7)
+                    {
+                        tempC = caloriesBurned / 10000;
+                    }
+                    Calories = string.Format("{0:0.####}", tempC);
                 }
                 else
                 {
-                    Calories = String.Format("{0:0.##}", caloriesBurned);
+                    Calories = string.Format("{0:0.####}", caloriesBurned);
                 }
             });
             //
