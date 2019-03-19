@@ -65,15 +65,15 @@ namespace Sanus.ViewModels
         public bool GetData()
         {
             //var platform = Xamarin.Forms.Device.RuntimePlatform;
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
-            {
-                Steps = Math.Floor(totalSteps).ToString();
-                // wait for them all to finish
-                StepsChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), color);
-                //
-                PercentChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
-                Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
-            });
+            //Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
+            //{
+            //    Steps = Math.Floor(totalSteps).ToString();
+            //    // wait for them all to finish
+            //    StepsChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), color);
+            //    //
+            //    PercentChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
+            //    Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
+            //});
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchMetersWalked((metersWalked) =>
             {
@@ -89,6 +89,16 @@ namespace Sanus.ViewModels
             {
                 Calories = string.Format("{0:0.###}", caloriesBurned);
             });
+            // lay so buoc theo mot khoang thoi gian
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
+            {
+                Steps = Math.Floor(totalSteps).ToString();
+                // wait for them all to finish
+                StepsChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), color);
+                //
+                PercentChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
+                Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
+            }, new DateTime(2019, 3, 4), new DateTime(2019, 3, 10, 23, 59, 59));
             //
             return true;
         }

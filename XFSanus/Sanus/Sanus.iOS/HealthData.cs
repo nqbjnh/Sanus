@@ -171,5 +171,20 @@ namespace Sanus.iOS
         {
             throw new NotImplementedException();
         }
+
+        public void FetchSteps(Action<double> completionHandler, DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FetchMetersWalked(Action<double> completionHandler, DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FetchActiveEnergyBurned(Action<double> completionHandler, DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

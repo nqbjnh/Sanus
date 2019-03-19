@@ -35,18 +35,18 @@ namespace Sanus.Droid
         private const string DATE_FORMAT = "yyyy.MM.dd HH:mm:ss";
         private Action<bool> AuthorizationCallBack;
 
-        public async void FetchActiveEnergyBurned(Action<double> completionHandler)
-        {
-            var result = FetchGoogleFitCalories();
-            completionHandler(await result);
-        }
+
 
         public async void CancelSubscription(Action<bool> completionHandler)
         {
             var result = CancelSubscription();
             completionHandler(await result);
         }
-
+        public async void FetchActiveEnergyBurned(Action<double> completionHandler)
+        {
+            var result = FetchGoogleFitCalories();
+            completionHandler(await result);
+        }
         public async void StartSubscription(Action<bool> completionHandler)
         {
             var result = Subscribe();
@@ -68,6 +68,23 @@ namespace Sanus.Droid
         public async void FetchSteps(Action<double> completionHandler)
         {
             var result = FetchGoogleFitSteps();
+            completionHandler(await result);
+        }
+
+        public async void FetchSteps(Action<double> completionHandler, DateTime startDate, DateTime endDate)
+        {
+            var result = FetchGoogleFitSteps(startDate, endDate);
+            completionHandler(await result);
+        }
+
+        public void FetchMetersWalked(Action<double> completionHandler, DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async void FetchActiveEnergyBurned(Action<double> completionHandler, DateTime startDate, DateTime endDate)
+        {
+            var result = FetchGoogleFitCalories(startDate, endDate);
             completionHandler(await result);
         }
 
@@ -218,7 +235,28 @@ namespace Sanus.Droid
 
         public async Task<double> FetchGoogleFitSteps()
         {
-            DataReadRequest readRequest = QueryStepsData();
+            DataReadRequest readRequest = QueryStepsDataOnDays();
+
+            var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
+            var steps = 0.0;
+            if (dataReadResult.Buckets.Count > 0)
+            {
+                foreach (Bucket bucket in dataReadResult.Buckets)
+                {
+                    IList<DataSet> dataSets = bucket.DataSets;
+                    foreach (DataSet dataSet in dataSets)
+                    {
+                        steps += GetDataSetValuesSum(dataSet);
+                    }
+                }
+            }
+            PrintData(dataReadResult);
+            return steps;
+        }
+
+        public async Task<double> FetchGoogleFitSteps(DateTime startDate, DateTime endDate)
+        {
+            DataReadRequest readRequest = QueryStepsDataOnPeriod(startDate, endDate);
 
             var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
             var steps = 0.0;
@@ -270,7 +308,30 @@ namespace Sanus.Droid
             {
                 foreach (Bucket bucket in dataReadResult.Buckets)
                 {
+                    IList<DataSet> dataSets = bucket.DataSets;
+                    foreach (DataSet dataSet in dataSets)
+                    {
+                        // don vi cal
+                        calories += (GetDataSetValuesSum(dataSet));
+                    }
 
+                }
+            }
+            PrintData(dataReadResult);
+            // don vi kcal
+            return calories;
+        }
+
+        public async Task<double> FetchGoogleFitCalories(DateTime startDate, DateTime endDate)
+        {
+            DataReadRequest readRequest = QueryActiveEnergy(startDate, endDate);
+
+            var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
+            var calories = 0.0;
+            if (dataReadResult.Buckets.Count > 0)
+            {
+                foreach (Bucket bucket in dataReadResult.Buckets)
+                {
                     IList<DataSet> dataSets = bucket.DataSets;
                     foreach (DataSet dataSet in dataSets)
                     {
@@ -333,13 +394,34 @@ namespace Sanus.Droid
             return dataSetSum;
         }
 
-        private static DataReadRequest QueryStepsData()
+        private static DataReadRequest QueryStepsDataOnDays()
         {
             DateTime endTime = DateTime.Now;
             //DateTime startTime = endTime.Subtract(TimeSpan.FromDays(7));
             DateTime startTime = DateTime.Today;
             long endTimeElapsed = GetMsSinceEpochAsLong(endTime);
             long startTimeElapsed = GetMsSinceEpochAsLong(startTime);
+            //
+            DataSource dataSource = new DataSource.Builder()
+                .SetAppPackageName("com.google.android.gms")
+                .SetDataType(DataType.TypeStepCountDelta)
+                .SetType(DataSource.TypeDerived)
+                .SetStreamName("estimated_steps")
+                .Build();
+
+            var readRequest = new DataReadRequest.Builder()
+                .Aggregate(dataSource, DataType.AggregateStepCountDelta)
+                .BucketByTime(1, TimeUnit.Days)
+                .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                .Build();
+
+            return readRequest;
+        }
+        //Period
+        private static DataReadRequest QueryStepsDataOnPeriod(DateTime startDate, DateTime endDate)
+        {
+            long endTimeElapsed = GetMsSinceEpochAsLong(endDate);
+            long startTimeElapsed = GetMsSinceEpochAsLong(startDate);
             //
             DataSource dataSource = new DataSource.Builder()
                 .SetAppPackageName("com.google.android.gms")
@@ -364,6 +446,20 @@ namespace Sanus.Droid
             DateTime startTime = DateTime.Today;
             long endTimeElapsed = GetMsSinceEpochAsLong(endTime);
             long startTimeElapsed = GetMsSinceEpochAsLong(startTime);
+            //
+            var readRequest = new DataReadRequest.Builder()
+                .Aggregate(DataType.TypeCaloriesExpended, DataType.AggregateCaloriesExpended)
+                .BucketByTime(1, TimeUnit.Days)
+                .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                .Build();
+
+            return readRequest;
+        }
+        // lay nang luong trong mot khoang thoi gian
+        private static DataReadRequest QueryActiveEnergy(DateTime startDate, DateTime endDate)
+        {
+            long endTimeElapsed = GetMsSinceEpochAsLong(endDate);
+            long startTimeElapsed = GetMsSinceEpochAsLong(startDate);
             //
             var readRequest = new DataReadRequest.Builder()
                 .Aggregate(DataType.TypeCaloriesExpended, DataType.AggregateCaloriesExpended)
