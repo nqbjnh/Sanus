@@ -22,9 +22,10 @@ namespace Sanus.ViewModels
             UpdateUserCommand = new DelegateCommand(UpdateUser);
         }
         //
-        private void UpdateUser()
+        private async void UpdateUser()
         {
-            _dialogService.ShowConfirmAsync("user click", "Click", "Ok", "Cancel");
+            //await _dialogService.ShowConfirmAsync("user click", "Click", "Ok", "Cancel");
+            await _navigationService.NavigateAsync("/UserFilesPage");
         }
 
     }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="Sanus.Views.HomeView"
              BackgroundColor="{StaticResource AccentColor}">
 
@@ -85,7 +86,7 @@
                                FontSize="30"
                                TextColor="White"
                                FontAttributes="Bold" />
-                        <Label Text="km"
+                        <Label Text="m"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                TextColor="White" />
@@ -159,25 +160,29 @@
                     </Grid.RowDefinitions>
 
                     <Frame IsClippedToBounds="True"
-                           Margin="10,50,10,10"
+                           Margin="15,80,15,10"
                            Padding="0"
                            HasShadow="True"
                            CornerRadius="10"
                            BorderColor="White"
                            BackgroundColor="Transparent">
                         <StackLayout HeightRequest="290"
-                                     Margin="5,50,5,5">
+                                     Margin="5,55,5,5">
                             <Label Text="Account" />
                         </StackLayout>
                     </Frame>
 
                     <Frame  VerticalOptions="StartAndExpand"
                             HorizontalOptions="CenterAndExpand"
-                            HeightRequest="100"
-                            WidthRequest="100"
+                            HeightRequest="120"
+                            WidthRequest="120"
                             Margin="0"
-                            Padding="0">
-                        <Image  Source="avatar.png" />
+                            Padding="0"
+                            BackgroundColor="Transparent">
+                        <controls:CircleImage  Source="avatar.png"
+                                               Aspect="AspectFill"
+                                               BorderColor="WhiteSmoke"
+                                               BorderThickness="3" />
                     </Frame>
                 </Grid>
             </StackLayout>

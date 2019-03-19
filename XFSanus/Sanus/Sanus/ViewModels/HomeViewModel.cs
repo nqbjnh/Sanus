@@ -41,7 +41,7 @@ namespace Sanus.ViewModels
             _chartService = chartService;
             _dialogService = dialogService;
             //
-            //FetchHealthData();
+            FetchHealthData();
         }
 
         public void FetchHealthData()
@@ -64,7 +64,7 @@ namespace Sanus.ViewModels
 
         public bool GetData()
         {
-            var platform = Xamarin.Forms.Device.RuntimePlatform;
+            //var platform = Xamarin.Forms.Device.RuntimePlatform;
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
             {
                 Steps = Math.Floor(totalSteps).ToString();
@@ -77,15 +77,7 @@ namespace Sanus.ViewModels
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchMetersWalked((metersWalked) =>
             {
-                if (platform == Xamarin.Forms.Device.Android)
-                {
-                    double tempD = metersWalked / 100000000;
-                    Distances = String.Format("{0:0.##}", tempD);
-                }
-                else
-                {
-                    Distances = String.Format("{0:0.##}", metersWalked);
-                }
+                Distances = String.Format("{0:0.##}", metersWalked);
             });
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveMinutes((activeMinutes) =>
@@ -95,24 +87,7 @@ namespace Sanus.ViewModels
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveEnergyBurned((caloriesBurned) =>
             {
-                if (platform == Xamarin.Forms.Device.Android)
-                {
-                    double tempC = 0;
-                    //int a = Convert.ToString(caloriesBurned).Length;
-                    if (Convert.ToString(caloriesBurned).Length == 7)
-                    {
-                        tempC = caloriesBurned / 10000;
-                    }
-                    else if (Convert.ToString(caloriesBurned).Length > 7)
-                    {
-                        tempC = caloriesBurned / 10000;
-                    }
-                    Calories = string.Format("{0:0.####}", tempC);
-                }
-                else
-                {
-                    Calories = string.Format("{0:0.####}", caloriesBurned);
-                }
+                Calories = string.Format("{0:0.###}", caloriesBurned);
             });
             //
             return true;

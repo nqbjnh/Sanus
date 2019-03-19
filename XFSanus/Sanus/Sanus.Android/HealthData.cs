@@ -176,7 +176,7 @@ namespace Sanus.Droid
 
         public async Task<bool> Subscribe()
         {
-            var status = await FitnessClass.RecordingApi.SubscribeAsync(mGoogleApiClient, Android.Gms.Fitness.Data.DataType.TypeStepCountCumulative);
+            var status = await FitnessClass.RecordingApi.SubscribeAsync(mGoogleApiClient, DataType.TypeStepCountCumulative);
             if (status.IsSuccess)
             {
                 if (status.StatusCode == FitnessStatusCodes.SuccessAlreadySubscribed)
@@ -229,7 +229,7 @@ namespace Sanus.Droid
                     IList<DataSet> dataSets = bucket.DataSets;
                     foreach (DataSet dataSet in dataSets)
                     {
-                        steps = steps + GetDataSetValuesSum(dataSet);
+                        steps += GetDataSetValuesSum(dataSet);
                     }
                 }
             }
@@ -309,14 +309,23 @@ namespace Sanus.Droid
         private static double GetDataSetValuesSum(DataSet dataSet)
         {
             var dataSetSum = 0.0;
-            foreach (DataPoint dp in dataSet.DataPoints)
+            foreach (DataPoint point in dataSet.DataPoints)
             {
-                foreach (Field field in dp.DataType.Fields)
+                foreach (Field field in point.DataType.Fields)
                 {
                     try
                     {
-                        string value = dp.GetValue(field).ToString();
-                        dataSetSum += Convert.ToDouble(value);
+                        string name = field.Name;
+                        if (name.Equals("steps"))
+                        {
+                            int value = point.GetValue(field).AsInt();
+                            dataSetSum += Convert.ToDouble(value);
+                        }
+                        else
+                        {
+                            float value = point.GetValue(field).AsFloat();
+                            dataSetSum += Convert.ToDouble(value);
+                        }
                     }
                     catch (Exception) { }
                 }
