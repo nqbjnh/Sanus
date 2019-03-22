@@ -1,10 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Sanus.Views.DemoPage">
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="Sanus.Views.DemoPage"
+             BackgroundColor="{StaticResource AccentColor}">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView ItemsSource="{Binding GardenDataCollection}">
+        <StackLayout >
+            <forms:ChartView x:Name="chartView"
+                             Grid.Row="0"
+                             Margin="0"
+                             VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand"
+                             Chart="{Binding StepsChart}"
+                             HeightRequest="300"
+                             WidthRequest="300" />
+            <!--<ListView ItemsSource="{Binding GardenDataCollection}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -14,7 +24,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
             <!--<Label HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    Text="{Binding ClickButton}" />

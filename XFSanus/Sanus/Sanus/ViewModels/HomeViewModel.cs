@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Microcharts;
+using Prism.Commands;
 using Prism.Navigation;
 using Sanus.Model;
 using Sanus.Services.Charts;
@@ -35,6 +36,10 @@ namespace Sanus.ViewModels
         public Chart StepsChart { get { return _stepsChart; } set => SetProperty(ref _stepsChart, value); }
         public Chart PercentChart { get { return _percentChart; } set => SetProperty(ref _percentChart, value); }
         //
+        public DelegateCommand StepsCommand { get; }
+        public DelegateCommand DistanceCommand { get; }
+        public DelegateCommand EnegyCommand { get; }
+        //
         public HomeViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService) : base(navigationService)
         {
             _navigationService = navigationService;
@@ -42,18 +47,32 @@ namespace Sanus.ViewModels
             _dialogService = dialogService;
             //
             FetchHealthData();
+            //
+            StepsCommand = new DelegateCommand(StepsSelects);
+            DistanceCommand = new DelegateCommand(DistanceSelects);
+            EnegyCommand = new DelegateCommand(EnegySelects);
         }
-
+        //
+        private async void StepsSelects()
+        {
+            await _navigationService.NavigateAsync("/StepsHistoryPage");
+        }
+        private async void DistanceSelects()
+        {
+            await _navigationService.NavigateAsync("/DistanceHistoryPage");
+        }
+        private async void EnegySelects()
+        {
+            await _navigationService.NavigateAsync("/EnegyHistoryPage");
+        }
+        //
         public void FetchHealthData()
         {
-            //List<Task> tasks = new List<Task>();
             Xamarin.Forms.DependencyService.Get<IHealthServices>().GetHealthPermissionAsync((result) =>
             {
-                //var a = result;
                 if (result)
                 {
                     GetData();
-                    _dialogService.ShowConfirmAsync("Load data", "Done", "Ok", "Cancel");
                 }
                 else
                 {
@@ -64,16 +83,16 @@ namespace Sanus.ViewModels
 
         public bool GetData()
         {
-            //var platform = Xamarin.Forms.Device.RuntimePlatform;
-            //Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
-            //{
-            //    Steps = Math.Floor(totalSteps).ToString();
-            //    // wait for them all to finish
-            //    StepsChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), color);
-            //    //
-            //    PercentChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
-            //    Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
-            //});
+            var platform = Xamarin.Forms.Device.RuntimePlatform;
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
+            {
+                Steps = Math.Floor(totalSteps).ToString();
+                // wait for them all to finish
+                StepsChart = await _chartService.GetRadialGaugeChartAsyns(_goal, double.Parse(Steps), color);
+                //
+                PercentChart = await _chartService.GetRadialGaugeChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
+                Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
+            });
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchMetersWalked((metersWalked) =>
             {
@@ -90,15 +109,15 @@ namespace Sanus.ViewModels
                 Calories = string.Format("{0:0.###}", caloriesBurned);
             });
             // lay so buoc theo mot khoang thoi gian
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
-            {
-                Steps = Math.Floor(totalSteps).ToString();
-                // wait for them all to finish
-                StepsChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), color);
-                //
-                PercentChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
-                Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
-            }, new DateTime(2019, 3, 4), new DateTime(2019, 3, 10, 23, 59, 59));
+            //Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
+            //{
+            //    Steps = Math.Floor(totalSteps).ToString();
+            //    // wait for them all to finish
+            //    StepsChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), color);
+            //    //
+            //    PercentChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
+            //    Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
+            //}, new DateTime(2019, 3, 4), new DateTime(2019, 3, 10, 23, 59, 59));
             //
             return true;
         }

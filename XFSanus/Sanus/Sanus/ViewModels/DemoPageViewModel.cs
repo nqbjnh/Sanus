@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Microcharts;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
+using Sanus.Services.Charts;
 using Sanus.Services.Health;
 using Xamarin.Forms;
 
@@ -33,14 +35,19 @@ namespace Sanus.ViewModels
         public DelegateCommand<object> RefreshCommand { get; }
         public DelegateCommand<object> StartCommand { get; }
         public DelegateCommand<object> StopCommand { get; }
-
+        //
+        private Chart _stepsChart;
+        public Chart StepsChart { get { return _stepsChart; } set => SetProperty(ref _stepsChart, value); }
+        //
         INavigationService _navigationService;
+        IChartService _chartService;
         //IHealthServices _healthService;
-        public DemoPageViewModel(INavigationService navigationService) : base(navigationService)
+        public DemoPageViewModel(INavigationService navigationService, IChartService chartService) : base(navigationService)
         {
             _navigationService = navigationService;
+            _chartService = chartService;
             //
-            //FetchHealthData();
+            FetchHealthData();
             //
             RefreshCommand = new DelegateCommand<object>(RefreshSelects);
             StartCommand = new DelegateCommand<object>(StartSelects);
@@ -74,13 +81,11 @@ namespace Sanus.ViewModels
 
         public void FetchHealthData()
         {
-            //List<Task> tasks = new List<Task>();
             Xamarin.Forms.DependencyService.Get<IHealthServices>().GetHealthPermissionAsync((result) =>
             {
-                //var a = result;
                 if (result)
                 {
-                    Device.StartTimer(TimeSpan.FromSeconds(1), GetData);
+                    GetData();
                 }
                 else
                 {
@@ -91,33 +96,12 @@ namespace Sanus.ViewModels
 
         public bool GetData()
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps((totalSteps) =>
+            //lay so buoc theo mot khoang thoi gian
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListSteps(async (totalSteps) =>
             {
-                Result1 = "Total steps today: " + Math.Floor(totalSteps).ToString() + " time: " + DateTime.Now.ToString("HH:mm:ss");
-            });
+                StepsChart = await _chartService.GetLineChartAsyns<double>(totalSteps);
+            }, new DateTime(2019, 3, 4), new DateTime(2019, 3, 10, 23, 59, 59));
 
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchMetersWalked((metersWalked) =>
-            {
-                Result2 = "Total meters walked today: " + Math.Floor(metersWalked).ToString();
-            });
-
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveMinutes((activeMinutes) =>
-            {
-                Result3 = "Total excersice minutes today: " + Math.Floor(activeMinutes).ToString();
-            });
-
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveEnergyBurned((caloriesBurned) =>
-            {
-                Result4 = "Total active calories burned today: " + Math.Floor(caloriesBurned).ToString();
-            });
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().PrintData((caloriesBurned) =>
-            {
-                foreach (double a in caloriesBurned)
-                {
-                    GardenDataCollection.Add(a);
-                };
-                ObservableCollection<double> b = GardenDataCollection;
-            });
 
             // wait for them all to finish
             return true;

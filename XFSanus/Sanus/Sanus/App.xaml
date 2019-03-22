@@ -1,13 +1,236 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Autofac;assembly=Prism.Autofac.Forms"
-             x:Class="Sanus.App">
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="clr-namespace:Prism.Autofac;assembly=Prism.Autofac.Forms"
+                        xmlns:converters="clr-namespace:Sanus.Converters"
+                        x:Class="Sanus.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="PrimaryColor">#23b8f9</Color>
-            <Color x:Key="AccentColor">#036abb</Color>
+            <Color x:Key="BackgroundColor">#212C37</Color>
+            <Color x:Key="BlackColor">#000000</Color>
+            <Color x:Key="BlackTextColor">#253748</Color>
+            <Color x:Key="BlueColor">#0072C6</Color>
+            <Color x:Key="GreenColor">#368F94</Color>
+            <Color x:Key="OrangeColor">#BC4C1B</Color>
+            <Color x:Key="LightOrangeColor">#D87E56</Color>
+            <Color x:Key="ValidationErrorColor">#FF204F</Color>
+            <Color x:Key="DarkGrayColor">#ADADAD</Color>
+            <Color x:Key="DefaultTextColor">#24272B</Color>
+            <Color x:Key="HintTextColor">#26000000</Color>
+            <Color x:Key="GrayTextColor">#8B8F95</Color>
+            <Color x:Key="WhiteTextColor">White</Color>
+            <Color x:Key="PrimaryColor">#23B8F9</Color>
+            <Color x:Key="AccentColor">#036ABB</Color>
+            <Color x:Key="SecondaryColor">#B3BFD0</Color>
+            <Color x:Key="DividerColor">#BAD4FC</Color>
+            <Color x:Key="WhiteColor">White</Color>
+            <Color x:Key="GrayColor">#8B8F95</Color>
+            <Color x:Key="LightBackgroundColor">#F3F7FF</Color>
+            <Color x:Key="DisableColor">#B3BFD0</Color>
+            <Color x:Key="BlueStatusColor">#3083FF</Color>
+            <Color x:Key="GreenStatusColor">#0AD487</Color>
+            <Color x:Key="BlackStatusColor">#24272B</Color>
+            <Color x:Key="LightBlueStatusColor">#FFA84E</Color>
+            <Color x:Key="PinkStatusColor">#FF4D46</Color>
             <Color x:Key="BarColor">#023e60</Color>
+
+            <!--Font sizes-->
+            <OnPlatform x:Key="TinySize"
+                        x:TypeArguments="x:Double"
+                        iOS="9"
+                        Android="10" />
+
+            <OnPlatform x:Key="LittleSize"
+                        x:TypeArguments="x:Double"
+                        iOS="11"
+                        Android="12" />
+
+            <OnPlatform x:Key="MidMediumSize"
+                        x:TypeArguments="x:Double"
+                        iOS="12"
+                        Android="13" />
+
+            <OnPlatform x:Key="MediumSize"
+                        x:TypeArguments="x:Double"
+                        iOS="14"
+                        Android="15" />
+
+            <OnPlatform x:Key="LargeSize"
+                        x:TypeArguments="x:Double"
+                        iOS="16"
+                        Android="18" />
+
+            <OnPlatform x:Key="LargerSize"
+                        x:TypeArguments="x:Double"
+                        iOS="18"
+                        Android="20" />
+
+            <OnPlatform x:Key="BigSize"
+                        x:TypeArguments="x:Double"
+                        iOS="20"
+                        Android="24" />
+
+            <OnPlatform x:Key="ExtraBigSize"
+                        x:TypeArguments="x:Double"
+                        iOS="28"
+                        Android="32" />
+
+            <OnPlatform x:Key="HugeSize"
+                        x:TypeArguments="x:Double"
+                        iOS="40"
+                        Android="48" />
+
+            <OnPlatform x:Key="ExtraHugeSize"
+                        x:TypeArguments="x:Double"
+                        iOS="48"
+                        Android="56" />
+
+            <!--Styles-->
+
+
+            <Style x:Key="BaseLabelStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="{StaticResource DefaultTextColor}" />
+            </Style>
+
+            <Style TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource BaseLabelStyle}" />
+
+            <Style x:Key="RegularLabelStyle"
+                   TargetType="Label"
+                   BasedOn="{StaticResource BaseLabelStyle}">
+
+            </Style>
+
+            <Style x:Key="HeavyLabelStyle"
+                   TargetType="Label"
+                   BasedOn="{StaticResource BaseLabelStyle}">
+
+            </Style>
+
+            <Style x:Key="BoldLabelStyle"
+                   TargetType="Label"
+                   BasedOn="{StaticResource BaseLabelStyle}">
+
+            </Style>
+
+            <Style x:Key="MediumLabelStyle"
+                   TargetType="Label"
+                   BasedOn="{StaticResource BaseLabelStyle}">
+
+            </Style>
+
+            <Style x:Key="SemiboldLabelStyle"
+                   TargetType="Label"
+                   BasedOn="{StaticResource BaseLabelStyle}">
+
+            </Style>
+
+            <Style x:Key="NavigationTitleLabel"
+                   TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource BoldLabelStyle}">
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+                <Setter Property="TextColor"
+                        Value="White" />
+                <Setter Property="FontAttributes">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="FontAttributes">
+                            <On Platform="Android"
+                                Value="None" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="BaseEntryStyle"
+                   TargetType="Entry">
+                <Setter Property="TextColor"
+                        Value="{StaticResource DefaultTextColor}" />
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource DefaultTextColor}" />
+            </Style>
+
+            <Style x:Key="TopTabbedPageStyle"
+                   TargetType="TabbedPage">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="BarTextColor"
+                        Value="{StaticResource SecondaryColor}" />
+            </Style>
+
+            <Style x:Key="ListViewStyle"
+                   TargetType="ListView">
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="HasUnevenRows"
+                        Value="True" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="IsPullToRefreshEnabled"
+                        Value="True" />
+                <Setter Property="SeparatorColor"
+                        Value="{StaticResource DividerColor}" />
+                <Setter Property="RefreshCommand"
+                        Value="{Binding RefreshCommand}" />
+                <Setter Property="IsRefreshing"
+                        Value="{Binding IsRefreshing}" />
+            </Style>
+
+            <Style x:Key="TableStackLayoutStyle"
+                   TargetType="StackLayout">
+                <Setter Property="HeightRequest"
+                        Value="40" />
+                <Setter Property="Orientation"
+                        Value="Horizontal" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="Padding"
+                        Value="15,0" />
+                <Setter Property="Spacing"
+                        Value="10" />
+            </Style>
+
+            <Style x:Key="TableGridStyle"
+                   TargetType="Grid">
+                <Setter Property="HeightRequest"
+                        Value="40" />
+                <Setter Property="Padding"
+                        Value="15,0" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource WhiteColor}" />
+            </Style>
+
+            <Style x:Key="TableEntryStyle"
+                   TargetType="Entry"
+                   BasedOn="{StaticResource BaseEntryStyle}">
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource GrayTextColor}" />
+            </Style>
+
+            <Style x:Key="TableLabelStyle"
+                   TargetType="Label"
+                   BasedOn="{StaticResource BaseLabelStyle}">
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+
+            <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
+            <converters:DateToStringConverter x:Key="DateToStringConverter" />
+            <converters:TimeToStringConverter x:Key="TimeConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

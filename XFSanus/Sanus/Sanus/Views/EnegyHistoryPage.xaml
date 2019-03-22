@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sanus.Views.EnegyHistoryPage"
+             BackgroundColor="{StaticResource AccentColor}"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     Spacing="10">
+            <Label Text="Enegy"
+                   FontSize="18"
+                   TextColor="White"
+                   Opacity="3"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="ddd" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -12,18 +12,55 @@ namespace Sanus.Services.Charts
 {
     public class ShowChartService : IChartService
     {
-        public Task<BarChart> GetBarChartAsyns()
+        public async Task<BarChart> GetBarChartAsyns<T>(List<T> listData)
         {
-            throw new NotImplementedException();
+            await Task.Delay(1);
+            // truyen vao du lieu
+            List<Entry> entri = new List<Entry>();
+            //
+            for (int i = 0; i < listData.Count(); i++)
+            {
+                float a = float.Parse(listData.ElementAt(i).ToString());
+                Entry en = new Entry(a)
+                {
+                    Color = SKColors.White
+                };
+                //
+                entri.Add(en);
+            }
+            //
+            return new BarChart() { Entries = entri, BackgroundColor = SKColors.Transparent, Margin = 20 };
         }
 
-        public async Task<Chart> GetDistancesChartAsyns(double goal, double steps, string color)
+        public async Task<BarChart> GetBarChartAsyns<T>(Dictionary<DateTime, T> listData)
+        {
+            await Task.Delay(1);
+            // truyen vao du lieu
+            List<Entry> entri = new List<Entry>();
+            //
+            foreach (KeyValuePair<DateTime, T> item in listData)
+            {
+                float a = float.Parse(item.Value.ToString());
+                Entry en = new Entry(a)
+                {
+                    Color = SKColors.White,
+                    Label = string.Format("{0:M/d/yyyy}", item.Key),
+                    TextColor = SKColors.White
+                };
+                //
+                entri.Add(en);
+            }
+            //
+            return new BarChart() { Entries = entri, BackgroundColor = SKColors.Transparent, Margin = 20 };
+        }
+
+        public async Task<Chart> GetRadialGaugeChartAsyns(double goal, double steps, string color)
         {
             await Task.Delay(500);
             // truyen vao du lieu
             List<Entry> entri = new List<Entry>();
             //
-            Entry a = new Entry((int)goal)
+            Entry e = new Entry((int)goal)
             {
                 Color = SKColor.Parse(color)
             };
@@ -33,9 +70,49 @@ namespace Sanus.Services.Charts
                 Color = SKColors.White
             };
             //
-            entri.Add(a);
+            entri.Add(e);
             entri.Add(en);
             return new RadialGaugeChart() { Entries = entri, BackgroundColor = SKColors.Transparent, Margin = 0 };
+        }
+
+        public async Task<PointChart> GetPointChartAsyns<T>(List<T> listData)
+        {
+            await Task.Delay(1);
+            // truyen vao du lieu
+            List<Entry> entri = new List<Entry>();
+            //
+            for (int i = 0; i < listData.Count(); i++)
+            {
+                float a = float.Parse(listData.ElementAt(i).ToString());
+                Entry en = new Entry(a)
+                {
+                    Color = SKColors.White
+                };
+                //
+                entri.Add(en);
+            }
+            //
+            return new PointChart() { Entries = entri, BackgroundColor = SKColors.Transparent, Margin = 0 };
+        }
+
+        public async Task<LineChart> GetLineChartAsyns<T>(List<T> listData)
+        {
+            await Task.Delay(1);
+            // truyen vao du lieu
+            List<Entry> entri = new List<Entry>();
+            //
+            for (int i = 0; i < listData.Count(); i++)
+            {
+                float a = float.Parse(listData.ElementAt(i).ToString());
+                Entry en = new Entry(a)
+                {
+                    Color = SKColors.White
+                };
+                //
+                entri.Add(en);
+            }
+            //
+            return new LineChart() { Entries = entri, BackgroundColor = SKColors.Transparent, Margin = 0 };
         }
 
         public Task<DonutChart> GetDonutChartAsyns()
@@ -48,15 +125,7 @@ namespace Sanus.Services.Charts
             throw new NotImplementedException();
         }
 
-        public Task<LineChart> GetLineChartAsyns()
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<PointChart> GetPointChartAsyns()
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<RadarChart> GetRadarChartAsyns()
         {

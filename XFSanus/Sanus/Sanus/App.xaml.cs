@@ -1,4 +1,7 @@
-﻿using Prism;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Prism;
 using Prism.Ioc;
 using Sanus.Services.Charts;
 using Sanus.Services.Dialog;
@@ -25,7 +28,12 @@ namespace Sanus
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
+            //
+            AppCenter.Start("android=089f427d-f2fb-436d-a21f-c1a16462acc0;" +
+                  "uwp={Your UWP App secret here};" +
+                  "ios={Your iOS App secret here}",
+                  typeof(Analytics), typeof(Crashes));
+            //
             await NavigationService.NavigateAsync("NavigationPage/ExtendSplashPage");
         }
 
@@ -40,6 +48,9 @@ namespace Sanus
             containerRegistry.RegisterForNavigation<ProfilePage, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<UserFilesPage, UserFilesViewModel>();
             containerRegistry.RegisterForNavigation<DemoPage, DemoPageViewModel>();
+            containerRegistry.RegisterForNavigation<EnegyHistoryPage, EnegyHistoryViewModel>();
+            containerRegistry.RegisterForNavigation<DistanceHistoryPage, DistanceHistoryViewModel>();
+            containerRegistry.RegisterForNavigation<StepsHistoryPage, StepsHistoryViewModel>();
             //
             //var googleFit = DependencyService.Get<IHealthServices>();
             //containerRegistry.RegisterInstance<IHealthServices>(googleFit);

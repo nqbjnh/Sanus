@@ -10,16 +10,14 @@
             android:TabbedPage.BarSelectedItemColor="White"
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
             xmlns:views="clr-namespace:Sanus.Views"
-            prism:ViewModelLocator.AutowireViewModel="True"
-            NavigationPage.HasNavigationBar="False"
-            NavigationPage.HasBackButton="False">
+            prism:ViewModelLocator.AutowireViewModel="True">
 
     <TabbedPage.Children>
         <!--<NavigationPage Title="Demo"
                         Icon="icon_tab1"
                         BarBackgroundColor="{StaticResource AccentColor}">
             <x:Arguments>
-                <views:DemoPage />
+                <views:StepsHistoryPage />
             </x:Arguments>
         </NavigationPage>-->
 

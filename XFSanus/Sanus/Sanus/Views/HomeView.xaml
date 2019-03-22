@@ -38,6 +38,7 @@
                                      VerticalOptions="FillAndExpand"
                                      HorizontalOptions="FillAndExpand"
                                      Chart="{Binding StepsChart}" />
+
                     <StackLayout Grid.Row="0"
                                  VerticalOptions="CenterAndExpand"
                                  HorizontalOptions="CenterAndExpand">
@@ -53,7 +54,15 @@
                                TextColor="White"
                                FontSize="25"
                                FontAttributes="Bold" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding StepsCommand}" />
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding StepsCommand}" />
+                    </Grid.GestureRecognizers>
                 </Grid>
 
                 <Grid BackgroundColor="{StaticResource PrimaryColor}"
@@ -90,6 +99,10 @@
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                TextColor="White" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding StepsCommand}" />
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                     <Grid RowSpacing="0"
@@ -146,6 +159,10 @@
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                TextColor="White" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding EnegyCommand}" />
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </Grid>
 
