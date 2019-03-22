@@ -34,7 +34,7 @@ namespace Sanus.Droid
         private const int REQUEST_OAUTH = 1;
         private const string DATE_FORMAT = "yyyy.MM.dd HH:mm:ss";
         private Action<bool> AuthorizationCallBack;
-        
+
         public async void StartSubscription(Action<bool> completionHandler)
         {
             var result = Subscribe();
@@ -95,10 +95,19 @@ namespace Sanus.Droid
             completionHandler(await result);
         }
 
-        public async void FetchListStepss(Action<Dictionary<DateTime, double>> completionHandler, DateTime startDate, DateTime endDate)
+        public async void FetchListStepss(Action<Dictionary<DateTime, double>> completionHandler, DateTime startDate, DateTime endDate, string timeUnit)
         {
-            var result = FetchGoogleFitListsSteps(startDate, endDate);
-            completionHandler(await result);
+            if (timeUnit.Equals("DAYS"))
+            {
+                var result = FetchGoogleFitListsSteps(startDate, endDate, TimeUnit.Days);
+                completionHandler(await result);
+            }
+            else if (timeUnit.Equals("HOURS"))
+            {
+                var result = FetchGoogleFitListsSteps(startDate, endDate, TimeUnit.Hours);
+                completionHandler(await result);
+            }
+
         }
 
         public void GetHealthPermissionAsync(Action<bool> completion)
@@ -265,7 +274,7 @@ namespace Sanus.Droid
 
         public async Task<double> FetchGoogleFitSteps(DateTime startDate, DateTime endDate)
         {
-            DataReadRequest readRequest = QuerySteps(startDate, endDate);
+            DataReadRequest readRequest = QuerySteps(startDate, endDate, TimeUnit.Days);
 
             var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
             var steps = 0.0;
@@ -287,7 +296,7 @@ namespace Sanus.Droid
         {
             List<double> listdata = new List<double>();
             //
-            DataReadRequest readRequest = QuerySteps(startDate, endDate);
+            DataReadRequest readRequest = QuerySteps(startDate, endDate, TimeUnit.Days);
             //
             var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
             if (dataReadResult.Buckets.Count > 0)
@@ -304,11 +313,11 @@ namespace Sanus.Droid
             return listdata;
         }
 
-        public async Task<Dictionary<DateTime, double>> FetchGoogleFitListsSteps(DateTime startDate, DateTime endDate)
+        public async Task<Dictionary<DateTime, double>> FetchGoogleFitListsSteps(DateTime startDate, DateTime endDate, TimeUnit timeUnit)
         {
             Dictionary<DateTime, double> listdata = new Dictionary<DateTime, double>();
             //
-            DataReadRequest readRequest = QuerySteps(startDate, endDate);
+            DataReadRequest readRequest = QuerySteps(startDate, endDate, timeUnit);
             //
             var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
             if (dataReadResult.Buckets.Count > 0)
@@ -507,7 +516,7 @@ namespace Sanus.Droid
             return readRequest;
         }
         //Period
-        private static DataReadRequest QuerySteps(DateTime startDate, DateTime endDate)
+        private static DataReadRequest QuerySteps(DateTime startDate, DateTime endDate, TimeUnit timeUnit)
         {
             long endTimeElapsed = GetMsSinceEpochAsLong(endDate);
             long startTimeElapsed = GetMsSinceEpochAsLong(startDate);
@@ -521,7 +530,7 @@ namespace Sanus.Droid
 
             var readRequest = new DataReadRequest.Builder()
                 .Aggregate(dataSource, DataType.AggregateStepCountDelta)
-                .BucketByTime(1, TimeUnit.Days)
+                .BucketByTime(1, timeUnit)
                 .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
                 .Build();
 

@@ -23,6 +23,6 @@ namespace Sanus.Services.Health
         // lay danh sach so buoc theo thoi gian bat ky
         void FetchListSteps(Action<List<double>> completionHandler, DateTime startDate, DateTime endDate);
         // lay danh sach buoc đi với thời gian của nó trong một khoảng thời gian bất kỳ
-        void FetchListStepss(Action<Dictionary<DateTime, double>> completionHandler, DateTime startDate, DateTime endDate);
+        void FetchListStepss(Action<Dictionary<DateTime, double>> completionHandler, DateTime startDate, DateTime endDate, string timeUnit);
     }
 }
