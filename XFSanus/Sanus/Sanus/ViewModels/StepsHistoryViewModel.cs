@@ -65,7 +65,7 @@ namespace Sanus.ViewModels
                 StepsInWeekChart = await _chartService.GetBarChartAsyns(totalSteps);
                 // lay danh sach cac buoc theo thoi gian
                 StepsInWeekCollection = GetStepsCollection(totalSteps);
-            }, new DateTime(2019, 3, 8, 0, 1, 1), new DateTime(2019, 3, 14, 23, 59, 59), "DAYS");
+            }, new DateTime(2019, 3, 8, 0, 1, 1), new DateTime(2019, 3, 14, 23, 59, 59), Configuration.DAYS);
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListStepss(async (totalSteps) =>
             {
@@ -74,7 +74,7 @@ namespace Sanus.ViewModels
                 StepsInDayChart = await _chartService.GetBarChartAsyns(totalSteps);
                 // lay danh sach cac buoc theo thoi gian
                 StepsInDayCollection = GetStepsCollection(totalSteps);
-            }, new DateTime(2019, 3, 8, 0, 1, 1), new DateTime(2019, 3, 8, 23, 59, 59), "HOURS");
+            }, new DateTime(2019, 3, 8, 0, 1, 1), new DateTime(2019, 3, 8, 23, 59, 59), Configuration.HOURS);
 
             return true;
         }

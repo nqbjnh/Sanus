@@ -107,7 +107,6 @@ namespace Sanus.Droid
                 var result = FetchGoogleFitListsSteps(startDate, endDate, TimeUnit.Hours);
                 completionHandler(await result);
             }
-
         }
 
         public void GetHealthPermissionAsync(Action<bool> completion)
@@ -356,6 +355,7 @@ namespace Sanus.Droid
             PrintData(dataReadResult);
             return distance;
         }
+
         public async Task<double> FetchGoogleFitDistance(DateTime startDate, DateTime endDate)
         {
             DataReadRequest readRequest = QueryDistance(startDate, endDate);
@@ -388,7 +388,6 @@ namespace Sanus.Droid
                 {
                     foreach (DataSet dataSet in bucket.DataSets)
                     {
-                        // don vi cal
                         calories += (GetDataSetValuesSum(dataSet));
                     }
                 }
