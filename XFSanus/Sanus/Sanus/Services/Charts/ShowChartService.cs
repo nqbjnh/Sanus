@@ -32,24 +32,55 @@ namespace Sanus.Services.Charts
             return new BarChart() { Entries = entri, BackgroundColor = SKColors.Transparent, Margin = 20 };
         }
 
-        public async Task<BarChart> GetBarChartAsyns<T>(Dictionary<DateTime, T> listData)
+        public async Task<BarChart> GetBarChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit)
         {
             await Task.Delay(1);
             // truyen vao du lieu
             List<Entry> entri = new List<Entry>();
             //
-            foreach (KeyValuePair<DateTime, T> item in listData)
+            if (timeunit.Equals(Configuration.DAYS))
             {
-                float a = float.Parse(item.Value.ToString());
-                Entry en = new Entry(a)
+                foreach (KeyValuePair<DateTime, T> item in listData)
                 {
-                    Color = SKColors.White,
-                    Label = string.Format("{0:M/d/yyyy}", item.Key),
-                    TextColor = SKColors.White
-                };
-                //
-                entri.Add(en);
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = string.Format("{0:M/d}", item.Key),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
             }
+            else if (timeunit.Equals(Configuration.HOURS))
+            {
+                foreach (KeyValuePair<DateTime, T> item in listData)
+                {
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = string.Format("{0:t}", item.Key),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
+            }
+            else if (timeunit.Equals(Configuration.MONTHS))
+            {
+                foreach (KeyValuePair<DateTime, T> item in listData)
+                {
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = item.Key.Day.ToString(),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
+            }
+
             //
             return new BarChart() { Entries = entri, BackgroundColor = SKColors.Transparent, Margin = 20 };
         }

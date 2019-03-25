@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using Microcharts;
@@ -47,7 +48,9 @@ namespace Sanus.ViewModels
             {
                 if (result)
                 {
-                    GetDataAsync();
+                    GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
+                    GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
+                    GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
                 }
                 else
                 {
@@ -56,26 +59,42 @@ namespace Sanus.ViewModels
             });
         }
         //
-        public bool GetDataAsync()
+        public bool GetDataInDayAsync(int year, int month, int day, string timeunit)
         {
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListStepss(async (totalSteps) =>
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                StepsInWeekChart = await _chartService.GetBarChartAsyns(totalSteps);
+                StepsInDayChart = await _chartService.GetBarChartAsyns(totalSteps, timeunit);
                 // lay danh sach cac buoc theo thoi gian
-                StepsInWeekCollection = GetStepsCollection(totalSteps);
-            }, new DateTime(2019, 3, 8, 0, 1, 1), new DateTime(2019, 3, 14, 23, 59, 59), Configuration.DAYS);
-
+                StepsInDayCollection = GetStepsCollection(totalSteps);
+            }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
+            return true;
+        }
+        //
+        public bool GetDataInWeekAsync(int year, int month, int startDay, int endDay, string timeunit)
+        {
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListStepss(async (totalSteps) =>
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                StepsInDayChart = await _chartService.GetBarChartAsyns(totalSteps);
+                StepsInWeekChart = await _chartService.GetBarChartAsyns(totalSteps, timeunit);
                 // lay danh sach cac buoc theo thoi gian
-                StepsInDayCollection = GetStepsCollection(totalSteps);
-            }, new DateTime(2019, 3, 8, 0, 1, 1), new DateTime(2019, 3, 8, 23, 59, 59), Configuration.HOURS);
-
+                StepsInWeekCollection = GetStepsCollection(totalSteps);
+            }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeunit);
+            return true;
+        }
+        //
+        public bool GetDataInMonthAsync(int year, int month, int day, string timeunit)
+        {
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListStepss(async (totalSteps) =>
+            {
+                //lay tong so buoc theo mot khoang thoi gian
+                // ve bieu do
+                StepsInMonthChart = await _chartService.GetBarChartAsyns(totalSteps, timeunit);
+                // lay danh sach cac buoc theo thoi gian
+                StepsInMonthCollection = GetStepsCollection(totalSteps);
+            }, new DateTime(year, month, 1, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), Configuration.DAYS);
             return true;
         }
         //

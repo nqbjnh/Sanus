@@ -6,6 +6,7 @@ namespace Sanus
 {
     public class Configuration
     {
+        public const string MONTHS = "MONTHS"; // thêm vào 
         public const string DAYS = "DAYS";
         public const string HOURS = "HOURS";
         public const string MICROSECONDS = "MICROSECONDS";

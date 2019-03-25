@@ -14,7 +14,7 @@ namespace Sanus.Services.Charts
         Task<Chart> GetGreenChartAsync();
         Task<PointChart> GetPointChartAsyns<T>(List<T> listData);
         Task<BarChart> GetBarChartAsyns<T>(List<T> listData);
-        Task<BarChart> GetBarChartAsyns<T>(Dictionary<DateTime, T> listData);
+        Task<BarChart> GetBarChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit);
         Task<LineChart> GetLineChartAsyns<T>(List<T> listData);
         Task<DonutChart> GetDonutChartAsyns();
         Task<RadialGaugeChart> GetRadiaChartAsyns();
