@@ -97,10 +97,10 @@ namespace Sanus.ViewModels
         public bool GetData()
         {
             //lay so buoc theo mot khoang thoi gian
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListSteps(async (totalSteps) =>
-            {
-                StepsChart = await _chartService.GetLineChartAsyns<double>(totalSteps);
-            }, new DateTime(2019, 3, 4), new DateTime(2019, 3, 10, 23, 59, 59));
+            //Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListSteps(async (totalSteps) =>
+            //{
+            //    //StepsChart = await _chartService.GetLineChartAsyns<double>(totalSteps);
+            //}, new DateTime(2019, 3, 4), new DateTime(2019, 3, 10, 23, 59, 59));
 
 
             // wait for them all to finish

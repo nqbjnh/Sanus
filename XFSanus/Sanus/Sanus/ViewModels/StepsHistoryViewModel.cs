@@ -61,7 +61,7 @@ namespace Sanus.ViewModels
         //
         public bool GetDataInDayAsync(int year, int month, int day, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListStepss(async (totalSteps) =>
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
@@ -74,7 +74,7 @@ namespace Sanus.ViewModels
         //
         public bool GetDataInWeekAsync(int year, int month, int startDay, int endDay, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListStepss(async (totalSteps) =>
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
@@ -87,7 +87,7 @@ namespace Sanus.ViewModels
         //
         public bool GetDataInMonthAsync(int year, int month, int day, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchListStepss(async (totalSteps) =>
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do

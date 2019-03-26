@@ -101,7 +101,7 @@
                                TextColor="White" />
 
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding StepsCommand}" />
+                            <TapGestureRecognizer Command="{Binding DistanceCommand}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
 

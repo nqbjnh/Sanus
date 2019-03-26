@@ -71,41 +71,46 @@ namespace Sanus.Droid
             completionHandler(await result);
         }
 
-        public async void FetchSteps(Action<double> completionHandler, DateTime startDate, DateTime endDate)
+        public async void FetchData(string valueData, Action<Dictionary<DateTime, double>> completionHandler, DateTime startDate, DateTime endDate, string timeUnit)
         {
-            var result = FetchGoogleFitSteps(startDate, endDate);
-            completionHandler(await result);
-        }
-
-        public async void FetchMetersWalked(Action<double> completionHandler, DateTime startDate, DateTime endDate)
-        {
-            var result = FetchGoogleFitDistance(startDate, endDate);
-            completionHandler(await result);
-        }
-
-        public async void FetchActiveEnergyBurned(Action<double> completionHandler, DateTime startDate, DateTime endDate)
-        {
-            var result = FetchGoogleFitCalories(startDate, endDate);
-            completionHandler(await result);
-        }
-
-        public async void FetchListSteps(Action<List<double>> completionHandler, DateTime startDate, DateTime endDate)
-        {
-            var result = FetchGoogleFitListSteps(startDate, endDate);
-            completionHandler(await result);
-        }
-
-        public async void FetchListStepss(Action<Dictionary<DateTime, double>> completionHandler, DateTime startDate, DateTime endDate, string timeUnit)
-        {
-            if (timeUnit.Equals("DAYS"))
+            if (valueData.Equals(Configuration.STEPS))
             {
-                var result = FetchGoogleFitListsSteps(startDate, endDate, TimeUnit.Days);
-                completionHandler(await result);
+                if (timeUnit.Equals(Configuration.DAYS))
+                {
+                    var result = FetchGoogleFitData(valueData, startDate, endDate, TimeUnit.Days);
+                    completionHandler(await result);
+                }
+                else if (timeUnit.Equals(Configuration.HOURS))
+                {
+                    var result = FetchGoogleFitData(valueData, startDate, endDate, TimeUnit.Hours);
+                    completionHandler(await result);
+                }
             }
-            else if (timeUnit.Equals("HOURS"))
+            else if (valueData.Equals(Configuration.DISTANCE))
             {
-                var result = FetchGoogleFitListsSteps(startDate, endDate, TimeUnit.Hours);
-                completionHandler(await result);
+                if (timeUnit.Equals(Configuration.DAYS))
+                {
+                    var result = FetchGoogleFitData(valueData, startDate, endDate, TimeUnit.Days);
+                    completionHandler(await result);
+                }
+                else if (timeUnit.Equals(Configuration.HOURS))
+                {
+                    var result = FetchGoogleFitData(valueData, startDate, endDate, TimeUnit.Hours);
+                    completionHandler(await result);
+                }
+            }
+            else if (valueData.Equals(Configuration.CALORIES))
+            {
+                if (timeUnit.Equals(Configuration.DAYS))
+                {
+                    var result = FetchGoogleFitData(valueData, startDate, endDate, TimeUnit.Days);
+                    completionHandler(await result);
+                }
+                else if (timeUnit.Equals(Configuration.HOURS))
+                {
+                    var result = FetchGoogleFitData(valueData, startDate, endDate, TimeUnit.Hours);
+                    completionHandler(await result);
+                }
             }
         }
 
@@ -291,51 +296,6 @@ namespace Sanus.Droid
             return steps;
         }
 
-        public async Task<List<double>> FetchGoogleFitListSteps(DateTime startDate, DateTime endDate)
-        {
-            List<double> listdata = new List<double>();
-            //
-            DataReadRequest readRequest = QuerySteps(startDate, endDate, TimeUnit.Days);
-            //
-            var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
-            if (dataReadResult.Buckets.Count > 0)
-            {
-                foreach (Bucket bucket in dataReadResult.Buckets)
-                {
-                    foreach (DataSet dataSet in bucket.DataSets)
-                    {
-                        listdata.Add(GetDataSetValuesSum(dataSet));
-                    }
-                }
-            }
-            PrintData(dataReadResult);
-            return listdata;
-        }
-
-        public async Task<Dictionary<DateTime, double>> FetchGoogleFitListsSteps(DateTime startDate, DateTime endDate, TimeUnit timeUnit)
-        {
-            Dictionary<DateTime, double> listdata = new Dictionary<DateTime, double>();
-            //
-            DataReadRequest readRequest = QuerySteps(startDate, endDate, timeUnit);
-            //
-            var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
-            if (dataReadResult.Buckets.Count > 0)
-            {
-                foreach (Bucket bucket in dataReadResult.Buckets)
-                {
-                    foreach (DataSet dataSet in bucket.DataSets)
-                    {
-                        foreach (double item in GetDataSetValuess(dataSet))
-                        {
-                            listdata.Add((new DateTime(1970, 1, 1)).AddMilliseconds(bucket.GetStartTime(TimeUnit.Milliseconds)), item);
-                        }
-                    }
-                }
-            }
-            PrintData(dataReadResult);
-            return listdata;
-        }
-
         public async Task<double> FetchGoogleFitDistance()
         {
             DataReadRequest readRequest = QueryDistance();
@@ -416,6 +376,47 @@ namespace Sanus.Droid
             return calories;
         }
 
+        public async Task<Dictionary<DateTime, double>> FetchGoogleFitData(string value, DateTime startDate, DateTime endDate, TimeUnit timeUnit)
+        {
+            Dictionary<DateTime, double> listdata = new Dictionary<DateTime, double>();
+            //
+            DataReadRequest readRequest = null;
+            //
+            if (value.Equals(Configuration.CALORIES))
+            {
+                readRequest = QueryActiveEnergy(startDate, endDate, timeUnit);
+            }
+            else if (value.Equals(Configuration.DISTANCE))
+            {
+                readRequest = QueryDistance(startDate, endDate, timeUnit);
+            }
+            else if (value.Equals(Configuration.STEPS))
+            {
+                readRequest = QuerySteps(startDate, endDate, timeUnit);
+            }
+            //
+            var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
+            if (dataReadResult.Buckets.Count > 0)
+            {
+                foreach (Bucket bucket in dataReadResult.Buckets)
+                {
+                    foreach (DataSet dataSet in bucket.DataSets)
+                    {
+                        foreach (double item in GetDataSetValuess(dataSet))
+                        {
+                            listdata.Add(
+                                new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                                    .AddMilliseconds(bucket.GetStartTime(TimeUnit.Milliseconds))
+                                    .ToLocalTime()
+                                , item);
+                        }
+                    }
+                }
+            }
+            PrintData(dataReadResult);
+            return listdata;
+        }
+
         public async Task<double> FetchGoogleFitActiveMinutes()
         {
             DataReadRequest readRequest = QueryActiveEnergy();
@@ -477,7 +478,6 @@ namespace Sanus.Droid
                         {
                             dataSetSum += Convert.ToDouble(point.GetValue(field).AsInt());
                             list.Add(dataSetSum);
-
                         }
                         else
                         {
@@ -567,6 +567,20 @@ namespace Sanus.Droid
             return readRequest;
         }
 
+        private static DataReadRequest QueryActiveEnergy(DateTime startDate, DateTime endDate, TimeUnit timeUnit)
+        {
+            long endTimeElapsed = GetMsSinceEpochAsLong(endDate);
+            long startTimeElapsed = GetMsSinceEpochAsLong(startDate);
+            //
+            var readRequest = new DataReadRequest.Builder()
+                .Aggregate(DataType.TypeCaloriesExpended, DataType.AggregateCaloriesExpended)
+                .BucketByTime(1, timeUnit)
+                .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                .Build();
+
+            return readRequest;
+        }
+
         private static DataReadRequest QueryDistance()
         {
             DateTime endTime = DateTime.Now;
@@ -588,12 +602,26 @@ namespace Sanus.Droid
         {
             long endTimeElapsed = GetMsSinceEpochAsLong(endDate);
             long startTimeElapsed = GetMsSinceEpochAsLong(startDate);
-            //
+
             var readRequest = new DataReadRequest.Builder()
-                .Aggregate(DataType.TypeDistanceDelta, DataType.AggregateDistanceDelta)
-                .BucketByTime(1, TimeUnit.Days)
-                .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
-                .Build();
+               .Aggregate(DataType.TypeDistanceDelta, DataType.AggregateDistanceDelta)
+               .BucketByTime(1, TimeUnit.Days)
+               .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+               .Build();
+
+            return readRequest;
+        }
+
+        private static DataReadRequest QueryDistance(DateTime startDate, DateTime endDate, TimeUnit timeUnit)
+        {
+            long endTimeElapsed = GetMsSinceEpochAsLong(endDate);
+            long startTimeElapsed = GetMsSinceEpochAsLong(startDate);
+
+            var readRequest = new DataReadRequest.Builder()
+               .Aggregate(DataType.TypeDistanceDelta, DataType.AggregateDistanceDelta)
+               .BucketByTime(1, timeUnit)
+               .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+               .Build();
 
             return readRequest;
         }

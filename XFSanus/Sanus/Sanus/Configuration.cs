@@ -15,6 +15,9 @@ namespace Sanus
         public const string NANOSECONDS = "NANOSECONDS";
         public const string SECONDS = "SECONDS";
         //
-
+        public const string CALORIES = "Calories";
+        public const string DISTANCE = "Distance";
+        public const string STEPS = "Steps";
+        //
     }
 }
