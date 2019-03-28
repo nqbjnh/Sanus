@@ -61,7 +61,7 @@ namespace Sanus.ViewModels
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                DistanceInDayChart = await _chartService.GetBarChartAsyns(totalDatas, timeunit);
+                DistanceInDayChart = await _chartService.GetLineChartAsyns(totalDatas, timeunit);
                 // lay danh sach cac buoc theo thoi gian
                 DistanceInDayCollection = GetDataCollection(totalDatas);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
@@ -74,7 +74,7 @@ namespace Sanus.ViewModels
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                DistanceInWeekChart = await _chartService.GetBarChartAsyns(totalDatas, timeunit);
+                DistanceInWeekChart = await _chartService.GetPointChartAsyns(totalDatas, timeunit);
                 // lay danh sach cac buoc theo thoi gian
                 DistanceInWeekCollection = GetDataCollection(totalDatas);
             }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeunit);
@@ -85,11 +85,11 @@ namespace Sanus.ViewModels
         {
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.DISTANCE, async (totalDatas) =>
              {
-                //lay tong so buoc theo mot khoang thoi gian
-                // ve bieu do
-                DistanceInMonthChart = await _chartService.GetBarChartAsyns(totalDatas, timeunit);
-                // lay danh sach cac buoc theo thoi gian
-                DistanceInMonthCollection = GetDataCollection(totalDatas);
+                 //lay tong so buoc theo mot khoang thoi gian
+                 // ve bieu do
+                 DistanceInMonthChart = await _chartService.GetPointChartAsyns(totalDatas, timeunit);
+                 // lay danh sach cac buoc theo thoi gian
+                 DistanceInMonthCollection = GetDataCollection(totalDatas);
              }, new DateTime(year, month, 1, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), Configuration.DAYS);
             return true;
         }

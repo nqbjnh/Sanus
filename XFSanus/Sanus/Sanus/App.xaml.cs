@@ -57,6 +57,7 @@ namespace Sanus
             //
             containerRegistry.Register<IChartService, ShowChartService>();
             containerRegistry.Register<IDialogService, DialogService>();
+            containerRegistry.RegisterForNavigation<PrismTabbedPage1, PrismTabbedPage1ViewModel>();
         }
     }
 }

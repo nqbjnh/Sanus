@@ -55,15 +55,15 @@ namespace Sanus.ViewModels
         //
         private async void StepsSelects()
         {
-            await _navigationService.NavigateAsync("/StepsHistoryPage");
+            await _navigationService.NavigateAsync("NavigationPage/StepsHistoryPage");
         }
         private async void DistanceSelects()
         {
-            await _navigationService.NavigateAsync("/DistanceHistoryPage");
+            await _navigationService.NavigateAsync("NavigationPage/DistanceHistoryPage");
         }
         private async void EnegySelects()
         {
-            await _navigationService.NavigateAsync("/EnegyHistoryPage");
+            await _navigationService.NavigateAsync("NavigationPage/EnegyHistoryPage");
         }
         //
         public void FetchHealthData()

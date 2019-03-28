@@ -13,9 +13,11 @@ namespace Sanus.Services.Charts
         Task<Chart> GetRadialGaugeChartAsyns(double goal, double steps, string color);
         Task<Chart> GetGreenChartAsync();
         Task<PointChart> GetPointChartAsyns<T>(List<T> listData);
+        Task<PointChart> GetPointChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit);
         Task<BarChart> GetBarChartAsyns<T>(List<T> listData);
         Task<BarChart> GetBarChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit);
         Task<LineChart> GetLineChartAsyns<T>(List<T> listData);
+        Task<LineChart> GetLineChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit);
         Task<DonutChart> GetDonutChartAsyns();
         Task<RadialGaugeChart> GetRadiaChartAsyns();
         Task<RadarChart> GetRadarChartAsyns();

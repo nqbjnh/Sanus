@@ -250,5 +250,11 @@
   <ItemGroup>
     <Folder Include="Renderers\" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_left.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

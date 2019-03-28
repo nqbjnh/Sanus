@@ -167,5 +167,111 @@ namespace Sanus.Services.Charts
         {
             throw new NotImplementedException();
         }
+
+        public async Task<PointChart> GetPointChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit)
+        {
+            await Task.Delay(1);
+            // truyen vao du lieu
+            List<Entry> entri = new List<Entry>();
+            //
+            if (timeunit.Equals(Configuration.DAYS))
+            {
+                foreach (KeyValuePair<DateTime, T> item in listData)
+                {
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = string.Format("{0:M/d}", item.Key),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
+            }
+            else if (timeunit.Equals(Configuration.HOURS))
+            {
+                foreach (KeyValuePair<DateTime, T> item in listData)
+                {
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = string.Format("{0:t}", item.Key),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
+            }
+            else if (timeunit.Equals(Configuration.MONTHS))
+            {
+                foreach (KeyValuePair<DateTime, T> item in listData)
+                {
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = item.Key.Day.ToString(),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
+            }
+
+            //
+            return new PointChart() { Entries = entri, BackgroundColor = SKColors.Transparent };
+        }
+
+        public async Task<LineChart> GetLineChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit)
+        {
+            await Task.Delay(1);
+            // truyen vao du lieu
+            List<Entry> entri = new List<Entry>();
+            //
+            if (timeunit.Equals(Configuration.DAYS))
+            {
+                foreach (KeyValuePair<DateTime, T> item in listData)
+                {
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = string.Format("{0:M/d}", item.Key),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
+            }
+            else if (timeunit.Equals(Configuration.HOURS))
+            {
+                foreach (KeyValuePair<DateTime, T> item in listData)
+                {
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = string.Format("{0:t}", item.Key),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
+            }
+            else if (timeunit.Equals(Configuration.MONTHS))
+            {
+                foreach (KeyValuePair<DateTime, T> item in listData)
+                {
+                    float a = float.Parse(item.Value.ToString());
+                    Entry en = new Entry(a)
+                    {
+                        Color = SKColors.White,
+                        Label = item.Key.Day.ToString(),
+                        TextColor = SKColors.White
+                    };
+                    entri.Add(en);
+                }
+            }
+
+            //
+            return new LineChart() { Entries = entri, BackgroundColor = SKColors.Transparent, Margin = 20 };
+        }
     }
 }
