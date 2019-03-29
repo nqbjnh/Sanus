@@ -6,7 +6,7 @@ namespace Sanus.Model
 {
     public class Distance
     {
-        public int Steps { get; set; }
-        //public DateTime DateTime { get; set; }
+        public DateTime Day { get; set; }
+        public double Step { get; set; }
     }
 }

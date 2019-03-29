@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Sanus.Controls.ExtendNavigationBar"
+      BackgroundColor="{StaticResource AccentColor}"
+      VerticalOptions="Start">
+    <Grid.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="Android"
+                Value="0" />
+            <On Platform="iOS"
+                Value="0,20,0,0" />
+        </OnPlatform>
+    </Grid.Padding>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition>
+            <ColumnDefinition.Width>
+                <OnPlatform x:TypeArguments="GridLength">
+                    <On Platform="Android"
+                        Value="100" />
+                    <On Platform="iOS"
+                        Value="100" />
+                </OnPlatform>
+            </ColumnDefinition.Width>
+        </ColumnDefinition>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition>
+            <ColumnDefinition.Width>
+                <OnPlatform x:TypeArguments="GridLength">
+                    <On Platform="Android"
+                        Value="100" />
+                    <On Platform="iOS"
+                        Value="100" />
+                </OnPlatform>
+            </ColumnDefinition.Width>
+        </ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <!--<Grid.RowDefinitions>
+        <RowDefinition>
+            <RowDefinition.Height>
+                <OnPlatform x:TypeArguments="GridLength">
+                    <On Platform="Android"
+                        Value="50" />
+                    <On Platform="iOS"
+                        Value="50" />
+                </OnPlatform>
+            </RowDefinition.Height>
+        </RowDefinition>
+    </Grid.RowDefinitions>-->
+
+    <!--  Left  -->
+    <StackLayout x:Name="LeftLayout"
+                 Grid.Column="0"
+                 HorizontalOptions="Start"
+                 Orientation="Horizontal"
+                 Spacing="0"
+                 HeightRequest="50"
+                 VerticalOptions="Fill">
+        <!--<StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="LeftMenuOnTapped"/>
+        </StackLayout.GestureRecognizers>-->
+    </StackLayout>
+    <Grid x:Name="CenterLayout"
+          Grid.Column="1"
+          VerticalOptions="Center"
+          HeightRequest="50" />
+    <StackLayout x:Name="RightLayout"
+                 Grid.Column="2"
+                 HorizontalOptions="End"
+                 Orientation="Horizontal"
+                 Spacing="0"
+                 HeightRequest="50"
+                 VerticalOptions="Fill">
+
+    </StackLayout>
+
+    <!--<BoxView Grid.ColumnSpan="3"
+             Grid.Row="0"
+             Grid.Column="0"
+             BackgroundColor="#11FFFFFF"
+             VerticalOptions="End"
+             HorizontalOptions="FillAndExpand"
+             HeightRequest="2" />-->
+</Grid>

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Name="Root"
+      RowSpacing="0"
+      ColumnSpacing="0"
+      x:Class="Sanus.Controls.SplitViewThreeTab"
+      BackgroundColor="White">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="44" />
+        <RowDefinition Height="2" />
+        <RowDefinition />
+    </Grid.RowDefinitions>
+    <ContentView  Grid.Row="0"
+                  Grid.Column="0">
+        <ContentView.GestureRecognizers>
+            <TapGestureRecognizer Tapped="FirstTabTapped" />
+        </ContentView.GestureRecognizers>
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Style="{StaticResource RegularLabelStyle}"
+               TextColor="{StaticResource HintTextColor}"
+               FontSize="{StaticResource MidMediumSize}"
+               x:Name="FirstTitleLabel2">
+            <Label.Triggers>
+                <DataTrigger Binding="{Binding Source={x:Reference Root}, Path=CurrentView}"
+                             TargetType="Label"
+                             Value="0">
+                    <Setter Property="TextColor"
+                            Value="{StaticResource PrimaryColor}" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+    </ContentView>
+    <BoxView Grid.Row="1"
+             Grid.Column="0"
+             HeightRequest="1"
+             BackgroundColor="{StaticResource HintTextColor}">
+        <BoxView.Triggers>
+            <DataTrigger Binding="{Binding Source={x:Reference Root}, Path=CurrentView}"
+                         TargetType="BoxView"
+                         Value="0">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource PrimaryColor}" />
+            </DataTrigger>
+        </BoxView.Triggers>
+    </BoxView>
+    <StackLayout Grid.Row="2"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="3" />
+
+    <ContentView Grid.Row="0"
+                 Grid.Column="1">
+        <ContentView.GestureRecognizers>
+            <TapGestureRecognizer Tapped="SecondTabTapped" />
+        </ContentView.GestureRecognizers>
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Style="{StaticResource RegularLabelStyle}"
+               TextColor="{StaticResource HintTextColor}"
+               FontSize="{StaticResource MidMediumSize}"
+               x:Name="SecondTitleLabel2">
+            <Label.Triggers>
+                <DataTrigger Binding="{Binding Source={x:Reference Root}, Path=CurrentView}"
+                             TargetType="Label"
+                             Value="1">
+                    <Setter Property="TextColor"
+                            Value="{StaticResource PrimaryColor}" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+    </ContentView>
+    <BoxView Grid.Row="1"
+             Grid.Column="1"
+             HeightRequest="1"
+             BackgroundColor="{StaticResource HintTextColor}">
+        <BoxView.Triggers>
+            <DataTrigger Binding="{Binding Source={x:Reference Root}, Path=CurrentView}"
+                         TargetType="BoxView"
+                         Value="1">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource PrimaryColor}" />
+            </DataTrigger>
+        </BoxView.Triggers>
+    </BoxView>
+    <StackLayout Grid.Row="2"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="3" />
+
+    <ContentView Grid.Row="0"
+                 Grid.Column="2">
+        <ContentView.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ThreeTabTapped" />
+        </ContentView.GestureRecognizers>
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Style="{StaticResource RegularLabelStyle}"
+               TextColor="{StaticResource HintTextColor}"
+               FontSize="{StaticResource MidMediumSize}"
+               x:Name="ThreeTitleLabel2">
+            <Label.Triggers>
+                <DataTrigger Binding="{Binding Source={x:Reference Root}, Path=CurrentView}"
+                             TargetType="Label"
+                             Value="2">
+                    <Setter Property="TextColor"
+                            Value="{StaticResource PrimaryColor}" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+    </ContentView>
+    <BoxView Grid.Row="1"
+             Grid.Column="2"
+             HeightRequest="1"
+             BackgroundColor="{StaticResource HintTextColor}">
+        <BoxView.Triggers>
+            <DataTrigger Binding="{Binding Source={x:Reference Root}, Path=CurrentView}"
+                         TargetType="BoxView"
+                         Value="2">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource PrimaryColor}" />
+            </DataTrigger>
+        </BoxView.Triggers>
+    </BoxView>
+    <StackLayout Grid.Row="2"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="3" />
+</Grid>

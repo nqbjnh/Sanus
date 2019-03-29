@@ -63,7 +63,6 @@
                 <Setter.Value>
                     <OnPlatform x:TypeArguments="x:Double">
                         <On Platform="Android">36</On>
-                        <On Platform="iOS">30</On>
                     </OnPlatform>
                 </Setter.Value>
             </Setter>
@@ -160,7 +159,8 @@
                             <Label Text="Nhịp tim"
                                    Style="{StaticResource HealthType}" />
                             <Button Text="Cập nhật"
-                                    Style="{StaticResource ButtonUpdate}" />
+                                    Style="{StaticResource ButtonUpdate}"
+                                    Command="{Binding UpdateUserCommand}" />
                         </StackLayout>
                     </Frame>
                     <!--box thi luc-->
@@ -175,7 +175,8 @@
                             <Label Text="Thị lực"
                                    Style="{StaticResource HealthType}" />
                             <Button Text="Cập nhật"
-                                    Style="{StaticResource ButtonUpdate}" />
+                                    Style="{StaticResource ButtonUpdate}"
+                                    Command="{Binding UpdateUserCommand}" />
                         </StackLayout>
                     </Frame>
                 </Grid>
@@ -198,7 +199,8 @@
                             <Label Text="Men gan"
                                    Style="{StaticResource HealthType}" />
                             <Button Text="Cập nhật"
-                                    Style="{StaticResource ButtonUpdate}" />
+                                    Style="{StaticResource ButtonUpdate}"
+                                    Command="{Binding UpdateUserCommand}" />
                         </StackLayout>
                     </Frame>
                     <!--box duong huyet-->
@@ -215,13 +217,12 @@
                             <Label Text="Đường huyết"
                                    Style="{StaticResource HealthType}" />
                             <Button Text="Cập nhật"
-                                    Style="{StaticResource ButtonUpdate}" />
+                                    Style="{StaticResource ButtonUpdate}"
+                                    Command="{Binding UpdateUserCommand}" />
                         </StackLayout>
                     </Frame>
                 </Grid>
-
             </Grid>
-
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

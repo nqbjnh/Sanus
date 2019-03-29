@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:suave="clr-namespace:SuaveControls.MaterialForms;assembly=SuaveControls.MaterialForms"
+             x:Class="Sanus.Views.UserFilesPage"
+             BackgroundColor="{StaticResource AccentColor}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Margin="20,10,20,0"
+                             Padding="0"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand">
+                    <Label Text="Hồ sơ"
+                           Margin="5"
+                           TextColor="White"
+                           FontSize="45"
+                           FontAttributes="Bold" />
+                </StackLayout >
+
+                <StackLayout Margin="20,0,20,0"
+                             Padding="0"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand"
+                             Orientation="Horizontal">
+                    <controls:CircleImage Source="avatar.png"
+                                          Margin="5"
+                                          Aspect="AspectFill"
+                                          HeightRequest="60"
+                                          WidthRequest="60" />
+                    <StackLayout HorizontalOptions="StartAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Margin="5,0,0,0">
+                        <Label Text="Name"
+                               TextColor="White"
+                               FontSize="Medium" />
+                        <Label Text="Email"
+                               TextColor="White"
+                               FontSize="Small" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Margin="20,0,0,0"
+                             Padding="0"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand">
+                    <Label Text="Mục tiêu hoạt động"
+                           Margin="5,5,5,0"
+                           TextColor="White"
+                           FontSize="25"
+                           FontAttributes="Bold" />
+                </StackLayout>
+                <BoxView  Color="White"
+                          Margin="0"
+                          HeightRequest="1" />
+                <StackLayout Margin="5"
+                             Padding="0"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 Orientation="Horizontal"
+                                 Margin="5,0,5,0">
+                        <suave:MaterialEntry Placeholder="Bước"
+                                             Keyboard="Numeric"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             DefaultColor="White"
+                                             AccentColor="White" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Padding="0"
+                             Margin="0"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand">
+                    <Label Text="Giới thiệu về bạn"
+                           TextColor="White"
+                           FontSize="25"
+                           FontAttributes="Bold" />
+                </StackLayout>
+
+                <BoxView  Color="White"
+                          Margin="0"
+                          HeightRequest="1" />
+
+                <StackLayout Padding="0"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     Orientation="Horizontal"
+                                     Margin="5,0,0,0">
+                            <suave:MaterialEntry Placeholder="Nhịp tim"
+                                                 Keyboard="Numeric"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 DefaultColor="White"
+                                                 AccentColor="White" />
+
+                            <suave:MaterialEntry Placeholder="Thị lực"
+                                                 Keyboard="Numeric"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 DefaultColor="White"
+                                                 AccentColor="White" />
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     Orientation="Horizontal"
+                                     Margin="5,0,0,0">
+                            <suave:MaterialEntry Placeholder="Men gan"
+                                                 Keyboard="Numeric"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 DefaultColor="White"
+                                                 AccentColor="White" />
+
+                            <suave:MaterialEntry Placeholder="Đường huyết"
+                                                 Keyboard="Numeric"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 DefaultColor="White"
+                                                 AccentColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

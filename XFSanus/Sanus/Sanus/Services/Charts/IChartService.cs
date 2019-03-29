@@ -1,4 +1,5 @@
-﻿using Sanus.Model;
+﻿using Microcharts;
+using Sanus.Model;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,16 @@ namespace Sanus.Services.Charts
 {
     public interface IChartService
     {
-        Task<Microcharts.Chart> GetDistancesChartAsyns(double goal, double steps, string color);
-        Task<Microcharts.Chart> GetGreenChartAsync();
-        Task<Microcharts.PointChart> GetPointChartAsyns();
-        Task<Microcharts.BarChart> GetBarChartAsyns();
-        Task<Microcharts.LineChart> GetLineChartAsyns();
-        Task<Microcharts.DonutChart> GetDonutChartAsyns();
-        Task<Microcharts.RadialGaugeChart> GetRadiaChartAsyns();
-        Task<Microcharts.RadarChart> GetRadarChartAsyns();
+        Task<Chart> GetRadialGaugeChartAsyns(double goal, double steps, string color);
+        Task<Chart> GetGreenChartAsync();
+        Task<PointChart> GetPointChartAsyns<T>(List<T> listData);
+        Task<PointChart> GetPointChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit);
+        Task<BarChart> GetBarChartAsyns<T>(List<T> listData);
+        Task<BarChart> GetBarChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit);
+        Task<LineChart> GetLineChartAsyns<T>(List<T> listData);
+        Task<LineChart> GetLineChartAsyns<T>(Dictionary<DateTime, T> listData, string timeunit);
+        Task<DonutChart> GetDonutChartAsyns();
+        Task<RadialGaugeChart> GetRadiaChartAsyns();
+        Task<RadarChart> GetRadarChartAsyns();
     }
 }

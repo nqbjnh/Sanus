@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Sanus.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DemoPage : ContentPage
+	public partial class EnegyHistoryPage : ContentPage
 	{
-		public DemoPage ()
+		public EnegyHistoryPage ()
 		{
 			InitializeComponent ();
 		}

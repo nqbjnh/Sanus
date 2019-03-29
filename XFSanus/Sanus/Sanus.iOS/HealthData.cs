@@ -44,6 +44,16 @@ namespace Sanus.iOS
             }
         }
 
+        public void CancelSubscription(Action<bool> completionHandler)
+        {
+            completionHandler(true);
+        }
+
+        public void StartSubscription(Action<bool> completionHandler)
+        {
+            completionHandler(true);
+        }
+
         public void GetHealthPermissionAsync(Action<bool> completion)
         {
             if (HKHealthStore.IsHealthDataAvailable)
@@ -132,7 +142,6 @@ namespace Sanus.iOS
             HealthStore.ExecuteQuery(query);
         }
 
-
         public void FetchActiveEnergyBurned(Action<double> completionHandler)
         {
             var calendar = NSCalendar.CurrentCalendar;
@@ -157,17 +166,7 @@ namespace Sanus.iOS
             HealthStore.ExecuteQuery(query);
         }
 
-        public void CancelSubscription(Action<bool> completionHandler)
-        {
-            completionHandler(true);
-        }
-
-        public void StartSubscription(Action<bool> completionHandler)
-        {
-            completionHandler(true);
-        }
-
-        public void PrintData(Action<List<double>> completionHandler)
+        public void FetchData(string valueData, Action<Dictionary<DateTime, double>> completionHandler, DateTime startDate, DateTime endDate, string timeUnit)
         {
             throw new NotImplementedException();
         }

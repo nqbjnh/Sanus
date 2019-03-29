@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="Sanus.Views.HomeView"
              BackgroundColor="{StaticResource AccentColor}">
 
@@ -37,6 +38,7 @@
                                      VerticalOptions="FillAndExpand"
                                      HorizontalOptions="FillAndExpand"
                                      Chart="{Binding StepsChart}" />
+
                     <StackLayout Grid.Row="0"
                                  VerticalOptions="CenterAndExpand"
                                  HorizontalOptions="CenterAndExpand">
@@ -52,7 +54,15 @@
                                TextColor="White"
                                FontSize="25"
                                FontAttributes="Bold" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding StepsCommand}" />
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding StepsCommand}" />
+                    </Grid.GestureRecognizers>
                 </Grid>
 
                 <Grid BackgroundColor="{StaticResource PrimaryColor}"
@@ -60,7 +70,7 @@
                       RowSpacing="0"
                       ColumnSpacing="0"
                       HeightRequest="150">
-                    
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />
                         <ColumnDefinition Width="4*" />
@@ -85,10 +95,14 @@
                                FontSize="30"
                                TextColor="White"
                                FontAttributes="Bold" />
-                        <Label Text="km"
+                        <Label Text="m"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                TextColor="White" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DistanceCommand}" />
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                     <Grid RowSpacing="0"
@@ -98,7 +112,7 @@
                           BackgroundColor="Transparent"
                           HorizontalOptions="CenterAndExpand"
                           VerticalOptions="CenterAndExpand">
-                        
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*" />
                         </Grid.RowDefinitions>
@@ -145,7 +159,48 @@
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                TextColor="White" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding EnegyCommand}" />
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
+                </Grid>
+
+                <StackLayout Margin="10"
+                             HeightRequest="350">
+                </StackLayout>
+
+                <Grid HeightRequest="350"
+                      BackgroundColor="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
+
+                    <Frame IsClippedToBounds="True"
+                           Margin="15,80,15,10"
+                           Padding="0"
+                           HasShadow="True"
+                           CornerRadius="10"
+                           BorderColor="White"
+                           BackgroundColor="Transparent">
+                        <StackLayout HeightRequest="290"
+                                     Margin="5,55,5,5">
+                            <Label Text="Account" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame  VerticalOptions="StartAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="120"
+                            WidthRequest="120"
+                            Margin="0"
+                            Padding="0"
+                            BackgroundColor="Transparent">
+                        <controls:CircleImage  Source="avatar.png"
+                                               Aspect="AspectFill"
+                                               BorderColor="WhiteSmoke"
+                                               BorderThickness="3" />
+                    </Frame>
                 </Grid>
             </StackLayout>
         </ScrollView>

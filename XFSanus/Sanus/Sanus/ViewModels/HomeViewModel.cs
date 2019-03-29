@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Microcharts;
+using Prism.Commands;
 using Prism.Navigation;
 using Sanus.Model;
 using Sanus.Services.Charts;
+using Sanus.Services.Dialog;
 using Sanus.Services.Health;
 
 namespace Sanus.ViewModels
@@ -14,6 +16,7 @@ namespace Sanus.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IChartService _chartService;
+        private readonly IDialogService _dialogService;
         private readonly string color = "#036abb";
         private double _goal = 8000;
         //
@@ -33,27 +36,47 @@ namespace Sanus.ViewModels
         public Chart StepsChart { get { return _stepsChart; } set => SetProperty(ref _stepsChart, value); }
         public Chart PercentChart { get { return _percentChart; } set => SetProperty(ref _percentChart, value); }
         //
-        public HomeViewModel(INavigationService navigationService, IChartService chartService) : base(navigationService)
+        public DelegateCommand StepsCommand { get; }
+        public DelegateCommand DistanceCommand { get; }
+        public DelegateCommand EnegyCommand { get; }
+        //
+        public HomeViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService) : base(navigationService)
         {
             _navigationService = navigationService;
             _chartService = chartService;
+            _dialogService = dialogService;
             //
             FetchHealthData();
+            //
+            StepsCommand = new DelegateCommand(StepsSelects);
+            DistanceCommand = new DelegateCommand(DistanceSelects);
+            EnegyCommand = new DelegateCommand(EnegySelects);
         }
-
+        //
+        private async void StepsSelects()
+        {
+            await _navigationService.NavigateAsync("NavigationPage/StepsHistoryPage");
+        }
+        private async void DistanceSelects()
+        {
+            await _navigationService.NavigateAsync("NavigationPage/DistanceHistoryPage");
+        }
+        private async void EnegySelects()
+        {
+            await _navigationService.NavigateAsync("NavigationPage/EnegyHistoryPage");
+        }
+        //
         public void FetchHealthData()
         {
-            //List<Task> tasks = new List<Task>();
             Xamarin.Forms.DependencyService.Get<IHealthServices>().GetHealthPermissionAsync((result) =>
             {
-                //var a = result;
                 if (result)
                 {
                     GetData();
                 }
                 else
                 {
-
+                    _dialogService.ShowConfirmAsync("Load data fail", "Fail", "Ok", "Cancel");
                 }
             });
         }
@@ -65,23 +88,15 @@ namespace Sanus.ViewModels
             {
                 Steps = Math.Floor(totalSteps).ToString();
                 // wait for them all to finish
-                StepsChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), color);
+                StepsChart = await _chartService.GetRadialGaugeChartAsyns(_goal, double.Parse(Steps), color);
                 //
-                PercentChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
+                PercentChart = await _chartService.GetRadialGaugeChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
                 Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
             });
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchMetersWalked((metersWalked) =>
             {
-                if (platform == Xamarin.Forms.Device.Android)
-                {
-                    double tempD = metersWalked / 100000000;
-                    Distances = String.Format("{0:0.##}", tempD);
-                }
-                else
-                {
-                    Distances = String.Format("{0:0.##}", metersWalked);
-                }
+                Distances = String.Format("{0:0.##}", metersWalked);
             });
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveMinutes((activeMinutes) =>
@@ -91,16 +106,18 @@ namespace Sanus.ViewModels
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveEnergyBurned((caloriesBurned) =>
             {
-                if (platform == Xamarin.Forms.Device.Android)
-                {
-                    double tempC = caloriesBurned / 10000;
-                    Calories = String.Format("{0:0.##}", tempC);
-                }
-                else
-                {
-                    Calories = String.Format("{0:0.##}", caloriesBurned);
-                }
+                Calories = string.Format("{0:0.###}", caloriesBurned);
             });
+            // lay so buoc theo mot khoang thoi gian
+            //Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
+            //{
+            //    Steps = Math.Floor(totalSteps).ToString();
+            //    // wait for them all to finish
+            //    StepsChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), color);
+            //    //
+            //    PercentChart = await _chartService.GetDistancesChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
+            //    Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
+            //}, new DateTime(2019, 3, 4), new DateTime(2019, 3, 10, 23, 59, 59));
             //
             return true;
         }
