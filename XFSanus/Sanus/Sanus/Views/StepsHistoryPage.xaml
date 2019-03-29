@@ -8,6 +8,10 @@
              x:Class="Sanus.Views.StepsHistoryPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource AccentColor}">
+    <controls:Custom.NavigationBar>
+        <controls:ExtendNavigationBar HasBackButton="False"
+                                      Title="AS" />
+    </controls:Custom.NavigationBar>
     <ContentPage.Content>
         <!--<StackLayout BackgroundColor="{StaticResource AccentColor}">
             <StackLayout>

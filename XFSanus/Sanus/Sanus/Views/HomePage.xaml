@@ -1,49 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="Sanus.Views.HomePage"
-            BarBackgroundColor="{StaticResource BarColor}"
-            BarTextColor="White"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            android:TabbedPage.ToolbarPlacement="Bottom"
-            android:TabbedPage.BarItemColor="#66FFFFFF"
-            android:TabbedPage.BarSelectedItemColor="White"
-            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-            xmlns:views="clr-namespace:Sanus.Views"
-            prism:ViewModelLocator.AutowireViewModel="True">
-
-    <TabbedPage.Children>
-        <!--<NavigationPage Title="Demo"
-                        Icon="icon_tab1"
-                        BarBackgroundColor="{StaticResource AccentColor}">
-            <x:Arguments>
-                <views:StepsHistoryPage />
-            </x:Arguments>
-        </NavigationPage>-->
-
-        <NavigationPage Title="Trang nhà"
-                        Icon="icon_tab1"
-                        BarBackgroundColor="{StaticResource AccentColor}">
-            <x:Arguments>
-                <views:HomeView />
-            </x:Arguments>
-        </NavigationPage>
-
-        <NavigationPage Title="Hồ sơ sức khỏe"
-                        Icon="icon_tab2"
-                        BarBackgroundColor="{StaticResource AccentColor}">
-            <x:Arguments>
-                <views:HealthRecordsPage />
-            </x:Arguments>
-        </NavigationPage>
-
-        <NavigationPage Title="Cá nhân"
-                        Icon="icon_tab3"
-                        BarBackgroundColor="{StaticResource AccentColor}">
-            <x:Arguments>
-                <views:ProfilePage />
-            </x:Arguments>
-        </NavigationPage>
-    </TabbedPage.Children>
-
-</TabbedPage>
+<controls:BottomTabbedPage xmlns:controls="clr-namespace:Sanus.Controls"
+                           xmlns="http://xamarin.com/schemas/2014/forms"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                           x:Class="Sanus.Views.HomePage"
+                           BarBackgroundColor="{StaticResource BarColor}"
+                           BarTextColor="White"
+                           xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+                           android:TabbedPage.BarItemColor="#66FFFFFF"
+                           android:TabbedPage.BarSelectedItemColor="White"
+                           xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                           xmlns:views="clr-namespace:Sanus.Views"
+                           prism:ViewModelLocator.AutowireViewModel="True">
+    <views:HomeView Title="Trang nhà"
+                    Icon="icon_tab1" />
+    <views:HealthRecordsPage  Title="Hồ sơ sức khỏe"
+                              Icon="icon_tab2" />
+    <views:ProfilePage  Title="Cá nhân"
+                        Icon="icon_tab3" />
+</controls:BottomTabbedPage>

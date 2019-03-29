@@ -22,14 +22,14 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.4.859" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
     <PackageReference Include="Prism.Autofac.Forms" Version="7.1.0.431" />
-    <PackageReference Include="Xamarin.HotReload" Version="1.2.2" />
+    <PackageReference Include="Xamarin.HotReload" Version="1.2.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Controls\SplitViewThreeTab.xaml">
+    <EmbeddedResource Update="Controls\ExtendNavigationBar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DemoPage.xaml">
+    <EmbeddedResource Update="Controls\SplitViewThreeTab.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DistanceHistoryPage.xaml">
@@ -48,9 +48,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomeView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PrismTabbedPage1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">

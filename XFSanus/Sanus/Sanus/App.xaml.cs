@@ -5,7 +5,6 @@ using Prism;
 using Prism.Ioc;
 using Sanus.Services.Charts;
 using Sanus.Services.Dialog;
-using Sanus.Services.Health;
 using Sanus.ViewModels;
 using Sanus.Views;
 using Xamarin.Forms;
@@ -21,13 +20,21 @@ namespace Sanus
          * This imposes a limitation in which the App class must have a default constructor. 
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
+        public static Thickness Insets { get; set; } = new Thickness(0, 0, 0, 0);
+
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
         protected override async void OnInitialized()
         {
+            //
             InitializeComponent();
+            //
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
+            {
+                Insets = new Thickness(0, 20, 0, 0);
+            }
             //
             AppCenter.Start("android=089f427d-f2fb-436d-a21f-c1a16462acc0;" +
                   "uwp={Your UWP App secret here};" +
@@ -47,7 +54,7 @@ namespace Sanus
             containerRegistry.RegisterForNavigation<HealthRecordsPage, HealthRecordsViewModel>();
             containerRegistry.RegisterForNavigation<ProfilePage, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<UserFilesPage, UserFilesViewModel>();
-            containerRegistry.RegisterForNavigation<DemoPage, DemoPageViewModel>();
+          
             containerRegistry.RegisterForNavigation<EnegyHistoryPage, EnegyHistoryViewModel>();
             containerRegistry.RegisterForNavigation<DistanceHistoryPage, DistanceHistoryViewModel>();
             containerRegistry.RegisterForNavigation<StepsHistoryPage, StepsHistoryViewModel>();
@@ -57,7 +64,6 @@ namespace Sanus
             //
             containerRegistry.Register<IChartService, ShowChartService>();
             containerRegistry.Register<IDialogService, DialogService>();
-            containerRegistry.RegisterForNavigation<PrismTabbedPage1, PrismTabbedPage1ViewModel>();
         }
     }
 }

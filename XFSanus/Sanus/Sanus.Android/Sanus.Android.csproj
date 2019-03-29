@@ -119,7 +119,7 @@
       <Version>60.1142.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.HotReload">
-      <Version>1.2.2</Version>
+      <Version>1.2.4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
