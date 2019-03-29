@@ -4,33 +4,63 @@
              xmlns:controls="clr-namespace:Sanus.Controls"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="Sanus.Views.EnegyHistoryPage"
-             BackgroundColor="{StaticResource AccentColor}"
-             NavigationPage.HasNavigationBar="True"
-             NavigationPage.HasBackButton="True">
-
-    <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal"
-                     VerticalOptions="CenterAndExpand"
-                     HorizontalOptions="CenterAndExpand"
-                     Spacing="10">
-            <Label Text="Steps history"
-                   FontSize="18"
-                   TextColor="White"
-                   Opacity="3"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Center" />
-        </StackLayout>
-    </NavigationPage.TitleView>
-
+             BackgroundColor="{StaticResource AccentColor}">
+    <controls:Custom.NavigationBar>
+        <controls:ExtendNavigationBar HasBackButton="True"
+                                      Title="Năng lượng" />
+    </controls:Custom.NavigationBar>
     <ContentPage.Content>
         <controls:SplitViewThreeTab>
             <controls:SplitViewThreeTab.FirstView>
-                <StackLayout controls:SplitViewThreeTab.Title="Ngày">
+                <StackLayout controls:SplitViewThreeTab.Title="Ngày"
+                             BackgroundColor="{StaticResource AccentColor}">
+                    <StackLayout>
+                        <Grid  RowSpacing="0"
+                               ColumnSpacing="0"
+                               HeightRequest="80">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="0"
+                                   Source="arrow_left.png"
+                                   Aspect="AspectFit">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PreviousMonthCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Binding Day"
+                                   TextColor="White"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand" />
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="2"
+                                   Source="arrow_right.png"
+                                   Aspect="AspectFit">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PosteriorMonthCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </StackLayout>
+
+                    <BoxView Color="White"
+                             HeightRequest="1" />
+
                     <Grid RowSpacing="0"
+                          Padding="5,5,5,1"
                           ColumnSpacing="0"
-                          HeightRequest="300"
+                          HeightRequest="350"
                           BackgroundColor="{StaticResource AccentColor}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*" />
@@ -76,11 +106,55 @@
             </controls:SplitViewThreeTab.FirstView>
 
             <controls:SplitViewThreeTab.SecondView>
-                <StackLayout controls:SplitViewThreeTab.Title="Tuần">
+                <StackLayout controls:SplitViewThreeTab.Title="Tuần"
+                             BackgroundColor="{StaticResource AccentColor}">
+                    <StackLayout>
+                        <Grid  RowSpacing="0"
+                               ColumnSpacing="0"
+                               HeightRequest="80">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="0"
+                                   Source="arrow_left.png"
+                                   Aspect="AspectFit">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PreviousMonthCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Binding Day"
+                                   TextColor="White"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand" />
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="2"
+                                   Source="arrow_right.png"
+                                   Aspect="AspectFit">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PosteriorMonthCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </StackLayout>
+
+                    <BoxView Color="White"
+                             HeightRequest="1" />
+
                     <Grid RowSpacing="0"
                           Padding="5,5,5,1"
                           ColumnSpacing="0"
-                          HeightRequest="250"
+                          HeightRequest="350"
                           BackgroundColor="{StaticResource AccentColor}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*" />
@@ -126,11 +200,55 @@
             </controls:SplitViewThreeTab.SecondView>
 
             <controls:SplitViewThreeTab.ThreeView>
-                <StackLayout controls:SplitViewThreeTab.Title="Tháng">
+                <StackLayout controls:SplitViewThreeTab.Title="Tháng"
+                             BackgroundColor="{StaticResource AccentColor}">
+                    <StackLayout>
+                        <Grid  RowSpacing="0"
+                               ColumnSpacing="0"
+                               HeightRequest="80">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="0"
+                                   Source="arrow_left.png"
+                                   Aspect="AspectFit">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PreviousMonthCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Binding Day"
+                                   TextColor="White"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand" />
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="2"
+                                   Source="arrow_right.png"
+                                   Aspect="AspectFit">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PosteriorMonthCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </StackLayout>
+
+                    <BoxView Color="White"
+                             HeightRequest="1" />
+
                     <Grid RowSpacing="0"
                           Padding="5,5,5,1"
                           ColumnSpacing="0"
-                          HeightRequest="250"
+                          HeightRequest="350"
                           BackgroundColor="{StaticResource AccentColor}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*" />

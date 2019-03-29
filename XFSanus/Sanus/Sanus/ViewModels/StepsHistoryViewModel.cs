@@ -46,7 +46,7 @@ namespace Sanus.ViewModels
             _navigationService = navigationService;
             _chartService = chartService;
             _dialogService = dialogService;
-            // 
+            //
             GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
             GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
             GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);

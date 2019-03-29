@@ -51,34 +51,13 @@ namespace Sanus.Controls
 
         public static readonly BindableProperty CommandParameterProperty =
             BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(ExtendNavigationBar));
-        public string Title
-        {
-            get => (string)GetValue(TitleProperty);
-            set => SetValue(TitleProperty, value);
-        }
 
-        public bool HasBackButton
-        {
-            get => (bool)GetValue(HasBackButtonProperty);
-            set => SetValue(HasBackButtonProperty, value);
-        }
+        public string Title { get => (string)GetValue(TitleProperty); set => SetValue(TitleProperty, value); }
+        public bool HasBackButton { get => (bool)GetValue(HasBackButtonProperty); set => SetValue(HasBackButtonProperty, value); }
+        public string ActionIcon { get => (string)GetValue(ActionIconProperty); set => SetValue(ActionIconProperty, value); }
+        public ICommand ActionCommand { get => (ICommand)GetValue(ActionCommandProperty); set => SetValue(ActionCommandProperty, value); }
+        public object CommandParameter { get => (object)GetValue(CommandParameterProperty); set => SetValue(CommandParameterProperty, value); }
 
-        public string ActionIcon
-        {
-            get => (string)GetValue(ActionIconProperty);
-            set => SetValue(ActionIconProperty, value);
-        }
-
-        public ICommand ActionCommand
-        {
-            get => (ICommand)GetValue(ActionCommandProperty);
-            set => SetValue(ActionCommandProperty, value);
-        }
-        public object CommandParameter
-        {
-            get => (object)GetValue(CommandParameterProperty);
-            set => SetValue(CommandParameterProperty, value);
-        }
         public IList<View> LeftView
         {
             get => LeftLayout.Children;
@@ -118,9 +97,7 @@ namespace Sanus.Controls
             }
         }
         private Label TitleView { get; set; }
-
         private ContentView BackButton { get; set; }
-
         private ContentView ActionButton { get; set; }
 
         private static void TitleChanged(BindableObject bindable, object oldValue, object newValue)
@@ -136,6 +113,7 @@ namespace Sanus.Controls
 
             }
         }
+
         private static void ActionIconChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var bar = (ExtendNavigationBar)bindable;
@@ -148,6 +126,7 @@ namespace Sanus.Controls
 
             }
         }
+
         private static void HasBackButtonChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var bar = (ExtendNavigationBar)bindable;
@@ -158,7 +137,6 @@ namespace Sanus.Controls
         public ExtendNavigationBar()
         {
             InitializeComponent();
-
             InitAsDefault();
         }
 
@@ -169,15 +147,11 @@ namespace Sanus.Controls
             {
                 CreateTitleView();
             }
-
-
             //Action Button
             if (!string.IsNullOrEmpty(ActionIcon))
             {
                 CreateActionButton();
             }
-
-
             // back button
             BackButton = new ContentView
             {
@@ -198,10 +172,7 @@ namespace Sanus.Controls
 
             BackButton.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() =>
-                {
-                    (BindingContext as ViewModelBase)?.BackCommand.Execute();
-                })
+                Command = new Command(() => { (BindingContext as ViewModelBase)?.BackCommand.Execute(); })
             });
 
             LeftView.Add(BackButton);
@@ -223,17 +194,13 @@ namespace Sanus.Controls
                     InputTransparent = true,
                     Aspect = Aspect.AspectFit,
                     Source = ActionIcon,
-                    Transformations =
-                     new List<ITransformation>() { new TintTransformation("#ffffff") { EnableSolidColor = true } }
+                    Transformations = new List<ITransformation>() { new TintTransformation("#ffffff") { EnableSolidColor = true } }
                 }
             };
 
             ActionButton.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                Command = new Command(() =>
-                {
-                    ActionCommand?.Execute(CommandParameter);
-                })
+                Command = new Command(() => { ActionCommand?.Execute(CommandParameter); })
             });
             RightView.Add(ActionButton);
         }

@@ -1,6 +1,8 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Sanus.Services.Dialog;
+using Sanus.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +12,7 @@ namespace Sanus.ViewModels
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
-        protected INavigationService NavigationService { get; private set; }
+        protected INavigationService _navigationService { get; private set; }
 
         private string _title;
         public DelegateCommand BackCommand { get; }
@@ -20,7 +22,7 @@ namespace Sanus.ViewModels
 
         public ViewModelBase(INavigationService navigationService)
         {
-            NavigationService = navigationService;
+            _navigationService = navigationService;
             //
             BackCommand = new DelegateCommand(GoBack);
         }
@@ -43,9 +45,9 @@ namespace Sanus.ViewModels
         {
             return Task.CompletedTask;
         }
-        protected virtual void GoBack()
+        public async virtual void GoBack()
         {
-            NavigationService.GoBackAsync();
+            await _navigationService.GoBackAsync(null, true, true); ;
         }
 
         public virtual void Destroy()

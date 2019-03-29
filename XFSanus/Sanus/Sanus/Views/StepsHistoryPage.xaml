@@ -6,102 +6,12 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Sanus.Views.StepsHistoryPage"
-             NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource AccentColor}">
     <controls:Custom.NavigationBar>
-        <controls:ExtendNavigationBar HasBackButton="False"
-                                      Title="AS" />
+        <controls:ExtendNavigationBar HasBackButton="True"
+                                      Title="Bước đi" />
     </controls:Custom.NavigationBar>
     <ContentPage.Content>
-        <!--<StackLayout BackgroundColor="{StaticResource AccentColor}">
-            <StackLayout>
-                <Grid  RowSpacing="0"
-                       ColumnSpacing="0"
-                       HeightRequest="80">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="6*" />
-                        <ColumnDefinition Width="2*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Image Grid.Row="0"
-                           Grid.Column="0"
-                           Source="arrow_left.png"
-                           Aspect="AspectFit">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding PreviousDayCommand}" />
-                        </Image.GestureRecognizers>
-                    </Image>
-
-                    <Label Grid.Row="0"
-                           Grid.Column="1"
-                           Text="Binding Day"
-                           TextColor="White"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="CenterAndExpand" />
-
-                    <Image Grid.Row="0"
-                           Grid.Column="2"
-                           Source="arrow_right.png"
-                           Aspect="AspectFit">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding PosteriorDayCommand}" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                </Grid>
-            </StackLayout>
-
-            <BoxView Color="White"
-                     HeightRequest="1" />
-
-            <Grid RowSpacing="0"
-                  ColumnSpacing="0"
-                  HeightRequest="350">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10*" />
-                </Grid.RowDefinitions>
-
-                <forms:ChartView x:Name="chartViewDay"
-                                 Grid.Row="0"
-                                 Margin="0"
-                                 VerticalOptions="FillAndExpand"
-                                 HorizontalOptions="FillAndExpand"
-                                 Chart="{Binding StepsInDayChart}" />
-            </Grid>
-
-            <ListView BackgroundColor="{StaticResource AccentColor}"
-                      ItemsSource="{Binding StepsInDayCollection}"
-                      CachingStrategy="RecycleElement"
-                      HasUnevenRows="True"
-                      SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Margin="25,13,25,8"
-                                         Padding="5"
-                                         BackgroundColor="Transparent">
-                                <Label Text="{Binding Day, Converter={StaticResource DateToStringConverter}}"
-                                       FontAttributes="Bold"
-                                       FontSize="23"
-                                       TextColor="White" />
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Bước"
-                                           FontSize="18"
-                                           TextColor="White" />
-                                    <Label Text="{Binding Step}"
-                                           FontSize="18"
-                                           TextColor="White" />
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>-->
-
         <controls:SplitViewThreeTab>
             <controls:SplitViewThreeTab.FirstView>
                 <StackLayout controls:SplitViewThreeTab.Title="Ngày"
@@ -244,8 +154,7 @@
                     <Grid RowSpacing="0"
                           Padding="5,5,5,1"
                           ColumnSpacing="0"
-                          HeightRequest="350"
-                          BackgroundColor="{StaticResource AccentColor}">
+                          HeightRequest="350">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*" />
                         </Grid.RowDefinitions>
