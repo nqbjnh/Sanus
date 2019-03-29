@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using Microcharts;
+using Prism.Commands;
 using Prism.Navigation;
 using Sanus.Model;
 using Sanus.Services.Charts;
@@ -31,6 +32,13 @@ namespace Sanus.ViewModels
         public ObservableCollection<Distance> DistanceInWeekCollection { get { return _distanceInWeekCollection; } set => SetProperty(ref _distanceInWeekCollection, value); }
         public ObservableCollection<Distance> DistanceInMonthCollection { get { return _distanceInMonthCollection; } set => SetProperty(ref _distanceInMonthCollection, value); }
         //
+        public DelegateCommand PreviousDayCommand { get; }
+        public DelegateCommand PreviousWeekCommand { get; }
+        public DelegateCommand PreviousMonthCommand { get; }
+        public DelegateCommand PosteriorDayCommand { get; }
+        public DelegateCommand PosteriorWeekCommand { get; }
+        public DelegateCommand PosteriorMonthCommand { get; }
+        //
         public DistanceHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService) : base(navigationService)
         {
             _navigationService = navigationService;
@@ -38,22 +46,19 @@ namespace Sanus.ViewModels
             _dialogService = dialogService;
             //
             FetchHealthData();
+            //
+            PreviousDayCommand = new DelegateCommand(PreviousDaySelect);
+            PreviousWeekCommand = new DelegateCommand(PreviousWeekSelect);
+            PreviousMonthCommand = new DelegateCommand(PreviousMonthSelect);
+            PosteriorDayCommand = new DelegateCommand(PosteriorDaySelect);
+            PosteriorWeekCommand = new DelegateCommand(PosteriorWeekSelect);
+            PosteriorMonthCommand = new DelegateCommand(PosteriorMonthSelect);
         }
         public void FetchHealthData()
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().GetHealthPermissionAsync(async (result) =>
-            {
-                if (result)
-                {
-                    GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
-                    GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
-                    GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
-                }
-                else
-                {
-                    await _dialogService.ShowConfirmAsync("Load data fail", "Fail", "Ok", "Cancel");
-                }
-            });
+            GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
+            GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
+            GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
         }
         public bool GetDataInDayAsync(int year, int month, int day, string timeunit)
         {
@@ -104,6 +109,36 @@ namespace Sanus.ViewModels
             }
             //
             return collection;
+        }
+        //
+        private void PreviousSelects()
+        {
+            DateTime dateTime = Configuration.PreviousWeek(DateTime.Now);
+        }
+        //
+        private async void PreviousDaySelect()
+        {
+            await _dialogService.ShowAlertAsync("lùi một ngày", "lùi ngày", "Ok");
+        }
+        private async void PosteriorDaySelect()
+        {
+            await _dialogService.ShowAlertAsync("tiến một ngày", "tiến ngày", "Ok");
+        }
+        private async void PreviousWeekSelect()
+        {
+            await _dialogService.ShowAlertAsync("tiến một tuần", "tiến tuần", "Ok");
+        }
+        private async void PosteriorWeekSelect()
+        {
+            await _dialogService.ShowAlertAsync("lùi một tuần", "lùi tuần", "Ok");
+        }
+        private async void PreviousMonthSelect()
+        {
+            await _dialogService.ShowAlertAsync("lùi một tháng", "lùi tháng", "Ok");
+        }
+        private async void PosteriorMonthSelect()
+        {
+            await _dialogService.ShowAlertAsync("tiến một tháng", "tiến tháng", "Ok");
         }
     }
 }

@@ -47,9 +47,7 @@ namespace Sanus.ViewModels
             _chartService = chartService;
             _dialogService = dialogService;
             //
-            GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
-            GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
-            GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
+            FetchHealthData();
             //
             PreviousDayCommand = new DelegateCommand(PreviousDaySelect);
             PreviousWeekCommand = new DelegateCommand(PreviousWeekSelect);
@@ -66,7 +64,9 @@ namespace Sanus.ViewModels
         //
         public void FetchHealthData()
         {
-
+            GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
+            GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
+            GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
         }
         //
         public bool GetDataInDayAsync(int year, int month, int day, string timeunit)
