@@ -65,35 +65,35 @@ namespace Sanus.ViewModels
         //
         public bool GetDataInDayAsync(int year, int month, int day, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (datas) =>
             {
-                StepsInDayChart = await _chartService.GetChartAsyns(totalSteps, timeunit, Configuration.LINECHART);
-                StepsInDayCollection = GetStepsCollection(totalSteps);
+                StepsInDayChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.LINECHART);
+                StepsInDayCollection = GetCollection(datas);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
             return true;
         }
         //
         public bool GetDataInWeekAsync(int year, int month, int startDay, int endDay, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (datas) =>
             {
-                StepsInWeekChart = await _chartService.GetChartAsyns(totalSteps, timeunit, Configuration.POINTCHART);
-                StepsInWeekCollection = GetStepsCollection(totalSteps);
+                StepsInWeekChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.POINTCHART);
+                StepsInWeekCollection = GetCollection(datas);
             }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeunit);
             return true;
         }
         //
         public bool GetDataInMonthAsync(int year, int month, int day, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (datas) =>
             {
-                StepsInMonthChart = await _chartService.GetChartAsyns(totalSteps, timeunit, Configuration.POINTCHART);
-                StepsInMonthCollection = GetStepsCollection(totalSteps);
+                StepsInMonthChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.POINTCHART);
+                StepsInMonthCollection = GetCollection(datas);
             }, new DateTime(year, month, 1, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), Configuration.DAYS);
             return true;
         }
         //
-        private ObservableCollection<ValueData> GetStepsCollection(Dictionary<DateTime, double> list)
+        private ObservableCollection<ValueData> GetCollection(Dictionary<DateTime, double> list)
         {
             ObservableCollection<ValueData> collection = new ObservableCollection<ValueData>();
             foreach (KeyValuePair<DateTime, double> item in list)

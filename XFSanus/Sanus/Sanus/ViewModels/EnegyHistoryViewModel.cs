@@ -61,13 +61,13 @@ namespace Sanus.ViewModels
         }
         public bool GetDataInDayAsync(int year, int month, int day, string timeUnit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (totalDatas) =>
+            //lay tong so buoc theo mot khoang thoi gian
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (datas) =>
             {
-                //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                EnegyInDayChart = await _chartService.GetChartAsyns(totalDatas, timeUnit, Configuration.LINECHART);
+                EnegyInDayChart = await _chartService.GetChartAsyns(datas, timeUnit, Configuration.LINECHART);
                 // lay danh sach cac buoc theo thoi gian
-                EnegyInDayCollection = GetDataCollection(totalDatas);
+                EnegyInDayCollection = GetCollection(datas);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeUnit);
             return true;
         }
@@ -76,13 +76,13 @@ namespace Sanus.ViewModels
         {
             if (endDay <= DateTime.Now.Day && startDay + 7 == endDay)
             {
-                Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (totalDatas) =>
+                //lay tong so buoc theo mot khoang thoi gian
+                Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (datas) =>
                 {
-                    //lay tong so buoc theo mot khoang thoi gian
                     // ve bieu do
-                    EnegyInWeekChart = await _chartService.GetChartAsyns(totalDatas, timeUnit, Configuration.POINTCHART);
+                    EnegyInWeekChart = await _chartService.GetChartAsyns(datas, timeUnit, Configuration.POINTCHART);
                     // lay danh sach cac buoc theo thoi gian
-                    EnegyInWeekCollection = GetDataCollection(totalDatas);
+                    EnegyInWeekCollection = GetCollection(datas);
                 }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeUnit);
             }
             return true;
@@ -90,18 +90,18 @@ namespace Sanus.ViewModels
         //
         public bool GetDataInMonthAsync(int year, int month, int day, string timeUnit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (totalDatas) =>
+            //lay tong so buoc theo mot khoang thoi gian
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (datas) =>
             {
-                //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                EnegyInMonthChart = await _chartService.GetChartAsyns(totalDatas, timeUnit, Configuration.POINTCHART);
+                EnegyInMonthChart = await _chartService.GetChartAsyns(datas, timeUnit, Configuration.POINTCHART);
                 // lay danh sach cac buoc theo thoi gian
-                EnegyInMonthCollection = GetDataCollection(totalDatas);
+                EnegyInMonthCollection = GetCollection(datas);
             }, new DateTime(year, month, 1, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), Configuration.DAYS);
             return true;
         }
         //
-        private ObservableCollection<ValueData> GetDataCollection(Dictionary<DateTime, double> list)
+        private ObservableCollection<ValueData> GetCollection(Dictionary<DateTime, double> list)
         {
             ObservableCollection<ValueData> collection = new ObservableCollection<ValueData>();
             //

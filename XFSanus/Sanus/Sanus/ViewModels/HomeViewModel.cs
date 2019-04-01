@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microcharts;
 using Prism.Commands;
 using Prism.Navigation;
+using Sanus.Model;
 using Sanus.Services.Charts;
 using Sanus.Services.Dialog;
 using Sanus.Services.Health;
@@ -68,7 +71,7 @@ namespace Sanus.ViewModels
             {
                 if (result)
                 {
-                    GetData();
+                    GetData(2019, 3, 26, Configuration.DAYS);
                 }
                 else
                 {
@@ -77,34 +80,49 @@ namespace Sanus.ViewModels
             });
         }
 
-        public bool GetData()
+        public bool GetData(int year, int month, int day, string timeunit)
         {
             var platform = Xamarin.Forms.Device.RuntimePlatform;
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchSteps(async (totalSteps) =>
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (datas) =>
             {
-                Steps = Math.Floor(totalSteps).ToString();
+                double temp = GetValues(datas);
+                Steps = Math.Floor(temp).ToString();
                 // wait for them all to finish
-                StepsChart = await _chartService.GetRadialGaugeChartAsyns(_goal, double.Parse(Steps), color);
+                StepsChart = await _chartService.GetRadialGaugeChartAsyns(_goal, temp, color);
                 //
-                PercentChart = await _chartService.GetRadialGaugeChartAsyns(_goal, double.Parse(Steps), "#23b8f9");
+                PercentChart = await _chartService.GetRadialGaugeChartAsyns(_goal, temp, "#23b8f9");
                 Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
-            });
+            }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
 
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchMetersWalked((metersWalked) =>
+
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.DISTANCE, (datas) =>
             {
-                Distances = String.Format("{0:0.##}", metersWalked);
-            });
+                double temp = GetValues(datas);
+                Distances = String.Format("{0:0.##}", temp);
+            }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
 
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveMinutes((activeMinutes) =>
             {
                 TimeActive = Math.Floor(activeMinutes).ToString();
             });
 
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchActiveEnergyBurned((caloriesBurned) =>
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, (datas) =>
             {
-                Calories = string.Format("{0:0.###}", caloriesBurned);
-            });
+                double temp = GetValues(datas);
+                Calories = string.Format("{0:0.###}", temp);
+            }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
             return true;
+        }
+        //
+        private double GetValues(Dictionary<DateTime, double> list)
+        {
+            double temp = 0;
+            foreach (KeyValuePair<DateTime, double> item in list)
+            {
+                temp += item.Value;
+            }
+            //
+            return temp;
         }
     }
 }

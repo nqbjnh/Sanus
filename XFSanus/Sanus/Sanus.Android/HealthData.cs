@@ -29,43 +29,25 @@ namespace Sanus.Droid
         private GoogleApiClient mGoogleApiClient;
         private bool authInProgress;
         private Action<bool> AuthorizationCallBack;
-
+        //
         public async void StartSubscription(Action<bool> completionHandler)
         {
             var result = Subscribe();
             completionHandler(await result);
         }
-
+        //
         public async void CancelSubscription(Action<bool> completionHandler)
         {
             var result = CancelSubscription();
             completionHandler(await result);
         }
-
-        public async void FetchActiveEnergyBurned(Action<double> completionHandler)
-        {
-            var result = FetchGoogleFitCalories();
-            completionHandler(await result);
-        }
-
+        //
         public async void FetchActiveMinutes(Action<double> completionHandler)
         {
             var result = FetchGoogleFitActiveMinutes();
             completionHandler(await result);
         }
-
-        public async void FetchMetersWalked(Action<double> completionHandler)
-        {
-            var result = FetchGoogleFitDistance();
-            completionHandler(await result);
-        }
-
-        public async void FetchSteps(Action<double> completionHandler)
-        {
-            var result = FetchGoogleFitSteps();
-            completionHandler(await result);
-        }
-
+        //
         public async void FetchData(string valueData, Action<Dictionary<DateTime, double>> completionHandler, DateTime startDate, DateTime endDate, string timeUnit)
         {
             if (timeUnit.Equals(Configuration.DAYS))
@@ -79,7 +61,7 @@ namespace Sanus.Droid
                 completionHandler(await result);
             }
         }
-
+        //
         public void GetHealthPermissionAsync(Action<bool> completion)
         {
             AuthorizationCallBack = completion;
@@ -127,7 +109,7 @@ namespace Sanus.Droid
 #pragma warning restore CS0618 // Type or member is obsolete
             mGoogleApiClient.Connect();
         }
-
+        //
         public void HandleActivityResult(object sender, ActivityResultEventArgs e)
         {
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -150,7 +132,7 @@ namespace Sanus.Droid
                 }
             }
         }
-
+        //
         public async void OnConnected(Bundle bundle)
         {
             // This method is called when we connect to the LocationClient. We can start location updated directly form
@@ -160,7 +142,7 @@ namespace Sanus.Droid
             Log.Info("LocationClient", "Now connected to client");
             AuthorizationCallBack(true);
         }
-
+        //
         public void OnDisconnected()
         {
             // This method is called when we disconnect from the LocationClient.
@@ -168,7 +150,7 @@ namespace Sanus.Droid
             // You must implement this to implement the IGooglePlayServicesClientConnectionCallbacks Interface
             Log.Info("LocationClient", "Now disconnected from client");
         }
-
+        //
         public void OnConnectionFailed(ConnectionResult bundle)
         {
             // This method is used to handle connection issues with the Google Play Services Client (LocationClient). 
@@ -177,9 +159,9 @@ namespace Sanus.Droid
             // You must implement this to implement the IGooglePlayServicesClientOnConnectionFailedListener Interface
             Log.Info("LocationClient", "Connection failed, attempting to reach google play services");
         }
-
+        //
         public void OnConnectionSuspended(int i) { }
-
+        //
         public async Task<bool> Subscribe()
         {
             var status = await FitnessClass.RecordingApi.SubscribeAsync(mGoogleApiClient, DataType.TypeStepCountCumulative);
@@ -202,7 +184,7 @@ namespace Sanus.Droid
                 return false;
             }
         }
-
+        //
         public async Task<bool> CancelSubscription()
         {
             string dataTypeStr = DataType.TypeStepCountCumulative.ToString();
@@ -221,67 +203,6 @@ namespace Sanus.Droid
                 return false;
             }
         }
-
-        public async Task<double> FetchGoogleFitSteps()
-        {
-            DataReadRequest readRequest = QuerySteps();
-
-            var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
-            var steps = 0.0;
-            if (dataReadResult.Buckets.Count > 0)
-            {
-                foreach (Bucket bucket in dataReadResult.Buckets)
-                {
-                    foreach (DataSet dataSet in bucket.DataSets)
-                    {
-                        steps += GetDataSetValuesSum(dataSet);
-                    }
-                }
-            }
-            PrintData(dataReadResult);
-            return steps;
-        }
-
-        public async Task<double> FetchGoogleFitDistance()
-        {
-            DataReadRequest readRequest = QueryDistance();
-
-            var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
-            var distance = 0.0;
-            if (dataReadResult.Buckets.Count > 0)
-            {
-                foreach (Bucket bucket in dataReadResult.Buckets)
-                {
-                    foreach (DataSet dataSet in bucket.DataSets)
-                    {
-                        distance += GetDataSetValuesSum(dataSet);
-                    }
-                }
-            }
-            PrintData(dataReadResult);
-            return distance;
-        }
-
-        public async Task<double> FetchGoogleFitCalories()
-        {
-            DataReadRequest readRequest = QueryActiveEnergy();
-
-            var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
-            var calories = 0.0;
-            if (dataReadResult.Buckets.Count > 0)
-            {
-                foreach (Bucket bucket in dataReadResult.Buckets)
-                {
-                    foreach (DataSet dataSet in bucket.DataSets)
-                    {
-                        calories += (GetDataSetValuesSum(dataSet));
-                    }
-                }
-            }
-            PrintData(dataReadResult);
-            return calories;
-        }
-
         public async Task<Dictionary<DateTime, double>> FetchGoogleFitData(string value, DateTime startDate, DateTime endDate, TimeUnit timeUnit)
         {
             Dictionary<DateTime, double> listdata = new Dictionary<DateTime, double>();
@@ -295,7 +216,7 @@ namespace Sanus.Droid
                 {
                     foreach (DataSet dataSet in bucket.DataSets)
                     {
-                        foreach (double item in GetDataSetValuess(dataSet))
+                        foreach (double item in GetValues(dataSet))
                         {
                             listdata.Add(
                                 new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
@@ -309,7 +230,7 @@ namespace Sanus.Droid
             PrintData(dataReadResult);
             return listdata;
         }
-
+        //
         public async Task<double> FetchGoogleFitActiveMinutes()
         {
             DataReadRequest readRequest = QueryActiveEnergy();
@@ -331,32 +252,7 @@ namespace Sanus.Droid
             return totalActiveTime;
         }
 
-        private static double GetDataSetValuesSum(DataSet dataSet)
-        {
-            var dataSetSum = 0.0;
-            foreach (DataPoint point in dataSet.DataPoints)
-            {
-                foreach (Field field in point.DataType.Fields)
-                {
-                    try
-                    {
-                        string name = field.Name;
-                        if (name.Equals(Configuration.STEPS))
-                        {
-                            dataSetSum += Convert.ToDouble(point.GetValue(field).AsInt());
-                        }
-                        else
-                        {
-                            dataSetSum += Convert.ToDouble(point.GetValue(field).AsFloat());
-                        }
-                    }
-                    catch (Exception) { }
-                }
-            }
-            return dataSetSum;
-        }
-
-        private static List<double> GetDataSetValuess(DataSet dataSet)
+        private static List<double> GetValues(DataSet dataSet)
         {
             List<double> list = new List<double>();
             var dataSetSum = 0.0;
@@ -364,48 +260,22 @@ namespace Sanus.Droid
             {
                 foreach (Field field in point.DataType.Fields)
                 {
-                    try
+                    string name = field.Name;
+                    if (name.Equals(Configuration.STEPS))
                     {
-                        string name = field.Name;
-                        if (name.Equals(Configuration.STEPS))
-                        {
-                            dataSetSum += Convert.ToDouble(point.GetValue(field).AsInt());
-                            list.Add(dataSetSum);
-                        }
-                        else
-                        {
-                            dataSetSum += Convert.ToDouble(point.GetValue(field).AsFloat());
-                            list.Add(dataSetSum);
-                        }
+                        dataSetSum += Convert.ToDouble(point.GetValue(field).AsInt());
+                        list.Add(dataSetSum);
                     }
-                    catch (Exception) { }
+                    else
+                    {
+                        dataSetSum += Convert.ToDouble(point.GetValue(field).AsFloat());
+                        list.Add(dataSetSum);
+                    }
                 }
             }
             return list;
         }
 
-        private static DataReadRequest QuerySteps()
-        {
-            DateTime endTime = DateTime.Now;
-            DateTime startTime = DateTime.Today;
-            long endTimeElapsed = GetMsSinceEpochAsLong(endTime);
-            long startTimeElapsed = GetMsSinceEpochAsLong(startTime);
-            //
-            DataSource dataSource = new DataSource.Builder()
-                .SetAppPackageName(Configuration.APPPACKAGENAME)
-                .SetDataType(DataType.TypeStepCountDelta)
-                .SetStreamName(Configuration.STREAMNAME)
-                .SetType(DataSource.TypeDerived)
-                .Build();
-
-            var readRequest = new DataReadRequest.Builder()
-                .Aggregate(dataSource, DataType.AggregateStepCountDelta)
-                .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
-                .BucketByTime(1, TimeUnit.Days)
-                .Build();
-
-            return readRequest;
-        }
         private static DataReadRequest QueryActiveEnergy()
         {
             DateTime endTime = DateTime.Now;
@@ -422,58 +292,41 @@ namespace Sanus.Droid
             return readRequest;
         }
 
-        private static DataReadRequest QueryDistance()
-        {
-            DateTime endTime = DateTime.Now;
-            DateTime startTime = DateTime.Today;
-            long endTimeElapsed = GetMsSinceEpochAsLong(endTime);
-            long startTimeElapsed = GetMsSinceEpochAsLong(startTime);
-            //
-            var readRequest = new DataReadRequest.Builder()
-                .Aggregate(DataType.TypeDistanceDelta, DataType.AggregateDistanceDelta)
-                .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
-                .BucketByTime(1, TimeUnit.Days)
-                .Build();
-
-            return readRequest;
-        }
-
         private static DataReadRequest QueryData(string value, DateTime startDate, DateTime endDate, TimeUnit timeUnit)
         {
             long endTimeElapsed = GetMsSinceEpochAsLong(endDate);
             long startTimeElapsed = GetMsSinceEpochAsLong(startDate);
-
             DataReadRequest readRequest = null;
-            if (value.Equals(Configuration.DISTANCE))
+            switch (value)
             {
-                readRequest = new DataReadRequest.Builder()
-                    .Aggregate(DataType.TypeDistanceDelta, DataType.AggregateDistanceDelta)
-                    .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
-                    .BucketByTime(1, timeUnit)
-                    .Build();
-            }
-            else if (value.Equals(Configuration.CALORIES))
-            {
-                readRequest = new DataReadRequest.Builder()
-                    .Aggregate(DataType.TypeCaloriesExpended, DataType.AggregateCaloriesExpended)
-                    .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
-                    .BucketByTime(1, timeUnit)
-                    .Build();
-            }
-            else if (value.Equals(Configuration.STEPS))
-            {
-                DataSource dataSource = new DataSource.Builder()
-                    .SetAppPackageName(Configuration.APPPACKAGENAME)
-                    .SetDataType(DataType.TypeStepCountDelta)
-                    .SetStreamName(Configuration.STREAMNAME)
-                    .SetType(DataSource.TypeDerived)
-                    .Build();
-                //
-                readRequest = new DataReadRequest.Builder()
-                     .Aggregate(dataSource, DataType.AggregateStepCountDelta)
-                     .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
-                     .BucketByTime(1, timeUnit)
-                     .Build();
+                case Configuration.DISTANCE:
+                    readRequest = new DataReadRequest.Builder()
+                        .Aggregate(DataType.TypeDistanceDelta, DataType.AggregateDistanceDelta)
+                        .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                        .BucketByTime(1, timeUnit)
+                        .Build();
+                    break;
+                case Configuration.CALORIES:
+                    readRequest = new DataReadRequest.Builder()
+                        .Aggregate(DataType.TypeCaloriesExpended, DataType.AggregateCaloriesExpended)
+                        .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                        .BucketByTime(1, timeUnit)
+                        .Build();
+                    break;
+                case Configuration.STEPS:
+                    DataSource dataSource = new DataSource.Builder()
+                        .SetAppPackageName(Configuration.APPPACKAGENAME)
+                        .SetDataType(DataType.TypeStepCountDelta)
+                        .SetStreamName(Configuration.STREAMNAME)
+                        .SetType(DataSource.TypeDerived)
+                        .Build();
+                    //
+                    readRequest = new DataReadRequest.Builder()
+                         .Aggregate(dataSource, DataType.AggregateStepCountDelta)
+                         .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                         .BucketByTime(1, timeUnit)
+                         .Build();
+                    break;
             }
             return readRequest;
         }

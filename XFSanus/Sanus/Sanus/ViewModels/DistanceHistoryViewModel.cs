@@ -61,44 +61,44 @@ namespace Sanus.ViewModels
         }
         public bool GetDataInDayAsync(int year, int month, int day, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.DISTANCE, async (totalDatas) =>
+            //lay tong so buoc theo mot khoang thoi gian
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.DISTANCE, async (datas) =>
             {
-                //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                DistanceInDayChart = await _chartService.GetChartAsyns(totalDatas, timeunit, Configuration.LINECHART);
+                DistanceInDayChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.LINECHART);
                 // lay danh sach cac buoc theo thoi gian
-                DistanceInDayCollection = GetDataCollection(totalDatas);
+                DistanceInDayCollection = GetCollection(datas);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
             return true;
         }
         //
         public bool GetDataInWeekAsync(int year, int month, int startDay, int endDay, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.DISTANCE, async (totalDatas) =>
+            //lay tong so buoc theo mot khoang thoi gian
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.DISTANCE, async (datas) =>
             {
-                //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                DistanceInWeekChart = await _chartService.GetChartAsyns(totalDatas, timeunit, Configuration.POINTCHART);
+                DistanceInWeekChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.POINTCHART);
                 // lay danh sach cac buoc theo thoi gian
-                DistanceInWeekCollection = GetDataCollection(totalDatas);
+                DistanceInWeekCollection = GetCollection(datas);
             }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeunit);
             return true;
         }
         //
         public bool GetDataInMonthAsync(int year, int month, int day, string timeunit)
         {
-            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.DISTANCE, async (totalDatas) =>
+            //lay tong so buoc theo mot khoang thoi gian
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.DISTANCE, async (datas) =>
              {
-                 //lay tong so buoc theo mot khoang thoi gian
                  // ve bieu do
-                 DistanceInMonthChart = await _chartService.GetChartAsyns(totalDatas, timeunit, Configuration.POINTCHART);
+                 DistanceInMonthChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.POINTCHART);
                  // lay danh sach cac buoc theo thoi gian
-                 DistanceInMonthCollection = GetDataCollection(totalDatas);
+                 DistanceInMonthCollection = GetCollection(datas);
              }, new DateTime(year, month, 1, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), Configuration.DAYS);
             return true;
         }
         //
-        private ObservableCollection<ValueData> GetDataCollection(Dictionary<DateTime, double> list)
+        private ObservableCollection<ValueData> GetCollection(Dictionary<DateTime, double> list)
         {
             ObservableCollection<ValueData> collection = new ObservableCollection<ValueData>();
             //
