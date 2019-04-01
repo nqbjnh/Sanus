@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using Microcharts;
 using Prism.Commands;
 using Prism.Navigation;
@@ -21,16 +20,16 @@ namespace Sanus.ViewModels
         private Chart _distanceInDayChart;
         private Chart _distanceInWeekChart;
         private Chart _distanceInMonthChart;
-        private ObservableCollection<Distance> _distanceInDayCollection;
-        private ObservableCollection<Distance> _distanceInWeekCollection;
-        private ObservableCollection<Distance> _distanceInMonthCollection;
+        private ObservableCollection<ValueData> _distanceInDayCollection;
+        private ObservableCollection<ValueData> _distanceInWeekCollection;
+        private ObservableCollection<ValueData> _distanceInMonthCollection;
         //
         public Chart DistanceInDayChart { get { return _distanceInDayChart; } set => SetProperty(ref _distanceInDayChart, value); }
         public Chart DistanceInWeekChart { get { return _distanceInWeekChart; } set => SetProperty(ref _distanceInWeekChart, value); }
         public Chart DistanceInMonthChart { get { return _distanceInMonthChart; } set => SetProperty(ref _distanceInMonthChart, value); }
-        public ObservableCollection<Distance> DistanceInDayCollection { get { return _distanceInDayCollection; } set => SetProperty(ref _distanceInDayCollection, value); }
-        public ObservableCollection<Distance> DistanceInWeekCollection { get { return _distanceInWeekCollection; } set => SetProperty(ref _distanceInWeekCollection, value); }
-        public ObservableCollection<Distance> DistanceInMonthCollection { get { return _distanceInMonthCollection; } set => SetProperty(ref _distanceInMonthCollection, value); }
+        public ObservableCollection<ValueData> DistanceInDayCollection { get { return _distanceInDayCollection; } set => SetProperty(ref _distanceInDayCollection, value); }
+        public ObservableCollection<ValueData> DistanceInWeekCollection { get { return _distanceInWeekCollection; } set => SetProperty(ref _distanceInWeekCollection, value); }
+        public ObservableCollection<ValueData> DistanceInMonthCollection { get { return _distanceInMonthCollection; } set => SetProperty(ref _distanceInMonthCollection, value); }
         //
         public DelegateCommand PreviousDayCommand { get; }
         public DelegateCommand PreviousWeekCommand { get; }
@@ -57,7 +56,7 @@ namespace Sanus.ViewModels
         public void FetchHealthData()
         {
             GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
-            GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
+            GetDataInWeekAsync(DateTime.Now.Year, 3, 20, 27, Configuration.DAYS);
             GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
         }
         public bool GetDataInDayAsync(int year, int month, int day, string timeunit)
@@ -66,7 +65,7 @@ namespace Sanus.ViewModels
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                DistanceInDayChart = await _chartService.GetLineChartAsyns(totalDatas, timeunit);
+                DistanceInDayChart = await _chartService.GetChartAsyns(totalDatas, timeunit, Configuration.LINECHART);
                 // lay danh sach cac buoc theo thoi gian
                 DistanceInDayCollection = GetDataCollection(totalDatas);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
@@ -79,7 +78,7 @@ namespace Sanus.ViewModels
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                DistanceInWeekChart = await _chartService.GetPointChartAsyns(totalDatas, timeunit);
+                DistanceInWeekChart = await _chartService.GetChartAsyns(totalDatas, timeunit, Configuration.POINTCHART);
                 // lay danh sach cac buoc theo thoi gian
                 DistanceInWeekCollection = GetDataCollection(totalDatas);
             }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeunit);
@@ -92,20 +91,20 @@ namespace Sanus.ViewModels
              {
                  //lay tong so buoc theo mot khoang thoi gian
                  // ve bieu do
-                 DistanceInMonthChart = await _chartService.GetPointChartAsyns(totalDatas, timeunit);
+                 DistanceInMonthChart = await _chartService.GetChartAsyns(totalDatas, timeunit, Configuration.POINTCHART);
                  // lay danh sach cac buoc theo thoi gian
                  DistanceInMonthCollection = GetDataCollection(totalDatas);
              }, new DateTime(year, month, 1, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), Configuration.DAYS);
             return true;
         }
         //
-        private ObservableCollection<Distance> GetDataCollection(Dictionary<DateTime, double> list)
+        private ObservableCollection<ValueData> GetDataCollection(Dictionary<DateTime, double> list)
         {
-            ObservableCollection<Distance> collection = new ObservableCollection<Distance>();
+            ObservableCollection<ValueData> collection = new ObservableCollection<ValueData>();
             //
             foreach (KeyValuePair<DateTime, double> item in list)
             {
-                collection.Add(new Distance() { Day = item.Key, Step = item.Value });
+                collection.Add(new ValueData() { Day = item.Key, Value = item.Value });
             }
             //
             return collection;

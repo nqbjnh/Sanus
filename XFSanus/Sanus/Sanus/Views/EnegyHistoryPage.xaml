@@ -90,10 +90,13 @@
                                                FontSize="23"
                                                TextColor="White" />
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Bước"
+                                            <Label Text="Tiêu hao: "
                                                    FontSize="18"
                                                    TextColor="White" />
-                                            <Label Text="{Binding Step}"
+                                            <Label Text="{Binding Value}"
+                                                   FontSize="18"
+                                                   TextColor="White" />
+                                            <Label Text=" năng lượng"
                                                    FontSize="18"
                                                    TextColor="White" />
                                         </StackLayout>
@@ -184,10 +187,13 @@
                                                FontSize="23"
                                                TextColor="White" />
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Bước"
+                                            <Label Text="Tiêu hao: "
                                                    FontSize="18"
                                                    TextColor="White" />
-                                            <Label Text="{Binding Step}"
+                                            <Label Text="{Binding Value}"
+                                                   FontSize="18"
+                                                   TextColor="White" />
+                                            <Label Text=" năng lượng"
                                                    FontSize="18"
                                                    TextColor="White" />
                                         </StackLayout>
@@ -278,10 +284,13 @@
                                                FontSize="23"
                                                TextColor="White" />
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="Bước"
+                                            <Label Text="Tiêu hao: "
                                                    FontSize="18"
                                                    TextColor="White" />
-                                            <Label Text="{Binding Step}"
+                                            <Label Text="{Binding Value}"
+                                                   FontSize="18"
+                                                   TextColor="White" />
+                                            <Label Text=" năng lượng"
                                                    FontSize="18"
                                                    TextColor="White" />
                                         </StackLayout>

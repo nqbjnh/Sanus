@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
@@ -16,7 +13,6 @@ namespace Sanus.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue(LANGUAGE_SETTINGS_KEY, value);
-
                 if (!string.IsNullOrEmpty(value))
                 {
                     Thread.CurrentThread.CurrentCulture = new CultureInfo(value);

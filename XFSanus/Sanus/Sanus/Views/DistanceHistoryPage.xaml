@@ -92,7 +92,7 @@
                                             <Label Text="Khoảng cách (m)"
                                                    FontSize="18"
                                                    TextColor="White" />
-                                            <Label Text="{Binding Step}"
+                                            <Label Text="{Binding Value}"
                                                    FontSize="18"
                                                    TextColor="White" />
                                         </StackLayout>
@@ -185,7 +185,7 @@
                                             <Label Text="Khoảng cách (m)"
                                                    FontSize="18"
                                                    TextColor="White" />
-                                            <Label Text="{Binding Step}"
+                                            <Label Text="{Binding Value}"
                                                    FontSize="18"
                                                    TextColor="White" />
                                         </StackLayout>
@@ -279,7 +279,7 @@
                                             <Label Text="Khoảng cách (m)"
                                                    FontSize="18"
                                                    TextColor="White" />
-                                            <Label Text="{Binding Step}"
+                                            <Label Text="{Binding Value}"
                                                    FontSize="18"
                                                    TextColor="White" />
                                         </StackLayout>

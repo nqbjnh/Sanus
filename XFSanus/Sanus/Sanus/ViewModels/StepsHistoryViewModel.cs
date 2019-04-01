@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Text;
-using System.Threading.Tasks;
 using Microcharts;
 using Prism.Commands;
 using Prism.Navigation;
@@ -23,16 +20,16 @@ namespace Sanus.ViewModels
         private Chart _stepsInDayChart;
         private Chart _stepsInWeekChart;
         private Chart _stepsInMonthChart;
-        private ObservableCollection<Steps> _stepsInDayCollection;
-        private ObservableCollection<Steps> _stepsInWeekCollection;
-        private ObservableCollection<Steps> _stepsInMonthCollection;
+        private ObservableCollection<ValueData> _stepsInDayCollection;
+        private ObservableCollection<ValueData> _stepsInWeekCollection;
+        private ObservableCollection<ValueData> _stepsInMonthCollection;
         //
         public Chart StepsInDayChart { get { return _stepsInDayChart; } set => SetProperty(ref _stepsInDayChart, value); }
         public Chart StepsInWeekChart { get { return _stepsInWeekChart; } set => SetProperty(ref _stepsInWeekChart, value); }
         public Chart StepsInMonthChart { get { return _stepsInMonthChart; } set => SetProperty(ref _stepsInMonthChart, value); }
-        public ObservableCollection<Steps> StepsInDayCollection { get => _stepsInDayCollection; set => SetProperty(ref _stepsInDayCollection, value); }
-        public ObservableCollection<Steps> StepsInWeekCollection { get => _stepsInWeekCollection; set => SetProperty(ref _stepsInWeekCollection, value); }
-        public ObservableCollection<Steps> StepsInMonthCollection { get => _stepsInMonthCollection; set => SetProperty(ref _stepsInMonthCollection, value); }
+        public ObservableCollection<ValueData> StepsInDayCollection { get => _stepsInDayCollection; set => SetProperty(ref _stepsInDayCollection, value); }
+        public ObservableCollection<ValueData> StepsInWeekCollection { get => _stepsInWeekCollection; set => SetProperty(ref _stepsInWeekCollection, value); }
+        public ObservableCollection<ValueData> StepsInMonthCollection { get => _stepsInMonthCollection; set => SetProperty(ref _stepsInMonthCollection, value); }
         //
         public DelegateCommand PreviousDayCommand { get; }
         public DelegateCommand PreviousWeekCommand { get; }
@@ -57,15 +54,12 @@ namespace Sanus.ViewModels
             PosteriorMonthCommand = new DelegateCommand(PosteriorMonthSelect);
         }
         //
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-
-        }
+        public override void OnNavigatedTo(INavigationParameters parameters) { }
         //
         public void FetchHealthData()
         {
             GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
-            GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
+            GetDataInWeekAsync(DateTime.Now.Year, 3, 20, 27, Configuration.DAYS);
             GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
         }
         //
@@ -73,7 +67,7 @@ namespace Sanus.ViewModels
         {
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
             {
-                StepsInDayChart = await _chartService.GetLineChartAsyns(totalSteps, timeunit);
+                StepsInDayChart = await _chartService.GetChartAsyns(totalSteps, timeunit, Configuration.LINECHART);
                 StepsInDayCollection = GetStepsCollection(totalSteps);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
             return true;
@@ -83,7 +77,7 @@ namespace Sanus.ViewModels
         {
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
             {
-                StepsInWeekChart = await _chartService.GetPointChartAsyns(totalSteps, timeunit);
+                StepsInWeekChart = await _chartService.GetChartAsyns(totalSteps, timeunit, Configuration.POINTCHART);
                 StepsInWeekCollection = GetStepsCollection(totalSteps);
             }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeunit);
             return true;
@@ -93,19 +87,18 @@ namespace Sanus.ViewModels
         {
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (totalSteps) =>
             {
-                StepsInMonthChart = await _chartService.GetPointChartAsyns(totalSteps, timeunit);
+                StepsInMonthChart = await _chartService.GetChartAsyns(totalSteps, timeunit, Configuration.POINTCHART);
                 StepsInMonthCollection = GetStepsCollection(totalSteps);
             }, new DateTime(year, month, 1, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), Configuration.DAYS);
             return true;
         }
         //
-        private ObservableCollection<Steps> GetStepsCollection(Dictionary<DateTime, double> list)
+        private ObservableCollection<ValueData> GetStepsCollection(Dictionary<DateTime, double> list)
         {
-            ObservableCollection<Steps> collection = new ObservableCollection<Steps>();
-            //
+            ObservableCollection<ValueData> collection = new ObservableCollection<ValueData>();
             foreach (KeyValuePair<DateTime, double> item in list)
             {
-                collection.Add(new Steps() { Day = item.Key, Step = item.Value });
+                collection.Add(new ValueData() { Day = item.Key, Value = item.Value });
             }
             //
             return collection;

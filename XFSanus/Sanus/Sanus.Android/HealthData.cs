@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.Gms.Common;
 using Android.Gms.Common.Apis;
 using Android.Gms.Fitness;
 using Android.Gms.Fitness.Data;
 using Android.Gms.Fitness.Request;
 using Android.Gms.Fitness.Result;
-using Android.Gms.Fitness.Service;
 using Android.OS;
-using Android.Preferences;
 using Android.Util;
 using Java.Util.Concurrent;
 using Sanus.Droid;
@@ -31,8 +28,6 @@ namespace Sanus.Droid
     {
         private GoogleApiClient mGoogleApiClient;
         private bool authInProgress;
-        private const int REQUEST_OAUTH = 1;
-        private const string DATE_FORMAT = "yyyy.MM.dd HH:mm:ss";
         private Action<bool> AuthorizationCallBack;
 
         public async void StartSubscription(Action<bool> completionHandler)
@@ -117,7 +112,7 @@ namespace Sanus.Droid
                             Log.Info("apiClient", "Attempting to resolve failed connection");
                             authInProgress = true;
 #pragma warning disable CS0618 // Type or member is obsolete
-                            result.StartResolutionForResult((Activity)Forms.Context, REQUEST_OAUTH);
+                            result.StartResolutionForResult((Activity)Forms.Context, Configuration.REQUESTOAUTH);
 #pragma warning restore CS0618 // Type or member is obsolete
                         }
                         catch (Exception e)
@@ -138,7 +133,7 @@ namespace Sanus.Droid
 #pragma warning disable CS0618 // Type or member is obsolete
             ((MainActivity)Forms.Context).ActivityResult -= HandleActivityResult;
 #pragma warning restore CS0618 // Type or member is obsolete
-            if (e.RequestCode == REQUEST_OAUTH)
+            if (e.RequestCode == Configuration.REQUESTOAUTH)
             {
                 authInProgress = false;
                 if (e.ResultCode == Result.Ok)
@@ -346,7 +341,7 @@ namespace Sanus.Droid
                     try
                     {
                         string name = field.Name;
-                        if (name.Equals("steps"))
+                        if (name.Equals(Configuration.STEPS))
                         {
                             dataSetSum += Convert.ToDouble(point.GetValue(field).AsInt());
                         }
@@ -372,7 +367,7 @@ namespace Sanus.Droid
                     try
                     {
                         string name = field.Name;
-                        if (name.Equals("steps"))
+                        if (name.Equals(Configuration.STEPS))
                         {
                             dataSetSum += Convert.ToDouble(point.GetValue(field).AsInt());
                             list.Add(dataSetSum);
@@ -392,22 +387,21 @@ namespace Sanus.Droid
         private static DataReadRequest QuerySteps()
         {
             DateTime endTime = DateTime.Now;
-            //DateTime startTime = endTime.Subtract(TimeSpan.FromDays(7));
             DateTime startTime = DateTime.Today;
             long endTimeElapsed = GetMsSinceEpochAsLong(endTime);
             long startTimeElapsed = GetMsSinceEpochAsLong(startTime);
             //
             DataSource dataSource = new DataSource.Builder()
-                .SetAppPackageName("com.google.android.gms")
+                .SetAppPackageName(Configuration.APPPACKAGENAME)
                 .SetDataType(DataType.TypeStepCountDelta)
+                .SetStreamName(Configuration.STREAMNAME)
                 .SetType(DataSource.TypeDerived)
-                .SetStreamName("estimated_steps")
                 .Build();
 
             var readRequest = new DataReadRequest.Builder()
                 .Aggregate(dataSource, DataType.AggregateStepCountDelta)
-                .BucketByTime(1, TimeUnit.Days)
                 .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                .BucketByTime(1, TimeUnit.Days)
                 .Build();
 
             return readRequest;
@@ -415,15 +409,14 @@ namespace Sanus.Droid
         private static DataReadRequest QueryActiveEnergy()
         {
             DateTime endTime = DateTime.Now;
-            //DateTime startTime = endTime.Subtract(TimeSpan.FromDays(7));
             DateTime startTime = DateTime.Today;
             long endTimeElapsed = GetMsSinceEpochAsLong(endTime);
             long startTimeElapsed = GetMsSinceEpochAsLong(startTime);
             //
             var readRequest = new DataReadRequest.Builder()
                 .Aggregate(DataType.TypeCaloriesExpended, DataType.AggregateCaloriesExpended)
-                .BucketByTime(1, TimeUnit.Days)
                 .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                .BucketByTime(1, TimeUnit.Days)
                 .Build();
 
             return readRequest;
@@ -432,15 +425,14 @@ namespace Sanus.Droid
         private static DataReadRequest QueryDistance()
         {
             DateTime endTime = DateTime.Now;
-            //DateTime startTime = endTime.Subtract(TimeSpan.FromDays(7));
             DateTime startTime = DateTime.Today;
             long endTimeElapsed = GetMsSinceEpochAsLong(endTime);
             long startTimeElapsed = GetMsSinceEpochAsLong(startTime);
             //
             var readRequest = new DataReadRequest.Builder()
                 .Aggregate(DataType.TypeDistanceDelta, DataType.AggregateDistanceDelta)
-                .BucketByTime(1, TimeUnit.Days)
                 .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                .BucketByTime(1, TimeUnit.Days)
                 .Build();
 
             return readRequest;
@@ -456,31 +448,31 @@ namespace Sanus.Droid
             {
                 readRequest = new DataReadRequest.Builder()
                     .Aggregate(DataType.TypeDistanceDelta, DataType.AggregateDistanceDelta)
-                    .BucketByTime(1, timeUnit)
                     .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                    .BucketByTime(1, timeUnit)
                     .Build();
             }
             else if (value.Equals(Configuration.CALORIES))
             {
                 readRequest = new DataReadRequest.Builder()
                     .Aggregate(DataType.TypeCaloriesExpended, DataType.AggregateCaloriesExpended)
-                    .BucketByTime(1, timeUnit)
                     .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                    .BucketByTime(1, timeUnit)
                     .Build();
             }
             else if (value.Equals(Configuration.STEPS))
             {
                 DataSource dataSource = new DataSource.Builder()
-                    .SetAppPackageName("com.google.android.gms")
+                    .SetAppPackageName(Configuration.APPPACKAGENAME)
                     .SetDataType(DataType.TypeStepCountDelta)
+                    .SetStreamName(Configuration.STREAMNAME)
                     .SetType(DataSource.TypeDerived)
-                    .SetStreamName("estimated_steps")
                     .Build();
                 //
                 readRequest = new DataReadRequest.Builder()
                      .Aggregate(dataSource, DataType.AggregateStepCountDelta)
-                     .BucketByTime(1, timeUnit)
                      .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                     .BucketByTime(1, timeUnit)
                      .Build();
             }
             return readRequest;
@@ -526,9 +518,9 @@ namespace Sanus.Droid
                 Log.Info("TAG", "Data point:");
                 Log.Info("TAG", "\tType: " + dp.DataType.Name);
                 Log.Info("TAG", "\tStart: " + new DateTime(1970, 1, 1).AddMilliseconds(
-                    dp.GetStartTime(TimeUnit.Milliseconds)).ToString(DATE_FORMAT));
+                    dp.GetStartTime(TimeUnit.Milliseconds)).ToString(Configuration.DATEFORMAT));
                 Log.Info("TAG", "\tEnd: " + new DateTime(1970, 1, 1).AddMilliseconds(
-                    dp.GetEndTime(TimeUnit.Milliseconds)).ToString(DATE_FORMAT));
+                    dp.GetEndTime(TimeUnit.Milliseconds)).ToString(Configuration.DATEFORMAT));
                 foreach (Field field in dp.DataType.Fields)
                 {
                     Log.Info("TAG", "\tField: " + field.Name +

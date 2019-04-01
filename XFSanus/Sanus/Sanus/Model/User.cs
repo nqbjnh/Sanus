@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sanus.Model
+﻿namespace Sanus.Model
 {
     public class User
     {

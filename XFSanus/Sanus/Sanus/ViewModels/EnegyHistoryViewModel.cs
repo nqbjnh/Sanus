@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using Microcharts;
 using Prism.Commands;
 using Prism.Navigation;
@@ -21,16 +20,16 @@ namespace Sanus.ViewModels
         private Chart _distanceInDayChart;
         private Chart _distanceInWeekChart;
         private Chart _distanceInMonthChart;
-        private ObservableCollection<Enegy> _distanceInDayCollection;
-        private ObservableCollection<Enegy> _distanceInWeekCollection;
-        private ObservableCollection<Enegy> _distanceInMonthCollection;
+        private ObservableCollection<ValueData> _distanceInDayCollection;
+        private ObservableCollection<ValueData> _distanceInWeekCollection;
+        private ObservableCollection<ValueData> _distanceInMonthCollection;
         //
         public Chart EnegyInDayChart { get { return _distanceInDayChart; } set => SetProperty(ref _distanceInDayChart, value); }
         public Chart EnegyInWeekChart { get { return _distanceInWeekChart; } set => SetProperty(ref _distanceInWeekChart, value); }
         public Chart EnegyInMonthChart { get { return _distanceInMonthChart; } set => SetProperty(ref _distanceInMonthChart, value); }
-        public ObservableCollection<Enegy> EnegyInDayCollection { get { return _distanceInDayCollection; } set => SetProperty(ref _distanceInDayCollection, value); }
-        public ObservableCollection<Enegy> EnegyInWeekCollection { get { return _distanceInWeekCollection; } set => SetProperty(ref _distanceInWeekCollection, value); }
-        public ObservableCollection<Enegy> EnegyInMonthCollection { get { return _distanceInMonthCollection; } set => SetProperty(ref _distanceInMonthCollection, value); }
+        public ObservableCollection<ValueData> EnegyInDayCollection { get { return _distanceInDayCollection; } set => SetProperty(ref _distanceInDayCollection, value); }
+        public ObservableCollection<ValueData> EnegyInWeekCollection { get { return _distanceInWeekCollection; } set => SetProperty(ref _distanceInWeekCollection, value); }
+        public ObservableCollection<ValueData> EnegyInMonthCollection { get { return _distanceInMonthCollection; } set => SetProperty(ref _distanceInMonthCollection, value); }
         //
         public DelegateCommand PreviousDayCommand { get; }
         public DelegateCommand PreviousWeekCommand { get; }
@@ -57,7 +56,7 @@ namespace Sanus.ViewModels
         public void FetchHealthData()
         {
             GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
-            GetDataInWeekAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 7, DateTime.Now.Day, Configuration.DAYS);
+            GetDataInWeekAsync(DateTime.Now.Year, 3, 20, 27, Configuration.DAYS);
             GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
         }
         public bool GetDataInDayAsync(int year, int month, int day, string timeUnit)
@@ -66,7 +65,7 @@ namespace Sanus.ViewModels
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                EnegyInDayChart = await _chartService.GetLineChartAsyns(totalDatas, timeUnit);
+                EnegyInDayChart = await _chartService.GetChartAsyns(totalDatas, timeUnit, Configuration.LINECHART);
                 // lay danh sach cac buoc theo thoi gian
                 EnegyInDayCollection = GetDataCollection(totalDatas);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeUnit);
@@ -81,7 +80,7 @@ namespace Sanus.ViewModels
                 {
                     //lay tong so buoc theo mot khoang thoi gian
                     // ve bieu do
-                    EnegyInWeekChart = await _chartService.GetPointChartAsyns(totalDatas, timeUnit);
+                    EnegyInWeekChart = await _chartService.GetChartAsyns(totalDatas, timeUnit, Configuration.POINTCHART);
                     // lay danh sach cac buoc theo thoi gian
                     EnegyInWeekCollection = GetDataCollection(totalDatas);
                 }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeUnit);
@@ -95,20 +94,20 @@ namespace Sanus.ViewModels
             {
                 //lay tong so buoc theo mot khoang thoi gian
                 // ve bieu do
-                EnegyInMonthChart = await _chartService.GetPointChartAsyns(totalDatas, timeUnit);
+                EnegyInMonthChart = await _chartService.GetChartAsyns(totalDatas, timeUnit, Configuration.POINTCHART);
                 // lay danh sach cac buoc theo thoi gian
                 EnegyInMonthCollection = GetDataCollection(totalDatas);
             }, new DateTime(year, month, 1, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), Configuration.DAYS);
             return true;
         }
         //
-        private ObservableCollection<Enegy> GetDataCollection(Dictionary<DateTime, double> list)
+        private ObservableCollection<ValueData> GetDataCollection(Dictionary<DateTime, double> list)
         {
-            ObservableCollection<Enegy> collection = new ObservableCollection<Enegy>();
+            ObservableCollection<ValueData> collection = new ObservableCollection<ValueData>();
             //
             foreach (KeyValuePair<DateTime, double> item in list)
             {
-                collection.Add(new Enegy() { Day = item.Key, Step = item.Value });
+                collection.Add(new ValueData() { Day = item.Key, Value = item.Value });
             }
             //
             return collection;

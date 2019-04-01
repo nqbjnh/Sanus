@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Text;
 
 namespace Sanus
 {
@@ -20,7 +17,14 @@ namespace Sanus
         public const string CALORIES = "Calories";
         public const string DISTANCE = "Distance";
         public const string STEPS = "Steps";
-        // 
+        public const string APPPACKAGENAME = "com.google.android.gms";
+        public const string STREAMNAME = "estimated_steps";
+        public const int REQUESTOAUTH = 1;
+        public const string DATEFORMAT = "yyyy.MM.dd HH:mm:ss";
+        //
+        public const string LINECHART = "LineChart";
+        public const string BARCHART = "BarChart";
+        public const string POINTCHART = "PointChart";
         // lay ngay dau tien cua tuan phia truoc tuan hien tai
         public static DateTime PreviousWeek(DateTime dateTime)
         {

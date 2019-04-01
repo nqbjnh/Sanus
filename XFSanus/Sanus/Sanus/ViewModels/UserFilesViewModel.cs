@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Prism.Navigation;
+﻿using Prism.Navigation;
 using Sanus.Services.Dialog;
 
 namespace Sanus.ViewModels
@@ -15,6 +12,5 @@ namespace Sanus.ViewModels
             _dialogService = dialogService;
             _navigationService = navigationService;
         }
-
     }
 }
