@@ -82,7 +82,6 @@ namespace Sanus.ViewModels
 
         public bool GetData(int year, int month, int day, string timeunit)
         {
-            var platform = Xamarin.Forms.Device.RuntimePlatform;
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (datas) =>
             {
                 double temp = GetValues(datas);
@@ -91,7 +90,7 @@ namespace Sanus.ViewModels
                 StepsChart = await _chartService.GetRadialGaugeChartAsyns(_goal, temp, color);
                 //
                 PercentChart = await _chartService.GetRadialGaugeChartAsyns(_goal, temp, "#23b8f9");
-                Percent = Math.Round(((double.Parse(Steps) * 100) / _goal), 3).ToString();
+                Percent = Math.Round(((temp * 100) / _goal), 3).ToString();
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
 
 

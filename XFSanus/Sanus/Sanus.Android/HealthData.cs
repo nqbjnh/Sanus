@@ -203,11 +203,11 @@ namespace Sanus.Droid
                 return false;
             }
         }
-        public async Task<Dictionary<DateTime, double>> FetchGoogleFitData(string value, DateTime startDate, DateTime endDate, TimeUnit timeUnit)
+        public async Task<Dictionary<DateTime, double>> FetchGoogleFitData(string valueData, DateTime startDate, DateTime endDate, TimeUnit timeUnit)
         {
             Dictionary<DateTime, double> listdata = new Dictionary<DateTime, double>();
             //
-            DataReadRequest readRequest = QueryData(value, startDate, endDate, timeUnit);
+            DataReadRequest readRequest = QueryData(valueData, startDate, endDate, timeUnit);
             //
             var dataReadResult = await FitnessClass.HistoryApi.ReadDataAsync(mGoogleApiClient, readRequest);
             if (dataReadResult.Buckets.Count > 0)
@@ -260,16 +260,16 @@ namespace Sanus.Droid
             {
                 foreach (Field field in point.DataType.Fields)
                 {
-                    string name = field.Name;
-                    if (name.Equals(Configuration.STEPS))
+                    switch (field.Name)
                     {
-                        dataSetSum += Convert.ToDouble(point.GetValue(field).AsInt());
-                        list.Add(dataSetSum);
-                    }
-                    else
-                    {
-                        dataSetSum += Convert.ToDouble(point.GetValue(field).AsFloat());
-                        list.Add(dataSetSum);
+                        case "steps":
+                            dataSetSum += Convert.ToDouble(point.GetValue(field).AsInt());
+                            list.Add(dataSetSum);
+                            break;
+                        default:
+                            dataSetSum += Convert.ToDouble(point.GetValue(field).AsFloat());
+                            list.Add(dataSetSum);
+                            break;
                     }
                 }
             }
@@ -292,12 +292,12 @@ namespace Sanus.Droid
             return readRequest;
         }
 
-        private static DataReadRequest QueryData(string value, DateTime startDate, DateTime endDate, TimeUnit timeUnit)
+        private static DataReadRequest QueryData(string valueData, DateTime startDate, DateTime endDate, TimeUnit timeUnit)
         {
             long endTimeElapsed = GetMsSinceEpochAsLong(endDate);
             long startTimeElapsed = GetMsSinceEpochAsLong(startDate);
             DataReadRequest readRequest = null;
-            switch (value)
+            switch (valueData)
             {
                 case Configuration.DISTANCE:
                     readRequest = new DataReadRequest.Builder()

@@ -24,9 +24,9 @@ namespace Sanus.ViewModels
         private ObservableCollection<ValueData> _stepsInWeekCollection;
         private ObservableCollection<ValueData> _stepsInMonthCollection;
         //
-        public Chart StepsInDayChart { get { return _stepsInDayChart; } set => SetProperty(ref _stepsInDayChart, value); }
-        public Chart StepsInWeekChart { get { return _stepsInWeekChart; } set => SetProperty(ref _stepsInWeekChart, value); }
-        public Chart StepsInMonthChart { get { return _stepsInMonthChart; } set => SetProperty(ref _stepsInMonthChart, value); }
+        public Chart StepsInDayChart { get => _stepsInDayChart; set => SetProperty(ref _stepsInDayChart, value); }
+        public Chart StepsInWeekChart { get => _stepsInWeekChart; set => SetProperty(ref _stepsInWeekChart, value); }
+        public Chart StepsInMonthChart { get => _stepsInMonthChart; set => SetProperty(ref _stepsInMonthChart, value); }
         public ObservableCollection<ValueData> StepsInDayCollection { get => _stepsInDayCollection; set => SetProperty(ref _stepsInDayCollection, value); }
         public ObservableCollection<ValueData> StepsInWeekCollection { get => _stepsInWeekCollection; set => SetProperty(ref _stepsInWeekCollection, value); }
         public ObservableCollection<ValueData> StepsInMonthCollection { get => _stepsInMonthCollection; set => SetProperty(ref _stepsInMonthCollection, value); }

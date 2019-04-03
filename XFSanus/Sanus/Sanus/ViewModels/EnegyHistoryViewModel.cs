@@ -17,19 +17,19 @@ namespace Sanus.ViewModels
         IChartService _chartService;
         IDialogService _dialogService;
         //
-        private Chart _distanceInDayChart;
-        private Chart _distanceInWeekChart;
-        private Chart _distanceInMonthChart;
-        private ObservableCollection<ValueData> _distanceInDayCollection;
-        private ObservableCollection<ValueData> _distanceInWeekCollection;
-        private ObservableCollection<ValueData> _distanceInMonthCollection;
+        private Chart _enegyInDayChart;
+        private Chart _enegyInWeekChart;
+        private Chart _enegyInMonthChart;
+        private ObservableCollection<ValueData> _enegyInDayCollection;
+        private ObservableCollection<ValueData> _enegyInWeekCollection;
+        private ObservableCollection<ValueData> _enegyInMonthCollection;
         //
-        public Chart EnegyInDayChart { get { return _distanceInDayChart; } set => SetProperty(ref _distanceInDayChart, value); }
-        public Chart EnegyInWeekChart { get { return _distanceInWeekChart; } set => SetProperty(ref _distanceInWeekChart, value); }
-        public Chart EnegyInMonthChart { get { return _distanceInMonthChart; } set => SetProperty(ref _distanceInMonthChart, value); }
-        public ObservableCollection<ValueData> EnegyInDayCollection { get { return _distanceInDayCollection; } set => SetProperty(ref _distanceInDayCollection, value); }
-        public ObservableCollection<ValueData> EnegyInWeekCollection { get { return _distanceInWeekCollection; } set => SetProperty(ref _distanceInWeekCollection, value); }
-        public ObservableCollection<ValueData> EnegyInMonthCollection { get { return _distanceInMonthCollection; } set => SetProperty(ref _distanceInMonthCollection, value); }
+        public Chart EnegyInDayChart { get => _enegyInDayChart; set => SetProperty(ref _enegyInDayChart, value); }
+        public Chart EnegyInWeekChart { get => _enegyInWeekChart; set => SetProperty(ref _enegyInWeekChart, value); }
+        public Chart EnegyInMonthChart { get => _enegyInMonthChart; set => SetProperty(ref _enegyInMonthChart, value); }
+        public ObservableCollection<ValueData> EnegyInDayCollection { get => _enegyInDayCollection; set => SetProperty(ref _enegyInDayCollection, value); }
+        public ObservableCollection<ValueData> EnegyInWeekCollection { get => _enegyInWeekCollection; set => SetProperty(ref _enegyInWeekCollection, value); }
+        public ObservableCollection<ValueData> EnegyInMonthCollection { get => _enegyInMonthCollection; set => SetProperty(ref _enegyInMonthCollection, value); }
         //
         public DelegateCommand PreviousDayCommand { get; }
         public DelegateCommand PreviousWeekCommand { get; }

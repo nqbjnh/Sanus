@@ -24,12 +24,12 @@ namespace Sanus.ViewModels
         private ObservableCollection<ValueData> _distanceInWeekCollection;
         private ObservableCollection<ValueData> _distanceInMonthCollection;
         //
-        public Chart DistanceInDayChart { get { return _distanceInDayChart; } set => SetProperty(ref _distanceInDayChart, value); }
-        public Chart DistanceInWeekChart { get { return _distanceInWeekChart; } set => SetProperty(ref _distanceInWeekChart, value); }
-        public Chart DistanceInMonthChart { get { return _distanceInMonthChart; } set => SetProperty(ref _distanceInMonthChart, value); }
-        public ObservableCollection<ValueData> DistanceInDayCollection { get { return _distanceInDayCollection; } set => SetProperty(ref _distanceInDayCollection, value); }
-        public ObservableCollection<ValueData> DistanceInWeekCollection { get { return _distanceInWeekCollection; } set => SetProperty(ref _distanceInWeekCollection, value); }
-        public ObservableCollection<ValueData> DistanceInMonthCollection { get { return _distanceInMonthCollection; } set => SetProperty(ref _distanceInMonthCollection, value); }
+        public Chart DistanceInDayChart { get => _distanceInDayChart; set => SetProperty(ref _distanceInDayChart, value); }
+        public Chart DistanceInWeekChart { get => _distanceInWeekChart; set => SetProperty(ref _distanceInWeekChart, value); }
+        public Chart DistanceInMonthChart { get => _distanceInMonthChart; set => SetProperty(ref _distanceInMonthChart, value); }
+        public ObservableCollection<ValueData> DistanceInDayCollection { get => _distanceInDayCollection; set => SetProperty(ref _distanceInDayCollection, value); }
+        public ObservableCollection<ValueData> DistanceInWeekCollection { get => _distanceInWeekCollection; set => SetProperty(ref _distanceInWeekCollection, value); }
+        public ObservableCollection<ValueData> DistanceInMonthCollection { get => _distanceInMonthCollection; set => SetProperty(ref _distanceInMonthCollection, value); }
         //
         public DelegateCommand PreviousDayCommand { get; }
         public DelegateCommand PreviousWeekCommand { get; }
