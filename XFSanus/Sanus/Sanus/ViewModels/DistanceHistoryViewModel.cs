@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Microcharts;
 using Prism.Commands;
 using Prism.Navigation;
@@ -8,14 +9,20 @@ using Sanus.Model;
 using Sanus.Services.Charts;
 using Sanus.Services.Dialog;
 using Sanus.Services.Health;
+using Sanus.Services.Time;
 
 namespace Sanus.ViewModels
 {
     public class DistanceHistoryViewModel : ViewModelBase
     {
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+#pragma warning disable IDE0044 // Add readonly modifier
         INavigationService _navigationService;
+#pragma warning restore IDE0044 // Add readonly modifier
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         IChartService _chartService;
         IDialogService _dialogService;
+        IGetTime _getTime;
         //
         private Chart _distanceInDayChart;
         private Chart _distanceInWeekChart;
@@ -23,6 +30,8 @@ namespace Sanus.ViewModels
         private ObservableCollection<ValueData> _distanceInDayCollection;
         private ObservableCollection<ValueData> _distanceInWeekCollection;
         private ObservableCollection<ValueData> _distanceInMonthCollection;
+        private DateTime _date;
+
         //
         public Chart DistanceInDayChart { get => _distanceInDayChart; set => SetProperty(ref _distanceInDayChart, value); }
         public Chart DistanceInWeekChart { get => _distanceInWeekChart; set => SetProperty(ref _distanceInWeekChart, value); }
@@ -38,11 +47,16 @@ namespace Sanus.ViewModels
         public DelegateCommand PosteriorWeekCommand { get; }
         public DelegateCommand PosteriorMonthCommand { get; }
         //
-        public DistanceHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService) : base(navigationService)
+        public DateTime Date { get => _date; set => SetProperty(ref _date, value); }
+        //
+        public DistanceHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService, IGetTime getTime) : base(navigationService)
         {
             _navigationService = navigationService;
             _chartService = chartService;
             _dialogService = dialogService;
+            _getTime = getTime;
+            //
+            Date = DateTime.Now;
             //
             FetchHealthData();
             //
@@ -112,12 +126,15 @@ namespace Sanus.ViewModels
         //
         private void PreviousSelects()
         {
-            DateTime dateTime = Configuration.PreviousWeek(DateTime.Now);
+            DateTime dateTime = _getTime.PreviousWeek(DateTime.Now);
         }
         //
         private async void PreviousDaySelect()
         {
-            await _dialogService.ShowAlertAsync("lùi một ngày", "lùi ngày", "Ok");
+            DateTime dateTime = _getTime.PosteriorDay(Date.Year, Date.Month, Date.Day);
+            Date = dateTime;
+            GetDataInDayAsync(dateTime.Year, dateTime.Month, dateTime.Day, Configuration.HOURS);
+            await Task.Delay(100);
         }
         private async void PosteriorDaySelect()
         {

@@ -5,6 +5,7 @@ using Prism;
 using Prism.Ioc;
 using Sanus.Services.Charts;
 using Sanus.Services.Dialog;
+using Sanus.Services.Time;
 using Sanus.ViewModels;
 using Sanus.Views;
 using Xamarin.Forms;
@@ -64,6 +65,7 @@ namespace Sanus
             //
             containerRegistry.Register<IChartService, ShowChartService>();
             containerRegistry.Register<IDialogService, DialogService>();
+            containerRegistry.Register<IGetTime, GetTime>();
         }
     }
 }

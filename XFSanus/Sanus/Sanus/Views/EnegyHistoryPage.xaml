@@ -38,7 +38,7 @@
 
                             <Label Grid.Row="0"
                                    Grid.Column="1"
-                                   Text="Binding Day"
+                                   Text="{Binding Date}"
                                    TextColor="White"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="CenterAndExpand" />

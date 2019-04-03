@@ -13,11 +13,15 @@ namespace Sanus.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
-        private readonly IChartService _chartService;
-        private readonly IDialogService _dialogService;
-        private readonly string color = "#036abb";
-        private double _goal = 8000;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+#pragma warning disable IDE0044 // Add readonly modifier
+        INavigationService _navigationService;
+#pragma warning restore IDE0044 // Add readonly modifier
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+        IChartService _chartService;
+        IDialogService _dialogService;
+        readonly string color = "#036abb";
+        readonly double _goal = 8000;
         //
         private string _distances;
         private string _percent;
