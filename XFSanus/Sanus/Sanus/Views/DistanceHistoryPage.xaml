@@ -224,7 +224,7 @@
 
                             <Label Grid.Row="0"
                                    Grid.Column="1"
-                                   Text="Binding Day"
+                                   Text="{Binding Month}"
                                    TextColor="White"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="CenterAndExpand" />

@@ -35,20 +35,6 @@ namespace Sanus.Services.Time
             return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
 
-        public int PosteriorMonth(int month)
-        {
-            int monthTemp = 0;
-            if (month <= DateTime.Now.Month)
-            {
-                monthTemp = month + 1;
-            }
-            else if (month > DateTime.Now.Month)
-            {
-                monthTemp = DateTime.Now.Month;
-            }
-            return monthTemp;
-        }
-
         public DateTime GetFirstDayOfWeek(DateTime dateTime)
         {
             // so thu tu cua tuan
@@ -62,18 +48,120 @@ namespace Sanus.Services.Time
             throw new NotImplementedException();
         }
 
-        public int PreviousMonth(int month)
+        //public int PreviousMonth(int month)
+        //{
+        //    int monthTemp = 0;
+        //    if (month <= DateTime.Now.Month)
+        //    {
+        //        monthTemp = month - 1;
+        //    }
+        //    else if (month > DateTime.Now.Month)
+        //    {
+        //        monthTemp = DateTime.Now.Month;
+        //    }
+        //    return monthTemp;
+        //}
+        //public int PosteriorMonth(int month)
+        //{
+        //    int monthTemp = 0;
+        //    if (month <= DateTime.Now.Month)
+        //    {
+        //        monthTemp = month + 1;
+        //    }
+        //    else if (month > DateTime.Now.Month)
+        //    {
+        //        monthTemp = DateTime.Now.Month;
+        //    }
+        //    return monthTemp;
+        //}
+        public DateTime PosteriorMonth(int year, int month)
         {
-            int monthTemp = 0;
-            if (month <= DateTime.Now.Month)
+            DateTime dateTime = new DateTime();
+            if (month < DateTime.Now.Month && year == DateTime.Now.Year)
             {
-                monthTemp = month - 1;
+                switch (month)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                        dateTime = new DateTime(year, month + 1, 1);
+                        break;
+                    case 12:
+                        dateTime = new DateTime(year + 1, 1, 1);
+                        break;
+                }
             }
-            else if (month > DateTime.Now.Month)
+            else if (month >= DateTime.Now.Month && year == DateTime.Now.Year)
             {
-                monthTemp = DateTime.Now.Month;
+                dateTime = DateTime.Now;
             }
-            return monthTemp;
+            else if (year < DateTime.Now.Year)
+            {
+                switch (month)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                        dateTime = new DateTime(year, month + 1, 1);
+                        break;
+                    case 12:
+                        dateTime = new DateTime(year + 1, 1, 1);
+                        break;
+                }
+            }
+            return dateTime;
+        }
+
+        public DateTime PreviousMonth(int year, int month)
+        {
+            DateTime dateTime = new DateTime();
+            if (month <= DateTime.Now.Month && year == DateTime.Now.Year)
+            {
+                switch (month)
+                {
+                    case 1:
+                        dateTime = new DateTime(year - 1, 12, 1);
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                        dateTime = new DateTime(year, month - 1, 1);
+                        break;
+                }
+            }
+            else if (month > DateTime.Now.Month && year == DateTime.Now.Year)
+            {
+                dateTime = DateTime.Now;
+            }
+            else if (year != DateTime.Now.Year)
+            {
+                dateTime = DateTime.Now;
+            }
+            return dateTime;
         }
 
         public DateTime PreviousWeek(DateTime dateTime)
@@ -414,6 +502,56 @@ namespace Sanus.Services.Time
                     }
             }
             return day;
+        }
+
+        public DateTime CheckYearInputMonth0(int year, int month)
+        {
+            DateTime dateTime = new DateTime();
+            switch (month)
+            {
+                case 1:
+                    dateTime = new DateTime(year - 1, 12, 1);
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                    dateTime = new DateTime(year, month - 1, 1);
+                    break;
+            }
+            return dateTime;
+        }
+
+        public DateTime CheckYearInputMonth1(int year, int month)
+        {
+            DateTime dateTime = new DateTime();
+            switch (month)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                    dateTime = new DateTime(year, month + 1, 1);
+                    break;
+                case 12:
+                    dateTime = new DateTime(year + 1, 1, 1);
+                    break;
+            }
+            return dateTime;
         }
     }
 }

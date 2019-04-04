@@ -31,7 +31,7 @@ namespace Sanus.ViewModels
         private ObservableCollection<ValueData> _stepsInWeekCollection;
         private ObservableCollection<ValueData> _stepsInMonthCollection;
         private DateTime _date;
-        private string _month;
+        private DateTime _month;
 
         //
         public Chart StepsInDayChart { get => _stepsInDayChart; set => SetProperty(ref _stepsInDayChart, value); }
@@ -49,7 +49,7 @@ namespace Sanus.ViewModels
         public DelegateCommand PosteriorMonthCommand { get; }
         //
         public DateTime Date { get => _date; set => SetProperty(ref _date, value); }
-        public string Month { get => _month; set => SetProperty(ref _month, value); }
+        public DateTime Month { get => _month; set => SetProperty(ref _month, value); }
         //
         public StepsHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService, IGetTime getTime) : base(navigationService)
         {
@@ -59,7 +59,7 @@ namespace Sanus.ViewModels
             _getTime = getTime;
             //
             Date = DateTime.Now;
-            Month = DateTime.Now.Month.ToString();
+            Month = DateTime.Now;
             //
             FetchHealthData();
             //
@@ -160,27 +160,15 @@ namespace Sanus.ViewModels
         }
         private async void PreviousMonthSelect()
         {
-            int monthTemp = _getTime.PreviousMonth(int.Parse(Month));
-            Month = monthTemp.ToString();
-            GetDataInMonthAsync(DateTime.Now.Year, int.Parse(Month), _getTime.GetLastDayInMonth(DateTime.Now.Year, int.Parse(Month)), Configuration.MONTHS);
+            Month = _getTime.PreviousMonth(Month.Year, Month.Month);
+            GetDataInMonthAsync(Month.Year, Month.Month, _getTime.GetLastDayInMonth(Month.Year, Month.Month), Configuration.MONTHS);
             await Task.Delay(100);
         }
         private async void PosteriorMonthSelect()
         {
-            if (int.Parse(Month).CompareTo(DateTime.Now.Month) == -1)
-            {
-                int monthTemp = _getTime.PosteriorMonth(int.Parse(Month));
-                Month = monthTemp.ToString();
-                GetDataInMonthAsync(DateTime.Now.Year, int.Parse(Month), _getTime.GetLastDayInMonth(DateTime.Now.Year, int.Parse(Month)), Configuration.MONTHS);
-                await Task.Delay(100);
-            }
-            else if (int.Parse(Month).CompareTo(DateTime.Now.Month) >= 0)
-            {
-                int monthTemp = DateTime.Now.Month;
-                Month = monthTemp.ToString();
-                GetDataInMonthAsync(DateTime.Now.Year, int.Parse(Month), _getTime.GetLastDayInMonth(DateTime.Now.Year, int.Parse(Month)), Configuration.MONTHS);
-                await Task.Delay(100);
-            }
+            Month = _getTime.PosteriorMonth(Month.Year, Month.Month);
+            GetDataInMonthAsync(Month.Year, Month.Month, _getTime.GetLastDayInMonth(Month.Year, Month.Month), Configuration.MONTHS);
+            await Task.Delay(100);
         }
     }
 }

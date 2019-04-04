@@ -31,6 +31,7 @@ namespace Sanus.ViewModels
         private ObservableCollection<ValueData> _enegyInWeekCollection;
         private ObservableCollection<ValueData> _enegyInMonthCollection;
         private DateTime _date;
+        private DateTime _month;
 
         //
         public Chart EnegyInDayChart { get => _enegyInDayChart; set => SetProperty(ref _enegyInDayChart, value); }
@@ -48,6 +49,7 @@ namespace Sanus.ViewModels
         public DelegateCommand PosteriorMonthCommand { get; }
         //
         public DateTime Date { get => _date; set => SetProperty(ref _date, value); }
+        public DateTime Month { get => _month; set => SetProperty(ref _month, value); }
         //
         public EnegyHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService, IGetTime getTime) : base(navigationService)
         {
@@ -57,6 +59,7 @@ namespace Sanus.ViewModels
             _getTime = getTime;
             //
             Date = DateTime.Now;
+            Month = DateTime.Now;
             //
             FetchHealthData();
             //
@@ -165,11 +168,15 @@ namespace Sanus.ViewModels
         }
         private async void PreviousMonthSelect()
         {
-            await _dialogService.ShowAlertAsync("lùi một tháng", "lùi tháng", "Ok");
+            Month = _getTime.PreviousMonth(Month.Year, Month.Month);
+            GetDataInMonthAsync(Month.Year, Month.Month, _getTime.GetLastDayInMonth(Month.Year, Month.Month), Configuration.MONTHS);
+            await Task.Delay(100);
         }
         private async void PosteriorMonthSelect()
         {
-            await _dialogService.ShowAlertAsync("tiến một tháng", "tiến tháng", "Ok");
+            Month = _getTime.PosteriorMonth(Month.Year, Month.Month);
+            GetDataInMonthAsync(Month.Year, Month.Month, _getTime.GetLastDayInMonth(Month.Year, Month.Month), Configuration.MONTHS);
+            await Task.Delay(100);
         }
     }
 }
