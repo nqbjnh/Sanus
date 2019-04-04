@@ -53,11 +53,6 @@ namespace Sanus.Services.Time
             throw new NotImplementedException();
         }
 
-        public int PreviousDay(int day)
-        {
-            throw new NotImplementedException();
-        }
-
         public int PreviousMonth(int month)
         {
             throw new NotImplementedException();
@@ -209,6 +204,160 @@ namespace Sanus.Services.Time
                                 break;
                             }
                     }
+                }
+            }
+            return tempDay;
+        }
+
+        public DateTime PreviousDay(int year, int month, int day)
+        {
+            DateTime tempDay = new DateTime();
+            if (!DateTime.IsLeapYear(year))
+            {
+                switch (month)
+                {
+                    case 2:
+                        if (day == 28)
+                        {
+                            tempDay = new DateTime(year, month + 1, 1);
+                            break;
+                        }
+                        else if (day < 28 && day > 0)
+                        {
+                            tempDay = new DateTime(year, month, day + 1);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                        if (day == 31)
+                        {
+                            tempDay = new DateTime(year, month + 1, 1);
+                            break;
+                        }
+                        else if (day < 31 && day > 0)
+                        {
+                            tempDay = new DateTime(year, month, day + 1);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    case 12:
+                        if (day == 31)
+                        {
+                            tempDay = new DateTime(year + 1, 1, 1);
+                            break;
+                        }
+                        else if (day < 31 && day > 0)
+                        {
+                            tempDay = new DateTime(year, month, day + 1);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        if (day == 30)
+                        {
+                            tempDay = new DateTime(year, month + 1, 1);
+                            break;
+                        }
+                        else if (day < 30 && day > 0)
+                        {
+                            tempDay = new DateTime(year, month, day + 1);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                switch (month)
+                {
+                    case 2:
+                        if (day == 29)
+                        {
+                            tempDay = new DateTime(year, month + 1, 1);
+                            break;
+                        }
+                        else if (day < 29 && day > 0)
+                        {
+                            tempDay = new DateTime(year, month, day + 1);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                        if (day == 31)
+                        {
+                            tempDay = new DateTime(year, month + 1, 1);
+                            break;
+                        }
+                        else if (day < 31 && day > 0)
+                        {
+                            tempDay = new DateTime(year, month, day + 1);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    case 12:
+                        if (day == 31)
+                        {
+                            tempDay = new DateTime(year + 1, 1, 1);
+                            break;
+                        }
+                        else if (day < 31 && day > 0)
+                        {
+                            tempDay = new DateTime(year, month, day + 1);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        if (day == 30)
+                        {
+                            tempDay = new DateTime(year, month + 1, 1);
+                            break;
+                        }
+                        else if (day < 30 && day > 0)
+                        {
+                            tempDay = new DateTime(year, month, day + 1);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
                 }
             }
             return tempDay;

@@ -138,7 +138,20 @@ namespace Sanus.ViewModels
         }
         private async void PosteriorDaySelect()
         {
-            await _dialogService.ShowAlertAsync("tiến một ngày", "tiến ngày", "Ok");
+            if (Date.CompareTo(DateTime.Today) == -1)
+            {
+                DateTime dateTime = _getTime.PreviousDay(Date.Year, Date.Month, Date.Day);
+                Date = dateTime;
+                GetDataInDayAsync(dateTime.Year, dateTime.Month, dateTime.Day, Configuration.HOURS);
+                await Task.Delay(100);
+            }
+            else if (Date.CompareTo(DateTime.Today) >= 0)
+            {
+                DateTime dateTime = DateTime.Now;
+                Date = dateTime;
+                GetDataInDayAsync(dateTime.Year, dateTime.Month, dateTime.Day, Configuration.HOURS);
+                await Task.Delay(100);
+            }
         }
         private async void PreviousWeekSelect()
         {

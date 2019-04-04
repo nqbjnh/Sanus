@@ -14,7 +14,7 @@ namespace Sanus.Services.Time
         DateTime GetFirstDayOfWeek(DateTime dateTime);
         int GetIso8601WeekOfYear(DateTime time);
         DateTime FirstDateOfWeek(int year, int weekOfYear, CultureInfo ci);
-        int PreviousDay(int day);
+        DateTime PreviousDay(int year, int month, int day);
         int PreviousWeek(int week);
         int PreviousMonth(int month);
         DateTime PosteriorDay(int year, int month, int day);

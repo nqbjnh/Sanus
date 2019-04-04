@@ -32,7 +32,7 @@
                                    Source="arrow_left.png"
                                    Aspect="AspectFit">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding PreviousMonthCommand}" />
+                                    <TapGestureRecognizer Command="{Binding PreviousDayCommand}" />
                                 </Image.GestureRecognizers>
                             </Image>
 
@@ -48,7 +48,7 @@
                                    Source="arrow_right.png"
                                    Aspect="AspectFit">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding PosteriorMonthCommand}" />
+                                    <TapGestureRecognizer Command="{Binding PosteriorDayCommand}" />
                                 </Image.GestureRecognizers>
                             </Image>
                         </Grid>
@@ -129,7 +129,7 @@
                                    Source="arrow_left.png"
                                    Aspect="AspectFit">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding PreviousMonthCommand}" />
+                                    <TapGestureRecognizer Command="{Binding PreviousWeekCommand}" />
                                 </Image.GestureRecognizers>
                             </Image>
 
@@ -145,7 +145,7 @@
                                    Source="arrow_right.png"
                                    Aspect="AspectFit">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding PosteriorMonthCommand}" />
+                                    <TapGestureRecognizer Command="{Binding PosteriorWeekCommand}" />
                                 </Image.GestureRecognizers>
                             </Image>
                         </Grid>
