@@ -75,7 +75,7 @@ namespace Sanus.ViewModels
             {
                 if (result)
                 {
-                    GetData(2019, 3, 26, Configuration.DAYS);
+                    GetData(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.DAYS);
                 }
                 else
                 {

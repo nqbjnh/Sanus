@@ -31,6 +31,7 @@ namespace Sanus.ViewModels
         private ObservableCollection<ValueData> _stepsInWeekCollection;
         private ObservableCollection<ValueData> _stepsInMonthCollection;
         private DateTime _date;
+        private string _month;
 
         //
         public Chart StepsInDayChart { get => _stepsInDayChart; set => SetProperty(ref _stepsInDayChart, value); }
@@ -48,6 +49,7 @@ namespace Sanus.ViewModels
         public DelegateCommand PosteriorMonthCommand { get; }
         //
         public DateTime Date { get => _date; set => SetProperty(ref _date, value); }
+        public string Month { get => _month; set => SetProperty(ref _month, value); }
         //
         public StepsHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService, IGetTime getTime) : base(navigationService)
         {
@@ -57,6 +59,7 @@ namespace Sanus.ViewModels
             _getTime = getTime;
             //
             Date = DateTime.Now;
+            Month = DateTime.Now.Month.ToString();
             //
             FetchHealthData();
             //
@@ -125,7 +128,7 @@ namespace Sanus.ViewModels
         //
         private async void PreviousDaySelect()
         {
-            DateTime dateTime = _getTime.PosteriorDay(Date.Year, Date.Month, Date.Day);
+            DateTime dateTime = _getTime.PreviousDay(Date.Year, Date.Month, Date.Day);
             Date = dateTime;
             GetDataInDayAsync(dateTime.Year, dateTime.Month, dateTime.Day, Configuration.HOURS);
             await Task.Delay(100);
@@ -134,7 +137,7 @@ namespace Sanus.ViewModels
         {
             if (Date.CompareTo(DateTime.Today) == -1)
             {
-                DateTime dateTime = _getTime.PreviousDay(Date.Year, Date.Month, Date.Day);
+                DateTime dateTime = _getTime.PosteriorDay(Date.Year, Date.Month, Date.Day);
                 Date = dateTime;
                 GetDataInDayAsync(dateTime.Year, dateTime.Month, dateTime.Day, Configuration.HOURS);
                 await Task.Delay(100);
@@ -157,11 +160,27 @@ namespace Sanus.ViewModels
         }
         private async void PreviousMonthSelect()
         {
-            await _dialogService.ShowAlertAsync("lùi một tháng", "lùi tháng", "Ok");
+            int monthTemp = _getTime.PreviousMonth(int.Parse(Month));
+            Month = monthTemp.ToString();
+            GetDataInMonthAsync(DateTime.Now.Year, int.Parse(Month), _getTime.GetLastDayInMonth(DateTime.Now.Year, int.Parse(Month)), Configuration.MONTHS);
+            await Task.Delay(100);
         }
         private async void PosteriorMonthSelect()
         {
-            await _dialogService.ShowAlertAsync("tiến một tháng", "tiến tháng", "Ok");
+            if (int.Parse(Month).CompareTo(DateTime.Now.Month) == -1)
+            {
+                int monthTemp = _getTime.PosteriorMonth(int.Parse(Month));
+                Month = monthTemp.ToString();
+                GetDataInMonthAsync(DateTime.Now.Year, int.Parse(Month), _getTime.GetLastDayInMonth(DateTime.Now.Year, int.Parse(Month)), Configuration.MONTHS);
+                await Task.Delay(100);
+            }
+            else if (int.Parse(Month).CompareTo(DateTime.Now.Month) >= 0)
+            {
+                int monthTemp = DateTime.Now.Month;
+                Month = monthTemp.ToString();
+                GetDataInMonthAsync(DateTime.Now.Year, int.Parse(Month), _getTime.GetLastDayInMonth(DateTime.Now.Year, int.Parse(Month)), Configuration.MONTHS);
+                await Task.Delay(100);
+            }
         }
     }
 }

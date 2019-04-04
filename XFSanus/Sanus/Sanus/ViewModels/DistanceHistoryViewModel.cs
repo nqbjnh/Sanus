@@ -131,7 +131,7 @@ namespace Sanus.ViewModels
         //
         private async void PreviousDaySelect()
         {
-            DateTime dateTime = _getTime.PosteriorDay(Date.Year, Date.Month, Date.Day);
+            DateTime dateTime = _getTime.PreviousDay(Date.Year, Date.Month, Date.Day);
             Date = dateTime;
             GetDataInDayAsync(dateTime.Year, dateTime.Month, dateTime.Day, Configuration.HOURS);
             await Task.Delay(100);
@@ -140,7 +140,7 @@ namespace Sanus.ViewModels
         {
             if (Date.CompareTo(DateTime.Today) == -1)
             {
-                DateTime dateTime = _getTime.PreviousDay(Date.Year, Date.Month, Date.Day);
+                DateTime dateTime = _getTime.PosteriorDay(Date.Year, Date.Month, Date.Day);
                 Date = dateTime;
                 GetDataInDayAsync(dateTime.Year, dateTime.Month, dateTime.Day, Configuration.HOURS);
                 await Task.Delay(100);

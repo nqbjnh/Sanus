@@ -37,7 +37,16 @@ namespace Sanus.Services.Time
 
         public int PosteriorMonth(int month)
         {
-            throw new NotImplementedException();
+            int monthTemp = 0;
+            if (month <= DateTime.Now.Month)
+            {
+                monthTemp = month + 1;
+            }
+            else if (month > DateTime.Now.Month)
+            {
+                monthTemp = DateTime.Now.Month;
+            }
+            return monthTemp;
         }
 
         public DateTime GetFirstDayOfWeek(DateTime dateTime)
@@ -55,7 +64,16 @@ namespace Sanus.Services.Time
 
         public int PreviousMonth(int month)
         {
-            throw new NotImplementedException();
+            int monthTemp = 0;
+            if (month <= DateTime.Now.Month)
+            {
+                monthTemp = month - 1;
+            }
+            else if (month > DateTime.Now.Month)
+            {
+                monthTemp = DateTime.Now.Month;
+            }
+            return monthTemp;
         }
 
         public DateTime PreviousWeek(DateTime dateTime)
@@ -69,7 +87,7 @@ namespace Sanus.Services.Time
             throw new NotImplementedException();
         }
 
-        public DateTime PosteriorDay(int year, int month, int day)
+        public DateTime PreviousDay(int year, int month, int day)
         {
             DateTime tempDay = new DateTime();
             if (!DateTime.IsLeapYear(year))
@@ -82,7 +100,7 @@ namespace Sanus.Services.Time
                     }
                     else if (month == 1)
                     {
-                        tempDay = new DateTime(year - 1, month - 1, 31);
+                        tempDay = new DateTime(year - 1, 12, 31);
                     }
                     else if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11 || month == 8)
                     {
@@ -209,7 +227,7 @@ namespace Sanus.Services.Time
             return tempDay;
         }
 
-        public DateTime PreviousDay(int year, int month, int day)
+        public DateTime PosteriorDay(int year, int month, int day)
         {
             DateTime tempDay = new DateTime();
             if (!DateTime.IsLeapYear(year))
@@ -361,6 +379,41 @@ namespace Sanus.Services.Time
                 }
             }
             return tempDay;
+        }
+
+        public int GetLastDayInMonth(int year, int month)
+        {
+            int day = 0;
+            switch (month)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    day = 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    day = 30;
+                    break;
+                case 2:
+                    if (!DateTime.IsLeapYear(year))
+                    {
+                        day = 28;
+                        break;
+                    }
+                    else
+                    {
+                        day = 29;
+                        break;
+                    }
+            }
+            return day;
         }
     }
 }

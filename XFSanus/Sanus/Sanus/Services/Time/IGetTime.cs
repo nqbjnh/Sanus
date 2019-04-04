@@ -14,11 +14,13 @@ namespace Sanus.Services.Time
         DateTime GetFirstDayOfWeek(DateTime dateTime);
         int GetIso8601WeekOfYear(DateTime time);
         DateTime FirstDateOfWeek(int year, int weekOfYear, CultureInfo ci);
-        DateTime PreviousDay(int year, int month, int day);
+        DateTime PosteriorDay(int year, int month, int day);
         int PreviousWeek(int week);
         int PreviousMonth(int month);
-        DateTime PosteriorDay(int year, int month, int day);
+        DateTime PreviousDay(int year, int month, int day);
         int PosteriorWeek(int week);
         int PosteriorMonth(int month);
+
+        int GetLastDayInMonth(int year, int month);
     }
 }
