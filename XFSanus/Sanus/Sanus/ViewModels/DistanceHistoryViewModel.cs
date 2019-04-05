@@ -154,18 +154,18 @@ namespace Sanus.ViewModels
         }
         private async void PosteriorWeekSelect()
         {
-            DateTime startDay = _getTime.PosteriorWeek(Date)["startDay"];
-            DateTime endDay = _getTime.PosteriorWeek(Date)["endDay"];
-            Date = startDay;
+            DateTime startDay = _getTime.PosteriorWeek(EndDay.AddDays(2))["startDay"];
+            DateTime endDay = _getTime.PosteriorWeek(EndDay.AddDays(2))["endDay"];
+            StartDay = startDay;
             EndDay = endDay;
             GetDataInWeekAsync(_getTime.PosteriorWeek(endDay.AddDays(2))["startDay"], _getTime.PosteriorWeek(endDay.AddDays(2))["endDay"], Configuration.DAYS);
             await Task.Delay(100);
         }
         private async void PreviousWeekSelect()
         {
-            DateTime startDay = _getTime.PosteriorWeek(Date)["startDay"];
-            DateTime endDay = _getTime.PosteriorWeek(Date)["endDay"];
-            Date = startDay;
+            DateTime startDay = _getTime.PosteriorWeek(StartDay)["startDay"];
+            DateTime endDay = _getTime.PosteriorWeek(StartDay)["endDay"];
+            StartDay = startDay;
             EndDay = endDay;
             GetDataInWeekAsync(_getTime.PosteriorWeek(startDay.AddDays(-2))["startDay"], _getTime.PosteriorWeek(startDay.AddDays(-2))["endDay"], Configuration.DAYS);
             await Task.Delay(100);
