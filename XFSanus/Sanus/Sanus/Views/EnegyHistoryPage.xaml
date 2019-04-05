@@ -133,12 +133,18 @@
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <Label Grid.Row="0"
-                                   Grid.Column="1"
-                                   Text="Binding Day"
-                                   TextColor="White"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="CenterAndExpand" />
+                            <StackLayout Grid.Row="0"
+                                         Grid.Column="1"
+                                         Orientation="Horizontal"
+                                         HorizontalOptions="CenterAndExpand"
+                                         VerticalOptions="CenterAndExpand">
+                                <Label Text="{Binding StartDay, Converter={StaticResource DateToStringConverter}}"
+                                       TextColor="White" />
+                                <Label Text=" - "
+                                       TextColor="White" />
+                                <Label Text="{Binding EndDay, Converter={StaticResource DateToStringConverter}}"
+                                       TextColor="White" />
+                            </StackLayout>
 
                             <Image Grid.Row="0"
                                    Grid.Column="2"
@@ -232,7 +238,7 @@
 
                             <Label Grid.Row="0"
                                    Grid.Column="1"
-                                   Text="{Binding Month}"
+                                   Text="{Binding Date, Converter={StaticResource DateToStringConverter}}"
                                    TextColor="White"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="CenterAndExpand" />

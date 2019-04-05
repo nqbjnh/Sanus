@@ -43,37 +43,50 @@ namespace Sanus.Services.Time
             return FirstDateOfWeek(dateTime.Year, week, CultureInfo.CurrentCulture);
         }
 
-        public int PosteriorWeek(int week)
+        public Dictionary<string, DateTime> PosteriorWeek(DateTime dateTime)
+        {
+            Dictionary<string, DateTime> dictionary = new Dictionary<string, DateTime>();
+            //
+            if (dateTime.CompareTo(DateTime.Now) >= 0)
+            {
+                DateTime getweek = DateTime.Now;
+                // say the week starts on a Sunday 
+                while (getweek.DayOfWeek != DayOfWeek.Sunday)
+                    getweek = getweek.AddDays(1);
+                DateTimeFormatInfo info = DateTimeFormatInfo.CurrentInfo;
+                Calendar cal = info.Calendar;
+                //Now you are on the first week add 3 more to move to the Fourth week 
+                DateTime startDay = cal.AddWeeks(getweek, -1);
+                DateTime endDay = startDay.AddDays(6);
+                //
+                dictionary.Add("startDay", startDay);
+                dictionary.Add("endDay", endDay);
+            }
+            else if (dateTime.CompareTo(DateTime.Now) == -1)
+            {
+
+                DateTime getweek = dateTime;
+                // say the week starts on a Sunday 
+                while (getweek.DayOfWeek != DayOfWeek.Sunday)
+                    getweek = getweek.AddDays(1);
+                DateTimeFormatInfo info = DateTimeFormatInfo.CurrentInfo;
+                Calendar cal = info.Calendar;
+                //Now you are on the first week add 3 more to move to the Fourth week 
+                DateTime startDay = cal.AddWeeks(getweek, -1);
+                DateTime endDay = startDay.AddDays(6);
+                //
+                dictionary.Add("startDay", startDay);
+                dictionary.Add("endDay", endDay);
+            }
+            //
+            return dictionary;
+        }
+
+        public int PreviousWeek(int week)
         {
             throw new NotImplementedException();
         }
 
-        //public int PreviousMonth(int month)
-        //{
-        //    int monthTemp = 0;
-        //    if (month <= DateTime.Now.Month)
-        //    {
-        //        monthTemp = month - 1;
-        //    }
-        //    else if (month > DateTime.Now.Month)
-        //    {
-        //        monthTemp = DateTime.Now.Month;
-        //    }
-        //    return monthTemp;
-        //}
-        //public int PosteriorMonth(int month)
-        //{
-        //    int monthTemp = 0;
-        //    if (month <= DateTime.Now.Month)
-        //    {
-        //        monthTemp = month + 1;
-        //    }
-        //    else if (month > DateTime.Now.Month)
-        //    {
-        //        monthTemp = DateTime.Now.Month;
-        //    }
-        //    return monthTemp;
-        //}
         public DateTime PosteriorMonth(int year, int month)
         {
             DateTime dateTime = new DateTime();
@@ -168,11 +181,6 @@ namespace Sanus.Services.Time
         {
             int week = GetIso8601WeekOfYear(dateTime);
             return FirstDateOfWeek(dateTime.Year, week - 1, CultureInfo.CurrentCulture);
-        }
-
-        public int PreviousWeek(int week)
-        {
-            throw new NotImplementedException();
         }
 
         public DateTime PreviousDay(int year, int month, int day)
@@ -502,56 +510,6 @@ namespace Sanus.Services.Time
                     }
             }
             return day;
-        }
-
-        public DateTime CheckYearInputMonth0(int year, int month)
-        {
-            DateTime dateTime = new DateTime();
-            switch (month)
-            {
-                case 1:
-                    dateTime = new DateTime(year - 1, 12, 1);
-                    break;
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                    dateTime = new DateTime(year, month - 1, 1);
-                    break;
-            }
-            return dateTime;
-        }
-
-        public DateTime CheckYearInputMonth1(int year, int month)
-        {
-            DateTime dateTime = new DateTime();
-            switch (month)
-            {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                    dateTime = new DateTime(year, month + 1, 1);
-                    break;
-                case 12:
-                    dateTime = new DateTime(year + 1, 1, 1);
-                    break;
-            }
-            return dateTime;
         }
     }
 }

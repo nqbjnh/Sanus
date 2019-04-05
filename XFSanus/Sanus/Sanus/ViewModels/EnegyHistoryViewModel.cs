@@ -31,8 +31,8 @@ namespace Sanus.ViewModels
         private ObservableCollection<ValueData> _enegyInWeekCollection;
         private ObservableCollection<ValueData> _enegyInMonthCollection;
         private DateTime _date;
-        private DateTime _month;
-
+        private DateTime _startDay;
+        private DateTime _endDay;
         //
         public Chart EnegyInDayChart { get => _enegyInDayChart; set => SetProperty(ref _enegyInDayChart, value); }
         public Chart EnegyInWeekChart { get => _enegyInWeekChart; set => SetProperty(ref _enegyInWeekChart, value); }
@@ -49,7 +49,8 @@ namespace Sanus.ViewModels
         public DelegateCommand PosteriorMonthCommand { get; }
         //
         public DateTime Date { get => _date; set => SetProperty(ref _date, value); }
-        public DateTime Month { get => _month; set => SetProperty(ref _month, value); }
+        public DateTime StartDay { get => _startDay; set => SetProperty(ref _startDay, value); }
+        public DateTime EndDay { get => _endDay; set => SetProperty(ref _endDay, value); }
         //
         public EnegyHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService, IGetTime getTime) : base(navigationService)
         {
@@ -59,7 +60,8 @@ namespace Sanus.ViewModels
             _getTime = getTime;
             //
             Date = DateTime.Now;
-            Month = DateTime.Now;
+            StartDay = _getTime.PosteriorWeek(DateTime.Now)["startDay"];
+            EndDay = _getTime.PosteriorWeek(DateTime.Now)["endDay"];
             //
             FetchHealthData();
             //
@@ -73,7 +75,7 @@ namespace Sanus.ViewModels
         public void FetchHealthData()
         {
             GetDataInDayAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.HOURS);
-            GetDataInWeekAsync(DateTime.Now.Year, 3, 20, 27, Configuration.DAYS);
+            GetDataInWeekAsync(_getTime.PosteriorWeek(DateTime.Now)["startDay"], _getTime.PosteriorWeek(DateTime.Now)["endDay"], Configuration.DAYS);
             GetDataInMonthAsync(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Configuration.MONTHS);
         }
         public bool GetDataInDayAsync(int year, int month, int day, string timeUnit)
@@ -89,19 +91,16 @@ namespace Sanus.ViewModels
             return true;
         }
         //
-        public bool GetDataInWeekAsync(int year, int month, int startDay, int endDay, string timeUnit)
+        public bool GetDataInWeekAsync(DateTime startDay, DateTime endDay, string timeunit)
         {
-            if (endDay <= DateTime.Now.Day && startDay + 7 == endDay)
+            //lay tong so buoc theo mot khoang thoi gian
+            Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (datas) =>
             {
-                //lay tong so buoc theo mot khoang thoi gian
-                Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (datas) =>
-                {
-                    // ve bieu do
-                    EnegyInWeekChart = await _chartService.GetChartAsyns(datas, timeUnit, Configuration.POINTCHART);
-                    // lay danh sach cac buoc theo thoi gian
-                    EnegyInWeekCollection = GetCollection(datas);
-                }, new DateTime(year, month, startDay, 0, 0, 0), new DateTime(year, month, endDay, 23, 59, 59), timeUnit);
-            }
+                // ve bieu do
+                EnegyInWeekChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.POINTCHART);
+                // lay danh sach cac buoc theo thoi gian
+                EnegyInWeekCollection = GetCollection(datas);
+            }, new DateTime(startDay.Year, startDay.Month, startDay.Day, 0, 0, 0), new DateTime(endDay.Year, endDay.Month, endDay.Day, 23, 59, 59), timeunit);
             return true;
         }
         //
@@ -129,11 +128,6 @@ namespace Sanus.ViewModels
             //
             return collection;
         }
-        private void PreviousSelects()
-        {
-            DateTime dateTime = _getTime.PreviousWeek(DateTime.Now);
-        }
-        //
         private async void PreviousDaySelect()
         {
             DateTime dateTime = _getTime.PreviousDay(Date.Year, Date.Month, Date.Day);
@@ -158,24 +152,34 @@ namespace Sanus.ViewModels
                 await Task.Delay(100);
             }
         }
-        private async void PreviousWeekSelect()
-        {
-            await _dialogService.ShowAlertAsync("tiến một tuần", "tiến tuần", "Ok");
-        }
         private async void PosteriorWeekSelect()
         {
-            await _dialogService.ShowAlertAsync("lùi một tuần", "lùi tuần", "Ok");
+            DateTime startDay = _getTime.PosteriorWeek(Date)["startDay"];
+            DateTime endDay = _getTime.PosteriorWeek(Date)["endDay"];
+            Date = startDay;
+            EndDay = endDay;
+            GetDataInWeekAsync(_getTime.PosteriorWeek(endDay.AddDays(2))["startDay"], _getTime.PosteriorWeek(endDay.AddDays(2))["endDay"], Configuration.DAYS);
+            await Task.Delay(100);
+        }
+        private async void PreviousWeekSelect()
+        {
+            DateTime startDay = _getTime.PosteriorWeek(Date)["startDay"];
+            DateTime endDay = _getTime.PosteriorWeek(Date)["endDay"];
+            Date = startDay;
+            EndDay = endDay;
+            GetDataInWeekAsync(_getTime.PosteriorWeek(startDay.AddDays(-2))["startDay"], _getTime.PosteriorWeek(startDay.AddDays(-2))["endDay"], Configuration.DAYS);
+            await Task.Delay(100);
         }
         private async void PreviousMonthSelect()
         {
-            Month = _getTime.PreviousMonth(Month.Year, Month.Month);
-            GetDataInMonthAsync(Month.Year, Month.Month, _getTime.GetLastDayInMonth(Month.Year, Month.Month), Configuration.MONTHS);
+            Date = _getTime.PreviousMonth(Date.Year, Date.Month);
+            GetDataInMonthAsync(Date.Year, Date.Month, _getTime.GetLastDayInMonth(Date.Year, Date.Month), Configuration.MONTHS);
             await Task.Delay(100);
         }
         private async void PosteriorMonthSelect()
         {
-            Month = _getTime.PosteriorMonth(Month.Year, Month.Month);
-            GetDataInMonthAsync(Month.Year, Month.Month, _getTime.GetLastDayInMonth(Month.Year, Month.Month), Configuration.MONTHS);
+            Date = _getTime.PosteriorMonth(Date.Year, Date.Month);
+            GetDataInMonthAsync(Date.Year, Date.Month, _getTime.GetLastDayInMonth(Date.Year, Date.Month), Configuration.MONTHS);
             await Task.Delay(100);
         }
     }

@@ -15,16 +15,12 @@ namespace Sanus.Services.Time
         int GetIso8601WeekOfYear(DateTime time);
         DateTime FirstDateOfWeek(int year, int weekOfYear, CultureInfo ci);
         DateTime PosteriorDay(int year, int month, int day);
-        int PreviousWeek(int week);
-       
+        int PreviousWeek(int week);       
         DateTime PreviousDay(int year, int month, int day);
-        int PosteriorWeek(int week);
-      
         // kiểm tra ngoại lệ
+        Dictionary<string, DateTime> PosteriorWeek(DateTime dateTime);
         int GetLastDayInMonth(int year, int month);
         DateTime PreviousMonth(int year, int month);
         DateTime PosteriorMonth(int year, int month);
-        DateTime CheckYearInputMonth0(int year, int month);
-        DateTime CheckYearInputMonth1(int year, int month);
     }
 }
