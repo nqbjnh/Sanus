@@ -322,10 +322,10 @@ namespace Sanus.Droid
                         .Build();
                     //
                     readRequest = new DataReadRequest.Builder()
-                         .Aggregate(dataSource, DataType.AggregateStepCountDelta)
-                         .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
-                         .BucketByTime(1, timeUnit)
-                         .Build();
+                        .Aggregate(dataSource, DataType.AggregateStepCountDelta)
+                        .SetTimeRange(startTimeElapsed, endTimeElapsed, TimeUnit.Milliseconds)
+                        .BucketByTime(1, timeUnit)
+                        .Build();
                     break;
             }
             return readRequest;

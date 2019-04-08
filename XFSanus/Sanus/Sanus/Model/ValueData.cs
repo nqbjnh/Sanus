@@ -4,7 +4,7 @@ namespace Sanus.Model
 {
     public class ValueData
     {
-        public DateTime Day { get; set; }
+        public DateTime Time { get; set; }
         public double Value { get; set; }
     }
 }

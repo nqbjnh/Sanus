@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Globalization;
 
 namespace Sanus
@@ -25,5 +26,28 @@ namespace Sanus
         public const string LINECHART = "LineChart";
         public const string BARCHART = "BarChart";
         public const string POINTCHART = "PointChart";
+        //
+        public const string HOST = "https://sanusapi.azurewebsites.net";
+        public const string CONTENTYPE = "application/json";
+        #region Garden
+        public const string APISTEPS = "api/StepsDemo";
+        #endregion
+        public const int PAGE_SIZE = 10;
+        public const string PERMISSION = "You do not have permission to view this directory or page.";
+        public const int MAXRESPONSECONTENTBUFFERSIZE = 256000;
+        public const string TIME_FORMAT = "HH:mm";
+        public const string DATE_FORMAT = "MMM dd, yyyy";
+        public static JsonSerializerSettings JsonSettings { get; } = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            MissingMemberHandling = MissingMemberHandling.Ignore
+        };
+        public static string CoreApi(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                throw new ArgumentException();
+            var p = path.Trim().Trim('/');
+            return HOST + "/" + p;
+        }
     }
 }

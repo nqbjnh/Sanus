@@ -3,6 +3,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
+using Sanus.Services;
 using Sanus.Services.Charts;
 using Sanus.Services.Dialog;
 using Sanus.Services.Time;
@@ -55,7 +56,7 @@ namespace Sanus
             containerRegistry.RegisterForNavigation<HealthRecordsPage, HealthRecordsViewModel>();
             containerRegistry.RegisterForNavigation<ProfilePage, ProfileViewModel>();
             containerRegistry.RegisterForNavigation<UserFilesPage, UserFilesViewModel>();
-          
+
             containerRegistry.RegisterForNavigation<EnegyHistoryPage, EnegyHistoryViewModel>();
             containerRegistry.RegisterForNavigation<DistanceHistoryPage, DistanceHistoryViewModel>();
             containerRegistry.RegisterForNavigation<StepsHistoryPage, StepsHistoryViewModel>();
@@ -66,6 +67,7 @@ namespace Sanus
             containerRegistry.Register<IChartService, ShowChartService>();
             containerRegistry.Register<IDialogService, DialogService>();
             containerRegistry.Register<IGetTime, GetTime>();
+            containerRegistry.RegisterSingleton<RestServices>();
         }
     }
 }

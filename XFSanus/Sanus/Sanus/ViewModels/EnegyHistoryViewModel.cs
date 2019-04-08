@@ -123,7 +123,7 @@ namespace Sanus.ViewModels
             //
             foreach (KeyValuePair<DateTime, double> item in list)
             {
-                collection.Add(new ValueData() { Day = item.Key, Value = item.Value });
+                collection.Add(new ValueData() { Time = item.Key, Value = item.Value });
             }
             //
             return collection;
