@@ -6,6 +6,7 @@ using Microcharts;
 using Prism.Commands;
 using Prism.Navigation;
 using Sanus.Model;
+using Sanus.Services;
 using Sanus.Services.Charts;
 using Sanus.Services.Dialog;
 using Sanus.Services.Health;
@@ -18,11 +19,12 @@ namespace Sanus.ViewModels
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
 #pragma warning disable IDE0044 // Add readonly modifier
         INavigationService _navigationService;
+        IDialogService _dialogService;
 #pragma warning restore IDE0044 // Add readonly modifier
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         IChartService _chartService;
-        IDialogService _dialogService;
         IGetTime _getTime;
+        private RestServices RestServices { get; }
         //
         private Chart _distanceInDayChart;
         private Chart _distanceInWeekChart;
@@ -52,12 +54,13 @@ namespace Sanus.ViewModels
         public DateTime StartDay { get => _startDay; set => SetProperty(ref _startDay, value); }
         public DateTime EndDay { get => _endDay; set => SetProperty(ref _endDay, value); }
         //
-        public DistanceHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService, IGetTime getTime) : base(navigationService)
+        public DistanceHistoryViewModel(INavigationService navigationService, IChartService chartService, IDialogService dialogService, IGetTime getTime, RestServices restServices) : base(navigationService)
         {
             _navigationService = navigationService;
             _chartService = chartService;
             _dialogService = dialogService;
             _getTime = getTime;
+            RestServices = restServices;
             //
             Date = DateTime.Now;
             StartDay = _getTime.PosteriorWeek(DateTime.Now)["startDay"];
@@ -87,6 +90,17 @@ namespace Sanus.ViewModels
                 DistanceInDayChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.LINECHART);
                 // lay danh sach cac buoc theo thoi gian
                 DistanceInDayCollection = GetCollection(datas);
+                foreach (ValueData valueData in Gets(datas))
+                {
+                    //await _dialogService.ShowConfirmAsync(valueData.Value.ToString(), valueData.Value.ToString(), "OK", "Cancel");
+                    var response = await RestServices.PostResponse(Configuration.APIDISTANCES,
+                        new
+                        {
+                            Time = valueData.Time,
+                            Values = (int)valueData.Value
+                        });
+                    //await _dialogService.ShowConfirmAsync(response.reponse.ToString(), response.reponse.ToString(), "OK", "Cancel");
+                }
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
             return true;
         }
@@ -121,6 +135,16 @@ namespace Sanus.ViewModels
         {
             ObservableCollection<ValueData> collection = new ObservableCollection<ValueData>();
             //
+            foreach (KeyValuePair<DateTime, double> item in list)
+            {
+                collection.Add(new ValueData() { Time = item.Key, Value = item.Value });
+            }
+            //
+            return collection;
+        }
+        private List<ValueData> Gets(Dictionary<DateTime, double> list)
+        {
+            List<ValueData> collection = new List<ValueData>();
             foreach (KeyValuePair<DateTime, double> item in list)
             {
                 collection.Add(new ValueData() { Time = item.Key, Value = item.Value });

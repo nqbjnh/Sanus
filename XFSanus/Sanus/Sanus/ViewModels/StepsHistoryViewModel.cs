@@ -19,10 +19,10 @@ namespace Sanus.ViewModels
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
 #pragma warning disable IDE0044 // Add readonly modifier
         INavigationService _navigationService;
+        IDialogService _dialogService;
 #pragma warning restore IDE0044 // Add readonly modifier
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         IChartService _chartService;
-        IDialogService _dialogService;
         IGetTime _getTime;
         private RestServices RestServices { get; }
         //
@@ -94,7 +94,7 @@ namespace Sanus.ViewModels
                 StepsInDayCollection = GetCollection(datas);
                 foreach (ValueData valueData in Gets(datas))
                 {
-                    await _dialogService.ShowConfirmAsync(valueData.Value.ToString(), valueData.Value.ToString(), "OK", "Cancel");
+                    //await _dialogService.ShowConfirmAsync(valueData.Value.ToString(), valueData.Value.ToString(), "OK", "Cancel");
                     var response = await RestServices.PostResponse(Configuration.APISTEPS,
                         new
                         {

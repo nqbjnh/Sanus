@@ -29,8 +29,10 @@ namespace Sanus
         //
         public const string HOST = "https://sanusapi.azurewebsites.net";
         public const string CONTENTYPE = "application/json";
-        #region Garden
+        #region API
         public const string APISTEPS = "api/StepsDemo";
+        public const string APIDISTANCES = "api/Distances";
+        public const string APIENERGYS = "api/Energys";
         #endregion
         public const int PAGE_SIZE = 10;
         public const string PERMISSION = "You do not have permission to view this directory or page.";
