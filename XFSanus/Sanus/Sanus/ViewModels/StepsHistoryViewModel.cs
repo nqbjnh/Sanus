@@ -90,6 +90,7 @@ namespace Sanus.ViewModels
         {
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.STEPS, async (datas) =>
             {
+                await Task.Delay(1000);
                 StepsInDayChart = await _chartService.GetChartAsyns(datas, timeunit, Configuration.LINECHART);
                 StepsInDayCollection = GetCollection(datas);
                 foreach (ValueData valueData in Gets(datas))
@@ -103,6 +104,7 @@ namespace Sanus.ViewModels
                         });
                     //await _dialogService.ShowConfirmAsync(response.reponse.ToString(), response.reponse.ToString(), "OK", "Cancel");
                 }
+                await Task.Delay(1000);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeunit);
             return true;
         }

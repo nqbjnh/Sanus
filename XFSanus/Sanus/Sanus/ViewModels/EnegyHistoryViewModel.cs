@@ -86,6 +86,7 @@ namespace Sanus.ViewModels
             //lay tong so buoc theo mot khoang thoi gian
             Xamarin.Forms.DependencyService.Get<IHealthServices>().FetchData(Configuration.CALORIES, async (datas) =>
             {
+                await Task.Delay(1000);
                 // ve bieu do
                 EnegyInDayChart = await _chartService.GetChartAsyns(datas, timeUnit, Configuration.LINECHART);
                 // lay danh sach cac buoc theo thoi gian
@@ -101,6 +102,7 @@ namespace Sanus.ViewModels
                         });
                     //await _dialogService.ShowConfirmAsync(response.reponse.ToString(), response.reponse.ToString(), "OK", "Cancel");
                 }
+                await Task.Delay(1000);
             }, new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 23, 59, 59), timeUnit);
             return true;
         }
